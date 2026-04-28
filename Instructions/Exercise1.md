@@ -15,89 +15,106 @@ In this exercise, you will explore Microsoft Entra ID Governance capabilities in
 
 ---
 
-## Task 1: Manage Users and Groups
-
-**Estimated Duration: 15 minutes**
-
-### Overview
+## Task 1: Manage Users using Dynamic groups
 
 Dynamic groups in Microsoft Entra ID automatically manage membership based on user or device attributes. This eliminates the need to manually add or remove members when attributes change.
 
-### Step 1: Create a Dynamic Security Group
+1. Open a new tab in the browser and navigate to **Microsoft Entra admin center** using below link.
 
-1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com) using your Global Administrator credentials.
+   ```
+   https://entra.microsoft.com\
+   ```
 
-2. In the left navigation pane, expand **Identity** and select **Groups** > **All groups**.
+1. If prompted, provide the credentials below:
 
-   ![Groups navigation](Images/ex1-task1-groups-nav.png)
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
 
-3. Click **+ New group** at the top of the Groups blade.
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-4. On the **New Group** page, configure the following:
-   - **Group type**: Security
-   - **Group name**: `Dynamic-Department-IT`
-   - **Group description**: `Dynamic group for IT Department members`
-   - **Membership type**: Dynamic User
+1. Take a moment to familiarize yourself with Microsoft Entra admin center.
 
-5. Under **Dynamic user members**, click **Add dynamic query**.
+   ![](./Images/Adminportal.png)
 
-   ![New group configuration](Images/ex1-task1-new-group.png)
+1. In the left pane, expand **Entra ID (1)** and select **Groups (2)** then click on **New group (3)**.
 
-6. In the **Dynamic membership rules** editor, configure the following rule:
-   - **Property**: `department`
-   - **Operator**: `Equals`
-   - **Value**: `IT`
+   ![](./Images/ETS114.png)
 
-   The rule expression should read:
+1. On the **New Group** page, configure the following:
+
+   - **Group type**: Security **(1)**
+   - **Group name**: `IT-Department` **(2)**
+   - **Group description**: `Dynamic group for IT Department members` **(3)**
+   - **Membership type**: Dynamic User **(4)**
+
+1. Under **Dynamic user members**, click **Add dynamic query (5)**.
+
+   ![](./Images/ETS116.png)
+
+1. In the **Dynamic membership rules** page, configure the following rules and click on **Save (5)**.
+
+   - **Property**: `department` **(1)**
+   - **Operator**: `Equals` **(2)**
+   - **Value**: `IT`**(3)**
+
+   In the Rule syntax, the rule expression should like below **(4)**:
    ```
    (user.department -eq "IT")
    ```
+   ![](./Images/ETS117.png)
 
-7. Click **Save** to save the dynamic membership rule.
+1. Click **Create**.
 
-8. Back on the **New Group** page, click **Create**.
-
-   > **Note:** Dynamic group membership updates can take up to 24 hours for large tenants. In lab environments, updates typically occur within a few minutes.
-
-### Step 2: Create a Second Dynamic Group by Job Title
+   ![](./Images/ETS118.png)
 
 1. Click **+ New group** again to create another dynamic group.
 
-2. Configure the following:
-   - **Group type**: Security
-   - **Group name**: `Dynamic-Managers`
-   - **Group description**: `Dynamic group for all managers`
-   - **Membership type**: Dynamic User
+   ![](./Images/ETS119.png)
 
-3. Click **Add dynamic query** and enter the following rule:
-   - **Property**: `jobTitle`
-   - **Operator**: `Contains`
-   - **Value**: `Manager`
+1. On the **New Group** page, configure the following:
+   - **Group type**: Security **(1)**
+   - **Group name**: `Managers` **(2)**
+   - **Group description**: `Dynamic group for all managers` **(3)**
+   - **Membership type**: Dynamic User **(4)**
 
-   The expression should read:
+1. Under **Dynamic user members**, click **Add dynamic query (5)**.
+
+   ![](./Images/ETS1110.png)
+
+1. In the **Dynamic membership rules** page, click on **Edit (1)** then configure the following rules **(2)** and click on **Save (3)**.
    ```
    (user.jobTitle -contains "Manager")
    ```
+   ![](./Images/ETS1111.png)
 
-4. Click **Save**, then click **Create**.
+1. Click **Create**.
 
-### Step 3: Assign Users to Groups and Validate Membership
+   ![](./Images/ETS1112.png)
 
-1. In the left navigation pane, go to **Identity** > **Users** > **All users**.
+1. In the left pane, go to **Users**, click on **ADUser1** to open the profile.
 
-2. Select a test user (e.g., **Alex Johnson**) and click on their name to open their profile.
+   ![](./Images/ETS1113.png)
 
-3. Click **Edit properties** (pencil icon) and set the following attributes:
-   - **Department**: `IT`
-   - **Job title**: `IT Manager`
+1. Click **Edit properties**.
 
-4. Click **Save**.
+   ![](./Images/ETS1114.png)
 
-5. Navigate back to **Groups** > **All groups** and open **Dynamic-Department-IT**.
+1. Select **Job Information (1)** and set the following attributes and then click on **Save (4)**
 
-6. Under **Members**, wait a few minutes and then click **Refresh**. Verify that the test user with `department = IT` now appears in the group.
+   - **Job title**: `IT Manager` **(2)**
+   - **Department**: `IT` **(3)**
 
-7. Repeat for **Dynamic-Managers** to confirm the user with `jobTitle = IT Manager` appears.
+   ![](./Images/ETS1115.png)
+
+1. Navigate back to **Groups (1)**, select **All groups (2)** and Click on **IT-Department (3)**.
+
+   ![](./Images/ETS1116.png)
+
+1. Select **Members**, verify that **ADUser1** now added to the group dynamically.
+
+   ![](./Images/ETS1117.png)
+   >**Note:** If user is not appeared then wait a few minutes and then click Refresh.
+
+1. Repeat for **Dynamic-Managers** to confirm the user with `jobTitle = IT Manager` appears.
 
    > **Tip:** You can also use **Validate Rules** on the dynamic membership rules page to check if a specific user would match the rule before the automatic sync completes.
 
@@ -124,120 +141,80 @@ Dynamic groups in Microsoft Entra ID automatically manage membership based on us
 
 ## Task 2: Entra ID Lifecycle Management
 
-### Overview
-
 Microsoft Entra Lifecycle Workflows automate identity processes across the employee lifecycle — from onboarding (joiner) to role changes (mover) to offboarding (leaver). This replaces manual HR-driven processes and reduces the risk of orphaned accounts.
-
----
 
 ### Task 2.1: Configure Onboarding Workflow
 
-**Estimated Duration: 15 minutes**
+In this task, you are going to create onboarding workflow using the built in templates
 
-#### Step 1: Navigate to Lifecycle Workflows
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**
 
-1. In the Microsoft Entra admin center, expand **Identity Governance** in the left navigation pane.
+   ![](./Images/ETS121.png)
 
-2. Select **Lifecycle workflows**.
+1. You will see the Lifecycle Workflows dashboard with template categories: **Joiner**, **Mover**, and **Leaver**. Select **Onboard new hire employee**.
 
-   ![Lifecycle workflows navigation](Images/ex1-task2-lifecycle-nav.png)
+   ![](./Images/ETS122.png)
 
-3. You will see the Lifecycle Workflows dashboard with template categories: **Joiner**, **Mover**, and **Leaver**.
+1. On the **Basics** page, provide Name as **Onboard New Employee - IT Department (1)**. and then click **Next: Configure (2)**.
 
-#### Step 2: Create an Onboarding Workflow from Template
+   ![](./Images/ETS122-1.png)
 
-1. Click **+ Create workflow** or **New workflow**.
+1. On the **Configure** page, Make the rule department value as **IT (1)** then click **Next: Review tasks (2)**.
 
-2. In the **Create a workflow** wizard, select the **Onboard new hire employee** template under the **Joiner** category.
+   ![](./Images/ETS123.png)
 
-3. Click **Next: Basics**.
+1. On the **Review tasks** page, you will see pre-configured tasks. Click **+ Add task (1)** to add additional tasks.
 
-4. On the **Basics** page, configure:
-   - **Name**: `Onboard New Employee - Standard`
-   - **Description**: `Automated onboarding for new employees joining the organization`
-   - **Enable schedule**: Toggle to **On**
+1. Select **Generate TAP and send email (2)** then click on **Add (3)**.
 
-5. Click **Next: Configure**.
+   ![](./Images/ETS124.png)
 
-#### Step 3: Configure Workflow Trigger
+1. Click on **Add user to group** then click on **0 group selected**
 
-1. On the **Configure** page, review the trigger settings:
-   - **Trigger type**: Attribute changes
-   - **Trigger attribute**: `employeeHireDate`
-   - **Days before/after hire date**: Set to **0** (triggers on the hire date itself)
+   ![](./Images/ETS125.png)
 
-   > **Note:** You can configure this to run days before the actual start date, which is useful for pre-provisioning access.
+1. Select **New joiners (1)** group and the click on **Select**
 
-2. Optionally, configure **Scope** to target specific users by adding conditions:
-   - Click **Add condition**
-   - **Property**: `department`
-   - **Operator**: `Equals`
-   - **Value**: `IT`
+   ![](./Images/ETS126.png)
 
-   This limits the workflow to only process IT department new hires.
+1. Click on **Save (1)**.
 
-3. Click **Next: Review tasks**.
-
-#### Step 4: Configure Automated Onboarding Tasks
-
-1. On the **Review tasks** page, you'll see pre-configured tasks. Click **+ Add task** to add additional tasks.
-
-2. Add the following tasks (if not already present):
-
-   **Task 1 – Send Welcome Email:**
-   - Select **Send welcome email to new hire**
-   - Configure the email template and sender
-
-   **Task 2 – Add User to Group:**
-   - Select **Add user to groups**
-   - Click **Select groups** and choose **Dynamic-Department-IT**
-
-   **Task 3 – Enable User Account:**
-   - Select **Enable user account**
-
-   **Task 4 – Generate Temporary Access Pass:**
-   - Select **Generate Temporary Access Pass and send via email to manager**
-   - This provides the new employee a secure way to sign in for the first time
-
-   ![Onboarding tasks configuration](Images/ex1-task2-onboarding-tasks.png)
-
-3. Review the order of tasks. Drag tasks to reorder them if needed. Recommended order:
+ Review the order of tasks. Drag tasks to reorder them if needed. Recommended order:
    1. Enable user account
-   2. Add user to groups
-   3. Generate Temporary Access Pass
-   4. Send welcome email
+   2. Send welcome email
+   3. Add user to groups
+   4. Generate Temporary Access Pass
 
-4. Click **Next: Review + create**.
+1. Click **Next: Review + create (2)**.
 
-5. Review the workflow configuration summary and click **Create**.
+   ![](./Images/ETS127.png)
 
----
+1. Review the workflow configuration summary and click **Create**.
+
+   ![](./Images/ETS128.png)
 
 ### Task 2.2: Configure Provisioning and License Handling
 
-**Estimated Duration: 15 minutes**
+In this task you will assign the license and application provisioning to the user
 
-#### Step 1: Configure Automatic License Assignment via Group-Based Licensing
+1. Open a new tab in the browser and navigate to **M365 admin center** using below link.
 
-1. In the Microsoft Entra admin center, navigate to **Identity** > **Groups** > **All groups**.
+   ```
+   https://admin.microsoft.com/Adminportal/Home?referrer=entra#/licenses
+   ```
+   ![](./Images/ETS1210.png)
 
-2. Select the **Dynamic-Department-IT** group created in Task 1.
+1. Expand **Team & groups (1)** then select **Active teams & groups (2)**.
 
-3. In the group menu, click **Licenses**.
+1. Click on **security groups (3)**. Select the **IT-Department (4)** group created in Task 1.
 
-4. Click **+ Assignments**.
+   ![](./Images/ETS1211.png)
 
-5. In the **Assign licenses** panel, select the appropriate licenses:
-   - **Microsoft 365 E3** (or the license available in your tenant)
-   - **Microsoft Entra ID P2** (for advanced governance features)
+1. Select **License and apps (1)** then select **Office 365 E1 (2)** and click on **Save changes (3)**.
 
-6. For each selected license, review the service plans and disable any plans not needed for IT users if required.
+   ![](./Images/ETS1212.png)
 
-7. Click **Save**.
-
-   > **Note:** With group-based licensing, any user added to **Dynamic-Department-IT** (manually or through the dynamic rule) will automatically receive the assigned licenses.
-
-#### Step 2: Configure Application Provisioning
+   > **Note:** With group-based licensing, any user added to **IT-Department** (manually or through the dynamic rule) will automatically receive the assigned licenses.
 
 1. In the Microsoft Entra admin center, navigate to **Identity** > **Applications** > **Enterprise applications**.
 
@@ -290,30 +267,47 @@ Microsoft Entra Lifecycle Workflows automate identity processes across the emplo
 
 ### Task 2.3: Implement Custom Extensions
 
-**Estimated Duration: 15 minutes**
-
-#### Overview
-
 Custom task extensions allow you to extend Lifecycle Workflows with custom business logic using Azure Logic Apps. This is useful for scenarios such as creating IT tickets, sending notifications to external systems, or triggering custom workflows.
 
-#### Step 1: Create an Azure Logic App
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**.
 
-1. Open a new browser tab and navigate to the [Azure portal](https://portal.azure.com).
+1. Select **Custom extensions (3)**, then click on **+ Add a custom extension (4)**.
 
-2. Search for **Logic Apps** and select it.
+   ![](./Images/ETS1213.png)
 
-3. Click **+ Add** to create a new Logic App.
+1. On the Basics tab, Provide the below details then click on **Next Task behavior (3)**
 
-4. Configure the following:
-   - **Subscription**: Select your subscription
-   - **Resource Group**: Select or create a resource group (e.g., `rg-identity-lab`)
-   - **Logic App name**: `la-lifecycle-onboarding-extension`
-   - **Region**: Select your preferred region
-   - **Plan type**: Consumption
+      - **Name**: **(1)**
+      - **Description**:**(2)**
 
-5. Click **Review + create**, then **Create**.
+1. On the Task behavior, leave it as default and click on **Next Details**
 
-6. Once deployed, click **Go to resource** and then click **Logic app designer**.
+   ![](./Images/ETS1215.png)
+
+1. On the Details page, Provide the below details and click on **Create logoc app(4)**
+      - **Subscription**: Leave it as default **(1)**
+      - **Resource group**: <inject key="Resourcegroup"></inject> **(2)**
+      - **Logic app name**: `custom-task-workflow` **(3)**
+   ![](./Images/ETS1216.png)
+
+1. Once the deployment is successful, click on **Next Review + create** and then click on **Create**.
+
+   ![](./Images/ETS1217.png)
+
+
+1. Open a new browser tab and navigate to the Azure portal using below link
+
+   ```
+   https://portal.azure.com
+   ```
+
+1. Search for **Logic Apps** and select it.
+
+   ![](./Images/ETS1218.png)
+
+1.  Click on **custom-task-workflow** and then select **Logic app designer**.
+
+   ![](./Images/ETS1219.png)
 
 7. Select **When a HTTP request is received** as the trigger.
 
@@ -358,56 +352,33 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
 12. Copy the **HTTP POST URL** from the trigger — you will need this for the custom extension.
 
-#### Step 2: Register the Custom Extension in Lifecycle Workflows
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**.
 
-1. Return to the Microsoft Entra admin center.
+1. Select **Workflows (3)**, then click on **Onboard New Employee - IT Department (4)**.
 
-2. Navigate to **Identity Governance** > **Lifecycle workflows** > **Custom task extensions**.
+   ![](./Images/ETS1220.png)
 
-3. Click **+ Create a custom task extension**.
+1. Click **Tasks (1)** in the workflow menu and then click **+ Add task (2)**.
 
-4. On the **Basics** page, configure:
-   - **Name**: `IT Ticket Creation on Onboarding`
-   - **Description**: `Creates an IT helpdesk ticket when a new employee is onboarded`
+   ![](./Images/ETS1221.png)
 
-5. Click **Next: Details**.
+1. Select **Run a Custom Task Extension (1)** from the task list and click on **Save (2)**.
 
-6. On the **Details** page:
-   - **Extension type**: Azure Logic App
-   - **Subscription**: Select your Azure subscription
-   - **Logic App**: Select `la-lifecycle-onboarding-extension`
+   ![](./Images/ETS1222.png)
 
-7. Configure the **Behavior**:
-   - **Launch and continue** (recommended for non-blocking operations like ticket creation)
+1. Click on **Run a Custom Task Extension (1)** , Select custom extension as **New joinee onboarding (2)** then click on **Save(3)**.
 
-8. Click **Next: Review + create**, then **Create**.
+   ![](./Images/ETS1223.png)
 
-#### Step 3: Add the Custom Extension to the Onboarding Workflow
+1. Then Click **Save**.
 
-1. Navigate to **Identity Governance** > **Lifecycle workflows** > **Workflows**.
+   ![](./Images/ETS1223.png)
 
-2. Open the **Onboard New Employee - Standard** workflow created in Task 2.1.
+1. Now go to **Overview (1)** and select **Run on demand (2)**. 
 
-3. Click **Tasks** in the workflow menu.
+   ![](./Images/ETS1223.png)
 
-4. Click **+ Add task**.
-
-5. Select **Run a Custom Task Extension** from the task list.
-
-6. In the configuration panel:
-   - **Select a custom task extension**: Choose `IT Ticket Creation on Onboarding`
-
-7. Set the task execution order to run after the **Enable user account** task.
-
-8. Click **Save**.
-
-#### Step 4: Test the Custom Extension
-
-1. In the Lifecycle Workflows section, select the **Onboard New Employee - Standard** workflow.
-
-2. Click **Run on demand** (or similar option to trigger a test run).
-
-3. Select a test user to simulate onboarding for.
+3. Click on **+ Select user** to simulate onboarding for.
 
 4. Click **Run workflow**.
 
@@ -417,98 +388,51 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
 6. Check the email inbox (or Logic App run history) to confirm the notification was sent.
 
-   ![Custom extension execution](Images/ex1-task2-custom-extension.png)
-
----
-
 ### Task 2.4: Configure Offboarding Workflow
 
-**Estimated Duration: 15 minutes**
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**
 
-#### Step 1: Create an Offboarding Workflow
+   ![](./Images/ETS121.png)
 
-1. In the Microsoft Entra admin center, navigate to **Identity Governance** > **Lifecycle workflows**.
+1. Scroll down and select the **Offboard an employee** template under the **Leaver** category.
 
-2. Click **+ Create workflow** or **New workflow**.
+   ![](./Images/ETS1251.png)
 
-3. Select the **Offboard an employee** template under the **Leaver** category.
+1. On the **Basics** page, leave it as default and click **Next: Configure**.
 
-4. Click **Next: Basics**.
+   ![](./Images/ETS1252.png)
 
-5. Configure the following:
-   - **Name**: `Offboard Employee - Standard`
-   - **Description**: `Automated offboarding for departing employees`
-   - **Enable schedule**: Toggle to **On**
+1. On the **Configure** page, Make the rule department value as **IT (1)** then click **Next: Review tasks (2)**.
 
-6. Click **Next: Configure**.
+   ![](./Images/ETS1253.png)
 
-#### Step 2: Configure Offboarding Trigger
+1. On the **Review tasks** page, you will see pre-configured tasks. Click **+ Add task (1)** to add additional tasks.
 
-1. On the **Configure** page, set the trigger:
-   - **Trigger type**: Attribute changes
-   - **Trigger attribute**: `employeeLeaveDateTime`
-   - **Days before/after leave date**: Set to **0**
+1. Select **Remove all licenses for user  (2)** then click on **Add (3)** and click **Next: Review tasks (4)**.
 
-2. Add a scope condition if desired:
-   - **Property**: `department`
-   - **Operator**: `Not Equals`
-   - **Value**: `Contractors`
+   ![](./Images/ETS1254.png)
 
-   > This ensures contractors are handled through a separate workflow.
+ Review the order of tasks. Drag tasks to reorder them if needed. Recommended order:
+   1. Disable user account
+   2. Remove user from all groups
+   3. Remove user from all Teams
+   4. Remove all licenses for user
 
-3. Click **Next: Review tasks**.
+1. Click **Create**.
 
-#### Step 3: Configure Offboarding Tasks
+   ![](./Images/ETS1255.png)
 
-1. On the **Review tasks** page, add and configure the following tasks:
+1. Now select **Offboard an employee** and click on **Run on demand**.
 
-   **Task 1 – Remove User from All Groups:**
-   - Select **Remove user from all groups**
+   ![](./Images/ETS1256.png)
 
-   **Task 2 – Remove User from All Teams:**
-   - Select **Remove user from all Teams**
+1. Click on **+ Select users** then select **ADUser3** and click **Select**.
 
-   **Task 3 – Disable User Account:**
-   - Select **Disable user account**
+   ![](./Images/ETS1257.png)
 
-   **Task 4 – Remove User Licenses:**
-   - Select **Remove all licenses for user**
+1. Now click on **Run workflow**.
 
-   **Task 5 – Revoke User Sign-in Sessions:**
-   - Select **Revoke user sign-in sessions**
-
-   **Task 6 – Delete User Account** *(optional, typically after a retention period)*:
-   - If required by policy, add **Delete user** task with a delay
-
-   Recommended task order:
-   1. Revoke user sign-in sessions
-   2. Remove user from all Teams
-   3. Remove user from all groups
-   4. Disable user account
-   5. Remove all licenses for user
-
-   ![Offboarding tasks configuration](Images/ex1-task2-offboarding-tasks.png)
-
-2. Click **Next: Review + create**.
-
-3. Review the configuration and click **Create**.
-
-#### Step 4: Test the Offboarding Workflow
-
-1. Navigate to **Identity** > **Users** > **All users** and identify a test user to simulate offboarding.
-
-2. Update the test user's **Employee leave date** attribute:
-   - Open the user profile
-   - Click **Edit properties**
-   - Set **Employee leave date** to today's date or a past date
-
-3. Return to **Identity Governance** > **Lifecycle workflows** > **Workflows**.
-
-4. Open **Offboard Employee - Standard** and click **Run on demand**.
-
-5. Select the test user and click **Run workflow**.
-
-6. Wait a few minutes and then check the **Workflow execution history**.
+   ![](./Images/ETS1258.png)
 
 7. Verify:
    - The user account is disabled
@@ -521,116 +445,80 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
 ## Task 3: Setting Up Access Reviews
 
-**Estimated Duration: 20 minutes**
-
-### Overview
-
 Access Reviews in Microsoft Entra ID Governance enable organizations to efficiently manage group memberships, application assignments, and privileged role assignments. Reviewers can approve or deny access based on actual business need.
 
-### Step 1: Create an Access Review
+1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**
 
-1. In the Microsoft Entra admin center, navigate to **Identity Governance** > **Access reviews**.
+   ![](./Images/ETS1261.png)
 
-2. Click **+ New access review**.
+1. Select **Review access to a resource type**
 
-   ![New access review](Images/ex1-task3-access-review-new.png)
+   ![](./Images/ETS1262.png)
 
-3. On the **Review type** page:
-   - **Select what to review**: Teams + Groups
-   - **Review scope**: Select teams + groups
-   - Click **Select group(s)** and choose **Dynamic-Department-IT**
-   - **Scope**: All users (or Guest users only, depending on your scenario)
+1. On the **Review type** page, provide the below details:
+      - Select what to review :**Teams + Groups (1)**
+      - Review scope : **Select Teams + groups (2)**
+      - Group : click on **+ Select groups (3)**
 
-4. Click **Next: Reviews**.
+   ![](./Images/ETS1263.png)
 
-### Step 2: Configure Review Settings
+1. Select **IT-Department (1)** and click on **Select (2)**.
 
-1. On the **Reviews** page, configure:
-   - **Select reviewers**: Selected user(s)
-   - Click **Select reviewers** and add the appropriate manager or IT admin user
-   - Alternatively, select **Group owners** as reviewers
+   ![](./Images/ETS1264.png)
 
-2. Configure the schedule:
-   - **Duration (in days)**: `14`
-   - **Review recurrence**: Monthly (or Quarterly for less frequent reviews)
-   - **Start date**: Today's date
-   - **End**: Never (or specify an end date)
+1. Select **All users (1)** on the scope and click on **Next Reviews (2)**.
 
-3. Click **Next: Settings**.
+   ![](./Images/ETS1265.png)
 
-### Step 3: Configure Access Review Behavior Settings
+1. In the select reviewers drop down, click on **Selected user(s) or group(s)**
 
-1. On the **Settings** page, configure:
+   ![](./Images/ETS1266.png)
 
-   **Upon completion settings:**
-   - **Auto apply results to resource**: Toggle to **Enable**
-   - **If reviewers don't respond**: Remove access (recommended for security)
+1. Then click on **+ select reviwers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then clcik on **select (3)**.
 
-   **Advanced settings:**
-   - **Show recommendations**: Enable (helps reviewers make informed decisions)
-   - **Require reason on approval**: Enable
-   - **Email notifications**: Enable
-   - **Reminders**: Enable
-   - **Additional content for reviewer email**: Add a message such as:
-     > "Please review the IT Department group membership. Remove access for any users who no longer require IT-level access."
+   ![](./Images/ETS1267.png)
 
-2. Click **Next: Review + create**.
+1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**
 
-### Step 4: Create the Access Review
+   ![](./Images/ETS1268.png)
 
-1. Review the access review configuration summary.
+1. Click on **Next Review + Create**
 
-2. Click **Create**.
+1. On the **Review + create** page, provide Review name as **Access review (1)** and click on **Create (2)**.
 
-3. The access review will now appear in the **Access reviews** list.
-
-   ![Access review created](Images/ex1-task3-access-review-created.png)
-
-### Step 5: Perform the Access Review (Reviewer Experience)
+   ![](./Images/ETS1269.png)
 
 1. The designated reviewer will receive an email notification to perform the review.
 
-2. As the reviewer, navigate to [My Access portal](https://myaccess.microsoft.com).
+1. Open a new tab and navigate to outlook using below link
 
-3. Click on **Access reviews** in the left navigation pane.
+   ```
+   https://outlook.office.com/
+   ```
+1. If prompted to sign, provide the credentials below:
 
-4. Select the pending access review for **Dynamic-Department-IT**.
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
 
-5. For each user listed, review their information:
-   - Last sign-in date
-   - Recommendations (if enabled)
-   - User details
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-6. For each user, select one of the following actions:
-   - **Approve**: The user should retain access
-   - **Deny**: The user should be removed from the group
-   - **Don't know**: Skip this decision (the policy setting will handle it)
+1. You will receive a mail. Select the mail and click on **Start review**.
 
-7. Optionally, provide a justification in the **Reason** field.
+   ![](./Images/ETS1311.png)
 
-8. Click **Submit** to submit your decisions.
+1. It will navigate to my access portal.
 
-### Step 6: Review Audit Logs and Completion Reports
+1. Now select **ADUser1** and click on **Deny**. Optionally, provide a justification in the **Reason** field and **Sumbit**.
 
-1. Return to the Microsoft Entra admin center.
+   ![](./Images/ETS1312.png)
+   ![](./Images/ETS1313.png)
 
-2. Navigate to **Identity Governance** > **Access reviews**.
+1. Navigate back to Entra admin portal and select **Access review**
 
-3. Select the completed access review.
+   ![](./Images/ETS1314.png)
 
-4. Click **Results** to view the decisions made:
-   - **Approved**: Users whose access was approved
-   - **Denied**: Users whose access was removed
+1. Now click on **Results** to see the denied log.
 
-5. To review audit logs, navigate to **Identity** > **Monitoring & health** > **Audit logs**.
-
-6. Filter the audit logs:
-   - **Category**: AccessReviews
-   - **Date range**: Last 24 hours
-
-7. Review the log entries for access review creation, decisions, and auto-applied results.
-
----
+   ![](./Images/ETS1315.png)
 
 ## Task 4: Implementing Conditional Access Policies
 
