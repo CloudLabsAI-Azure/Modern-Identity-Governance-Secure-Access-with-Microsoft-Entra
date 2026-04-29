@@ -2,8 +2,6 @@
 
 **Estimated Duration: 60 minutes**
 
-> **Note:** This exercise may require more time depending on the lab environment configuration. Ensure all prerequisites are met before starting.
-
 ## Overview
 
 Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) solution that combines identity-aware network security with Zero Trust network access. It provides two core capabilities:
@@ -20,29 +18,18 @@ Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) 
 - For Private Access: An on-premises server or Azure VM to act as the Private Access connector host
 - Internet connectivity from the connector server to Microsoft Entra
 
----
-
 ## Task 1: Enable Microsoft Entra Global Secure Access
 
-**Estimated Duration: 10 minutes**
+1. In the left navigation pane, expand **Global Secure Access** then select **Dashboard** and click on **Activate**.
 
-### Step 1: Enable Global Secure Access in Your Tenant
+   ![](./Images/ETS2101.png)
 
-1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com) using your Global Administrator credentials.
-
-2. In the left navigation pane, expand **Global Secure Access** and click **Get started** (or navigate directly to **Global Secure Access** > **Overview**).
-
-   ![Global Secure Access overview](Images/ex2-task1-gsa-overview.png)
-
-3. On the Global Secure Access overview page, click **Activate** or **Enable Global Secure Access**.
-
-4. Review the licensing requirements shown on the page:
+1. Review the licensing requirements shown on the page:
    - **Microsoft Entra Internet Access**: Requires Microsoft Entra Internet Access add-on or Microsoft Entra Suite
    - **Microsoft Entra Private Access**: Requires Microsoft Entra Private Access add-on or Microsoft Entra Suite
 
 5. Once activated, you should see the Global Secure Access dashboard with traffic insights and configuration options.
 
-### Step 2: Review Prerequisites and Licensing
 
 1. In the Microsoft Entra admin center, navigate to **Billing** > **Licenses** to verify you have the appropriate licenses assigned.
 

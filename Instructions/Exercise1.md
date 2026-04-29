@@ -22,7 +22,7 @@ Dynamic groups in Microsoft Entra ID automatically manage membership based on us
 1. Open a new tab in the browser and navigate to **Microsoft Entra admin center** using below link.
 
    ```
-   https://entra.microsoft.com\
+   https://entra.microsoft.com
    ```
 
 1. If prompted, provide the credentials below:
@@ -114,30 +114,17 @@ Dynamic groups in Microsoft Entra ID automatically manage membership based on us
    ![](./Images/ETS1117.png)
    >**Note:** If user is not appeared then wait a few minutes and then click Refresh.
 
-1. Repeat for **Dynamic-Managers** to confirm the user with `jobTitle = IT Manager` appears.
+1. Repeat for **Managers** group to confirm the `ADUser1` added as a member in the group.
 
-   > **Tip:** You can also use **Validate Rules** on the dynamic membership rules page to check if a specific user would match the rule before the automatic sync completes.
+   ![](./Images/ETS1118.png)
 
-### Step 4: Configure Advanced Group Membership Rules
+1. You can also validate the users by using **Validate rules**.
 
-1. Open the **Dynamic-Department-IT** group and navigate to **Dynamic membership rules**.
+1. Click on **Dynamic membership rules (1)** and select **Validate rules (2)**
 
-2. Click **Edit** to modify the existing rule and add an additional condition using **AND** logic:
+1. Click on **+Add user (3)**, select **ADUser2 (4)** and check the **validation (5)**
 
-   ```
-   (user.department -eq "IT") and (user.accountEnabled -eq true)
-   ```
-
-3. Click **Save** to apply the updated rule.
-
-   > **Note:** This ensures only active (enabled) IT department users are included in the group, which is an important security consideration.
-
-4. To validate the rule:
-   - Click **Validate Rules**
-   - Search for and select a test user
-   - Review whether the user matches the rule criteria
-
----
+   ![](./Images/ETS1119.png)
 
 ## Task 2: Entra ID Lifecycle Management
 
@@ -277,10 +264,12 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
 1. On the Basics tab, Provide the below details then click on **Next Task behavior (3)**
 
-      - **Name**: **(1)**
-      - **Description**:**(2)**
+      - **Name**: Onboarding email notification **(1)**
+      - **Description**: Send the onboarding email notification to New joinee **(2)**.
 
-1. On the Task behavior, leave it as default and click on **Next Details**
+      ![](./Images/ETS1214.png)
+
+1. On the Task behavior tab, leave it as default and click on **Next Details**
 
    ![](./Images/ETS1215.png)
 
@@ -294,63 +283,220 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
    ![](./Images/ETS1217.png)
 
+1. Now go to custom extensions and click on **custom-task-workflow**
 
-1. Open a new browser tab and navigate to the Azure portal using below link
+   ![](./Images/ETS1228.png)
+
+1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then clcik **Ctrl + V** to paste the code and then click on **Save (3)** to save the code
 
    ```
-   https://portal.azure.com
-   ```
-
-1. Search for **Logic Apps** and select it.
-
-   ![](./Images/ETS1218.png)
-
-1.  Click on **custom-task-workflow** and then select **Logic app designer**.
-
-   ![](./Images/ETS1219.png)
-
-7. Select **When a HTTP request is received** as the trigger.
-
-8. In the **Request Body JSON Schema**, paste the following schema:
-
-   ```json
    {
-     "type": "object",
-     "properties": {
-       "data": {
-         "type": "object",
-         "properties": {
-           "subject": {
-             "type": "object",
-             "properties": {
-               "id": { "type": "string" },
-               "displayName": { "type": "string" },
-               "mail": { "type": "string" }
-             }
-           }
-         }
-       }
-     }
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "contentVersion": "1.0.0.0",
+        "triggers": {
+            "manual": {
+                "type": "Request",
+                "kind": "Http",
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "data": {
+                                "properties": {
+                                    "callbackUriPath": {
+                                        "description": "CallbackUriPath used for Resume Action",
+                                        "title": "Data.CallbackUriPath",
+                                        "type": "string"
+                                    },
+                                    "subject": {
+                                        "properties": {
+                                            "displayName": {
+                                                "description": "DisplayName of the Subject",
+                                                "title": "Subject.DisplayName",
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "description": "Email of the Subject",
+                                                "title": "Subject.Email",
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "description": "Id of the Subject",
+                                                "title": "Subject.Id",
+                                                "type": "string"
+                                            },
+                                            "manager": {
+                                                "properties": {
+                                                    "displayName": {
+                                                        "description": "DisplayName parameter for Manager",
+                                                        "title": "Manager.DisplayName",
+                                                        "type": "string"
+                                                    },
+                                                    "email": {
+                                                        "description": "Mail parameter for Manager",
+                                                        "title": "Manager.Mail",
+                                                        "type": "string"
+                                                    },
+                                                    "id": {
+                                                        "description": "Id parameter for Manager",
+                                                        "title": "Manager.Id",
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "userPrincipalName": {
+                                                "description": "UserPrincipalName of the Subject",
+                                                "title": "Subject.UserPrincipalName",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "task": {
+                                        "properties": {
+                                            "displayName": {
+                                                "description": "DisplayName for Task Object",
+                                                "title": "Task.DisplayName",
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "description": "Id for Task Object",
+                                                "title": "Task.Id",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "taskProcessingResult": {
+                                        "properties": {
+                                            "createdDateTime": {
+                                                "description": "CreatedDateTime for TaskProcessingResult Object",
+                                                "title": "TaskProcessingResult.CreatedDateTime",
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "description": "Id for TaskProcessingResult Object",
+                                                "title": "TaskProcessingResult.Id",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "workflow": {
+                                        "properties": {
+                                            "displayName": {
+                                                "description": "DisplayName for Workflow Object",
+                                                "title": "Workflow.DisplayName",
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "description": "Id for Workflow Object",
+                                                "title": "Workflow.Id",
+                                                "type": "string"
+                                            },
+                                            "workflowVersion": {
+                                                "description": "WorkflowVersion for Workflow Object",
+                                                "title": "Workflow.WorkflowVersion",
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "source": {
+                                "description": "Context in which an event happened",
+                                "title": "Request.Source",
+                                "type": "string"
+                            },
+                            "type": {
+                                "description": "Value describing the type of event related to the originating occurrence.",
+                                "title": "Request.Type",
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        "actions": {
+            "HTTP": {
+                "runAfter": {},
+                "type": "Http",
+                "inputs": {
+                    "uri": "https://graph.microsoft.com/beta@{triggerBody()?['data']?['callbackUriPath']}",
+                    "method": "POST",
+                    "body": {
+                        "data": {
+                            "operationStatus": "Completed"
+                        },
+                        "source": "sample",
+                        "type": "lifecycleEvent"
+                    },
+                    "authentication": {
+                        "audience": "https://graph.microsoft.com",
+                        "type": "ManagedServiceIdentity"
+                    }
+                }
+            },
+            "Send_an_email_(V2)": {
+                "runAfter": {
+                    "HTTP": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection",
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['office365']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "body": {
+                        "To": "@triggerBody()?['data']?['subject']?['email']",
+                        "Subject": "Welcome Onboarding",
+                        "Body": "<p class=\"editor-paragraph\">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login:<br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href=\"https://\" class=\"editor-link\">portal.office.com</a><br><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222<br>Welcome “On-Board”!</p>",
+                        "Cc": "@triggerBody()?['data']?['subject']?['manager']?['email']",
+                        "Importance": "Normal"
+                    },
+                    "path": "/v2/Mail"
+                }
+            }
+        },
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "type": "Object",
+                "defaultValue": {}
+            }
+        }
+    },
+    "parameters": {
+        "$connections": {
+            "type": "Object",
+            "value": {
+                "office365": {
+                    "id": "/subscriptions/ecbef7ad-49f5-464f-b511-51b084562ecd/providers/Microsoft.Web/locations/eastus/managedApis/office365",
+                    "connectionId": "/subscriptions/ecbef7ad-49f5-464f-b511-51b084562ecd/resourceGroups/ODL-DFC-2199368/providers/Microsoft.Web/connections/office365",
+                    "connectionName": "office365",
+                    "connectionProperties": {}
+                }
+            }
+        }
+    }
    }
    ```
 
-9. Add a new step: Click **+ New step** and search for **Send an email (V2)** (using Office 365 Outlook connector).
+   ![](./Images/ETS1229.png)
 
-10. Configure the email action:
-    - **To**: `helpdesk@yourdomain.com` (replace with your test email)
-    - **Subject**: `New Employee Onboarding - Action Required`
-    - **Body**: 
-      ```
-      A new employee has been onboarded:
-      Name: @{triggerBody()?['data']?['subject']?['displayName']}
-      Email: @{triggerBody()?['data']?['subject']?['mail']}
-      
-      Please create the necessary IT equipment ticket.
-      ```
+1. In the left pane, Go to **Identity (1)**
+and make the status **On (2)** then click on **Save(3)**.
 
-11. Click **Save** to save the Logic App.
-
-12. Copy the **HTTP POST URL** from the trigger — you will need this for the custom extension.
+   ![](./Images/ETS1230.png)
 
 1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**.
 
@@ -366,27 +512,44 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
    ![](./Images/ETS1222.png)
 
-1. Click on **Run a Custom Task Extension (1)** , Select custom extension as **New joinee onboarding (2)** then click on **Save(3)**.
+1. Click on **Run a Custom Task Extension (1)** , Select custom extension as **Onboarding email notification (2)** then click on **Save(3)**.
 
    ![](./Images/ETS1223.png)
 
 1. Then Click **Save**.
 
-   ![](./Images/ETS1223.png)
+   ![](./Images/ETS1224.png)
 
 1. Now go to **Overview (1)** and select **Run on demand (2)**. 
 
-   ![](./Images/ETS1223.png)
+   ![](./Images/ETS1225.png)
 
-3. Click on **+ Select user** to simulate onboarding for.
+1. Click on **+ Select user (1)** then select the **ADUser3 (2)** and click on **Select (3)**.
 
-4. Click **Run workflow**.
+   ![](./Images/ETS1226.png)
 
-5. After a few minutes, check the **Workflow execution history** to verify:
-   - The workflow ran successfully
-   - The custom task extension task shows a **Completed** status
+1. Click **Run workflow**.
 
-6. Check the email inbox (or Logic App run history) to confirm the notification was sent.
+   ![](./Images/ETS1227.png)
+
+1. After a few minutes, check the **Workflow history (1)** to verify. click on **ADUser3 (2)** and check each task shows a **Completed (3)** status.
+
+   ![](./Images/ETS1231.png)
+
+1. Open a new tab and navigate to outlook using below link
+
+   ```
+   https://outlook.office.com/
+   ```
+1. If prompted to sign, provide the credentials below:
+
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
+
+1. Check the email inbox (or Logic App run history) to confirm the notification was sent.
+
+   ![](./Images/ETS1232.png)
 
 ### Task 2.4: Configure Offboarding Workflow
 
@@ -554,7 +717,7 @@ Conditional Access policies enforce security requirements based on conditions su
 
          ![](./Images/ETS1415.png)
   
-      - Then select **Client Apps ** **(1)**
+      - Then select **Client Apps** **(1)**
       - Now in the Client Apps blade, toggle the *Configure* switch to **Yes** **(2)** and make sure that all the checkboxes below are selected.
       - Then click on **Done** **(3)**.
 
