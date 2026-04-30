@@ -20,7 +20,7 @@ Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) 
 
 ## Task 1: Enable Microsoft Entra Global Secure Access
 
-1. In the left navigation pane, expand **Global Secure Access** then select **Dashboard** and click on **Activate**.
+1. In the left navigation pane, expand **Global Secure Access (1)** then select **Dashboard (2)** and click on **Activate (3)**.
 
    ![](./Images/ETS2101.png)
 
@@ -28,215 +28,228 @@ Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) 
    - **Microsoft Entra Internet Access**: Requires Microsoft Entra Internet Access add-on or Microsoft Entra Suite
    - **Microsoft Entra Private Access**: Requires Microsoft Entra Private Access add-on or Microsoft Entra Suite
 
-5. Once activated, you should see the Global Secure Access dashboard with traffic insights and configuration options.
+1. Once activated, you will get a notification Tenant activation is completed successfully.
 
+   ![](./Images/ETS2102.png)
 
-1. In the Microsoft Entra admin center, navigate to **Billing** > **Licenses** to verify you have the appropriate licenses assigned.
+1. Navigate to **Global Secure Access** > **Settings** to review tenant-level settings.
 
-2. Navigate to **Global Secure Access** > **Settings** to review tenant-level settings.
-
-3. Ensure the following prerequisites are met for your test device:
+1. Ensure the following prerequisites are met for your test device:
    - Windows 10 version 21H2 or later, or Windows 11
    - Device is Microsoft Entra joined (not just registered)
    - Device has outbound TCP connectivity to internet on port 443
 
-### Step 3: Install and Configure the Global Secure Access Client
+1. In the Microsoft Entra admin center, navigate to **Connect (1)** and click on **Client download (2)**.
 
-1. In the Microsoft Entra admin center, navigate to **Global Secure Access** > **Connect** > **Client download**.
+2. Click on **Download client (3)** to download the **Global Secure Access client** installer for your endpoint OS.
 
-2. Download the **Global Secure Access client** installer appropriate for your endpoint OS.
-
-   ![Client download page](Images/ex2-task1-client-download.png)
-
-3. On your **test Windows device** (Microsoft Entra joined), run the downloaded installer as Administrator:
-   
-   a. Double-click the installer file
-   
-   b. Accept the license agreement
-   
-   c. Click **Install**
-   
-   d. Wait for the installation to complete
-   
-   e. Click **Finish**
-
-4. After installation, the Global Secure Access client icon will appear in the **System Tray** (notification area).
-
-5. Click the system tray icon to verify the client status:
-   - The client should show **Connected** status
-   - You should see the Microsoft Entra tenant information
-
-6. If prompted, sign in with your Microsoft Entra credentials.
-
-   > **Verification:** The client should show a green connected status. If it shows disconnected, verify that the device is Entra joined and that you have the required licenses.
-
----
+   ![](./Images/ETS2103.png)
 
 ## Task 2: Configure Entra Private Access
 
-**Estimated Duration: 20 minutes**
-
-### Overview
-
 Entra Private Access provides Zero Trust Network Access (ZTNA) to private resources without requiring a traditional VPN. You will set up a Private Access connector and configure access to an internal RDP server.
 
-### Step 1: Deploy the Private Access Connector
+1. In the Microsoft Entra admin center, navigate to **Traffic forwarding(1)**
+and enable the **Private access profile (2)**. Once it is enabled click on **View (3)** to add the user and group assignments.
 
-1. In the Microsoft Entra admin center, navigate to **Global Secure Access** > **Connect** > **Connectors**.
+   ![](./Images/ETS2104.png)
 
-2. Click **+ New connector group** to create a connector group:
-   - **Name**: `Lab-Private-Access-Connectors`
-   - **Region**: Select the region closest to your on-premises resources
+1. Enable **Assign to all users (1)** and click on **Done (2)**.
 
-3. Click **Save**.
+   ![](./Images/ETS2105.png)
 
-4. In the connector group, click **Download connector service** to download the Private Access connector installer.
+1. Now navigate to **Connectors and sensors (1)** and click **Download connector service (2)** to download the Private Access connector installer.
 
-   ![Download connector](Images/ex2-task2-connector-download.png)
+   ![](./Images/ETS2106.png)
 
-5. **On the server that will host the connector** (on-premises server or Azure VM):
+1. Click on **Accept terms & Download**.
 
-   a. Transfer the connector installer to the server
+   ![](./Images/ETS2107.png)
+
+1. Once installer file is downloaded click on **Open file**
+
+   ![](./Images/ETS2108.png)
+
+1. Check the box **(1)** and click on **Install (2)**.
+
+   ![](./Images/ETS2109.png)
+
+1. While installing, it will prompt to sign in. Provide the below credentials:
+
+   - Username: Paste the username  **<inject key="ADUser1 Email"></inject>** then click on **Next**.
+
+      ![](./Images/ETS2110.png)   
+
+   - Password:  Paste the password **<inject key="ADUser Password"></inject> (1)** and click on **Sign in (2)**.
+
+      ![](./Images/ETS2112.png)  
+
+1. Once installation is completed, click on **Close**
+
+   ![](./Images/ETS2113.png) 
+
+1. Navigate to **Microsoft Entra admin portal** and check the **Connectors** status as active
+
+   ![](./Images/ETS2114.png) 
+   >**Note**: If the connector is not appeared, refresh the browser and check again
+
+1. Navigate to **Applications (1)** then select **Quick actions (2)**.
+
+1. Provide the Name as **Quick Access (3)** and click on **+ Add Quick Access application segment (4)**
+
+   ![](./Images/ETS2115.png) 
+
+1. Provide the below details and click **Apply (5)** to add the segment.
+
+   - **Destination type**: IP address **(1)**
+   - **IP address**:`10.0.0.1/24` **(2)**
+   - **Ports**: `3389`  **(3)**
+   - **Protocol**: TCP **(4)**
+
+   ![](./Images/ETS2116.png) 
+
+1. Click **Save** to create the Quick Access application segment.
+
+   ![](./Images/ETS2117.png)
+
+1. Navigate to **Users and groups (1)** and click **+ Add user/group (2)**.
+
+   ![](./Images/ETS2118.png)
+   >**Note**: If you could not find users and groups option, click on **Quick access** again in the left pane to get the option.
+
+1. Select **** user/ group and click on **select**
+
+   ![](./Images/ETS2119.png)
+
+1. Click on **Assign** to add the group
+
+   ![](./Images/ETS2120.png)
+
+1. Now, in your desktop **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
+
+   ![](./Images/ETS2121.png)
+
+1. Provide Computer Name as <inject key="DNSname"></inject> then click on **Connect**.
+
+   ![](./Images/ETS2122.png)
+
+1. Now click on **More choices (1)** then select **Use different account (2)**. Provide the below credentials and click on **Ok (5)**.
+
+      - Username :  .\ <inject key="username"></inject> **(3)**
+      - Password :  <inject key="Password"></inject> **(4)**
+
+      ![](./Images/ETS2123.png)
+
+1. Now Click on **Yes** to connect to the **Client VM**
+
+      ![](./Images/ETS2124.png)
+
+1. On the Client VM Desktop, double click on **Global Secure Access Client** installer file.
    
-   b. Run the installer as Administrator
+   ![](./Images/ETS2125.png) 
+
+1. Accept the license agreement **(1)** and click on **Install **(1)**.
    
-   c. During installation, you will be prompted to authenticate to your Microsoft Entra tenant. Sign in with your Global Administrator account.
-   
-   d. Select the connector group **Lab-Private-Access-Connectors** when prompted.
-   
-   e. Complete the installation.
+   ![](./Images/ETS2126.png) 
 
-6. Back in the Microsoft Entra admin center, verify the connector appears under **Global Secure Access** > **Connect** > **Connectors** with a **Status** of **Active**.
+1. Once the installation is completed, click on **Close**.
 
-   > **Note:** The connector must be installed on a Windows Server that has outbound HTTPS (port 443) connectivity to Microsoft services. It does not require inbound firewall rules.
+   ![](./Images/EST2127.png)
 
-   > **Lab Note:** If you are working in a lab environment with a pre-configured Azure VM, the connector may already be installed. Verify the status in the Connectors page.
+1. Wait for a minute to open the Global Secure Access Client then click on **Sign in**.
 
-### Step 2: Define Application Segments for Private Resources
+   ![](./Images/ETS2129.png)
 
-1. Navigate to **Global Secure Access** > **Applications** > **Enterprise applications** (or **Private Access applications**).
+1. If prompted sign in with the below credentials.
 
-2. Click **+ New application**.
+   - Username: Paste the username  **<inject key="ADUser1 Email"></inject>** then click on **Next**.
 
-3. On the **Create application** page:
-   - **Name**: `Lab-RDP-Server`
-   - **Connector group**: Select `Lab-Private-Access-Connectors`
+      ![](./Images/ETS1419.png)   
 
-4. Click **Add application segment** to define the private resource:
+   - Password:  Paste the password **<inject key="ADUser Password"></inject> (1)** and click on **Sign in (2)**.
 
-   - **Destination type**: IP address range
-   - **IP address**: Enter the private IP address of your RDP server (e.g., `10.0.1.10`)
-   - **Ports**: `3389`
-   - **Protocol**: TCP
+      ![](./Images/ETS1420.png)
 
-   ![Application segment configuration](Images/ex2-task2-app-segment.png)
+1. On **Sign in to all apps and websites on this device** pop up, select **Yes**.
 
-5. Click **Apply** to add the segment.
+   ![](./Images/ETS2130.png)
 
-6. Click **Save** to create the Private Access application.
+1. On **Allow your Oraganization to manage your device** pop up. Select **Yes**.
 
-7. In the application settings, navigate to **Users and groups** and assign access:
-   - Click **+ Add user/group**
-   - Select the test user or group (e.g., **Dynamic-Department-IT**)
-   - Click **Assign**
+   ![](./Images/ETS2131.png)
 
-### Step 3: Configure Quick Access Profile
+1. On the **Account added to this device** select **Done**.
 
-1. Navigate to **Global Secure Access** > **Applications** > **Quick Access**.
+   ![](./Images/ETS2132.png)
 
-2. Click **View Quick Access configuration** or **Configure Quick Access**.
+1. Wait for few seconds and check the status as **Connected**
 
-3. Add the private IP range of your internal network:
+   ![](./Images/ETS2133.png)
 
-   Click **Add Quick Access application segment** and configure:
-   - **Destination type**: IP address range
-   - **IP address**: `10.0.0.0`
-   - **CIDR prefix**: `/16` (adjust to match your environment)
-   - **Ports**: `3389, 445, 443` (RDP, SMB, HTTPS)
-   - **Protocol**: TCP
+1. Now in the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
 
-4. Click **Apply** and then **Save**.
+   ![](./Images/ETS2121.png)
 
-   > **Note:** Quick Access provides broader access to your private network ranges, whereas individual Private Access applications provide more granular control with per-app policies.
+1. In the **Computer** field, enter the **private IP address** of the RDP server  `10.0.0.5`. Click **Connect**.
 
-### Step 4: Test RDP Connectivity Through Global Secure Access
+   ![](./Images/ETS2122.png)
 
-1. On your **Microsoft Entra joined Windows device** (with the Global Secure Access client installed):
+1. Enter the credentials for the RDP server when prompted and click on **Ok (3)**.
 
-2. Verify the client is showing **Connected** in the system tray.
+      - Username :   <inject key="username"></inject> **(1)**
+      - Password :  <inject key="Password"></inject> **(2)**
 
-3. Open **Remote Desktop Connection** (mstsc.exe).
+      ![](./Images/ETS2127.png)
 
-4. In the **Computer** field, enter the **private IP address** of the RDP server (e.g., `10.0.1.10`).
+1. Now Click on **Yes** to connect to the **Client VM**
 
-5. Click **Connect**.
+      ![](./Images/ETS2124.png)
 
-6. Enter the credentials for the RDP server when prompted.
+1. Verify that the RDP session establishes successfully — this traffic is being routed through the Global Secure Access Private Access tunnel without a traditional VPN.
 
-7. Verify that the RDP session establishes successfully — this traffic is being routed through the Global Secure Access Private Access tunnel without a traditional VPN.
+   > **Note:** RDP should connect successfully using only the private IP address, even without a VPN, because the Global Secure Access client is tunneling the traffic to the Private Access connector on the corporate network.
 
-   > **Expected Result:** RDP should connect successfully using only the private IP address, even without a VPN, because the Global Secure Access client is tunneling the traffic to the Private Access connector on the corporate network.
-
----
+1. Once connected close the Remote desktop connection
 
 ## Task 3: Apply Conditional Access Policies to Private Access
 
-**Estimated Duration: 10 minutes**
-
-### Overview
-
 You can apply Conditional Access policies specifically to Private Access traffic, requiring device compliance and MFA before users can connect to private resources.
 
-### Step 1: Create a Conditional Access Policy for Private Access
+1. In the Lab VM, navigate back to Microsoft Entra admin center and select **Conditional access (1)** in the **Quick Access** page and click on **+ New policy (2)**.
 
-1. In the Microsoft Entra admin center, navigate to **Protection** > **Conditional Access**.
+   ![](./Images/ETS2211.png)
 
-2. Click **+ New policy**.
+1. Configure the Conditional Access Policy with the following details:
 
-3. Set the **Name**: `Require Compliant Device for Private Access`
+   - Name: **Require Compliant Device for Private Access** **(1)**
+   - **Assignments**:
+     - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
+     - A new window will slide in, click on **Select users and Groups** **(3)** and then select the check box saying **Users and groups** **(4)**
+     - Now a Select window will open, here select **IT-Department** and then click on **Select** **(5)** button.
+   
+         ![](./Images/ETS2212.png)
+   
+      - Click on **1 resources included** **(1)** under Target resources option and verify that **Quick Access** **(2)** is already selected
 
-### Step 2: Configure Policy Assignments
+         ![](./Images/ETS2213.png)
 
-#### Users
-1. Under **Assignments**, click **Users**.
-2. Select **Select users and groups** > **Users and groups**.
-3. Add the group that has access to Private Access resources (e.g., **Dynamic-Department-IT**).
-4. Click **Select**.
+      - Click on **0 conditions selected** **(1)** under Conditions option.
+      - Then select **Device platforms** **(2)**
+      - Now in the Device platforms blade, toggle the *Configure* switch to **Yes** **(3)** and make sure that all the checkboxes below are selected.
+      - Then click on **Done** **(4)**
 
-#### Cloud Apps or Actions
-1. Click **Cloud apps or actions**.
-2. Select **Cloud apps** > **Select apps**.
-3. Search for and select **Microsoft Entra Private Access**.
+         ![](./Images/ETS2216.png)
 
-   > **Note:** "Microsoft Entra Private Access" appears as a cloud app that represents all private resource access through the GSA tunnel.
+      - Click on **0 controls selected (1)** of `Grant` Section under the Access Control option.
+      - In the **Grant** pane, click on **Grant access**
+      - Select the check boxs saying **Require multi-factor authentication** **(2)** and **Require device to be marked as compliant (3)**
+      - Then click on **Select** **(4)**
 
-4. Click **Select**.
+         ![](./Images/ETS2214.png)
+   
+      - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
-#### Conditions
-1. Click **Conditions** > **Device platforms**.
-2. Set **Configure** to **Yes**.
-3. Under **Include**, select **Any device**.
-4. Click **Done**.
-
-### Step 3: Configure Access Controls
-
-1. Under **Access controls**, click **Grant**.
-
-2. Select **Grant access** and check the following:
-   - **Require multi-factor authentication**
-   - **Require device to be marked as compliant**
-
-3. Select **Require all the selected controls**.
-
-4. Click **Select**.
-
-   ![Private Access CA policy](Images/ex2-task3-ca-private-access.png)
-
-### Step 4: Enable the Policy and Validate
-
-1. Set **Enable policy** to **Report-only** first for testing.
-
-2. Click **Create**.
+      ![](./Images/ETS2215.png)
 
 3. To validate, attempt an RDP connection from the test device:
 
@@ -253,54 +266,41 @@ You can apply Conditional Access policies specifically to Private Access traffic
 
 5. Once validated, change the policy to **On** and save.
 
----
-
 ## Task 4: Configure Entra Internet Access
-
-**Estimated Duration: 10 minutes**
-
-### Overview
 
 Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters internet-bound traffic, enforces web content filtering policies, and optimizes Microsoft 365 traffic.
 
-### Step 1: Enable the Internet Access Traffic Profile
+1. In the Microsoft Entra admin center, navigate to **Global Secure Access** expand **Connect (1)** and click on **Traffic forwarding (2)** then toggle the **Internet access profile (3)** to **Enabled**.
 
-1. In the Microsoft Entra admin center, navigate to **Global Secure Access** > **Connect** > **Traffic forwarding profiles**.
+   ![](./Images/ETS2311.png)
 
-2. You will see three traffic profiles:
-   - **Microsoft traffic** (for Microsoft 365 optimization)
-   - **Private access** (for private resources)
-   - **Internet access** (for general internet traffic)
+1. Click on **Enable Microsoft and Internet Access profiles**
 
-3. Toggle the **Internet access profile** to **Enabled**.
+   ![](./Images/ETS2312.png)
 
-   ![Traffic forwarding profiles](Images/ex2-task4-traffic-profiles.png)
+1. On the Internet access profile, click on **View** to add the users.
 
-4. Review the traffic that will be forwarded — you can customize which traffic types are included.
+   ![](./Images/ETS2313.png)
 
-5. Click **Save**.
+1. Enable **Assign to all users (1)** and click on **Done (2)**.
 
-### Step 2: Configure Web Content Filtering Policies
+   ![](./Images/ETS2105.png)
 
-1. Navigate to **Global Secure Access** > **Secure** > **Web content filtering policies** (or **Internet Access** > **Policies**).
+1. Repeat the same steps for **Microsoft traffic profile** to add the users.
 
-2. Click **+ New policy**.
+1. Now expand **Secure (1)** select **Web content filtering policies (2)** and click **+ New policy (3)**.
 
-3. On the **Create a web content filtering policy** page:
-   - **Policy name**: `Block High-Risk Web Categories`
-   - **Description**: `Block access to malicious and high-risk web content categories`
+   ![](./Images/ETS2314.png)
 
-4. Under **Rules**, click **+ Add rule**:
+1. On the **Create a web content filtering policy** page, provide name as **BlockAccess (1)** and click on **Next (2)**.
 
-   **Rule 1 – Block Malware:**
-   - **Rule name**: `Block Malware Sites`
-   - **Action**: Block
-   - **Destination type**: Web category
-   - **Categories**: Select:
-     - Malware
-     - Phishing
-     - Botnets
-     - Command and Control
+   ![](./Images/ETS2315.png)
+
+4. Under **Policy rules**, click **+ Add rule (1)**:
+
+   - **Rule name**: `Blockweb`
+   - **Destination type**: URL
+   - **Url destination**: netflix.com
 
    **Rule 2 – Block Gambling:**
    - **Rule name**: `Block Gambling Sites`
@@ -309,65 +309,80 @@ Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters
    - **Categories**: Select:
      - Gambling
 
-   **Rule 3 – Block Illegal Content:**
-   - **Rule name**: `Block Illegal Content`
-   - **Action**: Block
-   - **Destination type**: Web category
-   - **Categories**: Select:
-     - Illegal content
-     - Child exploitation
+   ![](./Images/ETS2316.png)
 
-5. Click **Next: Assignments** and assign the policy to a group or all users.
+1. On the **Review** tab, click on **Create policy**
 
-6. Click **Next: Review + create** and then **Create**.
+   ![](./Images/ETS2317.png)
 
-### Step 3: Create a Security Profile
+1. Navigate to **Security profiles (1)** and click on **+ Create profile (2)**.
 
-1. Navigate to **Global Secure Access** > **Secure** > **Security profiles**.
+   ![](./Images/ETS2318.png)
 
-2. Click **+ New security profile**.
+1. Provide the profile name as **Webprofile (1)** and click on **Next (2)**.
 
-3. Configure the security profile:
-   - **Name**: `Standard Security Profile`
-   - **Description**: `Standard security controls for all users`
-   - **State**: Enabled
+   ![](./Images/ETS2319.png)
 
-4. Under **Baseline policy**, select:
-   - **Microsoft 365 traffic**: Enable (optimizes M365 traffic routing)
+1. Click on **+ Link profile (1)** and select **Existing web filtering policy (2)**.
 
-5. Under **Linked policies**, click **Link a policy** and add:
-   - The **Block High-Risk Web Categories** web content filtering policy created above
+   ![](./Images/ETS2320.png)
 
-6. Click **Next: Assignments**.
+1. On the link a policy tab, select **BlockAccess (1)** and click on **Add (2)**.
 
-7. Assign the profile to all users or a specific group.
+   ![](./Images/ETS2321.png)
 
-8. Click **Create**.
+1. Once it is added, click on **Next**.
 
-   ![Security profile configuration](Images/ex2-task4-security-profile.png)
+   ![](./Images/ETS2322.png)
 
-### Step 4: Configure Microsoft 365 Traffic Optimization
+1. On the **Review** tab, click on **Create a profile**
 
-1. Navigate to **Global Secure Access** > **Connect** > **Traffic forwarding profiles**.
+   ![](./Images/ETS2323.png)
 
-2. Click on the **Microsoft traffic** profile.
+1. Navigate to **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
 
-3. Review the Microsoft 365 endpoints that are being routed through the GSA client:
-   - Exchange Online
-   - SharePoint Online
-   - Microsoft Teams
+   ![](./Images/ETS2324.png)
 
-4. Verify that **Microsoft 365 traffic** toggle is **Enabled**.
+1. Configure the Conditional Access Policy with the following details:
 
-5. On the test device, verify the Global Secure Access client shows traffic being tunneled.
+      - Name: **Streamingwebsiteblocked** **(1)**
+      - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
+      - A new window will slide in, click on **Select users and Groups** **(3)** and then select the check box saying **Users and groups** **(4)**
+      - Now a Select window will open, here select **IT-Department** and then click on **Select** **(5)** button.
 
----
+         ![](./Images/ETS2325.png)
+
+      - Click on **No target resources selected** **(1)** under Target resources option.
+      - Click on **All internet resources with Global secure access** **(2)**
+
+         ![](./Images/ETS2326.png)
+
+      - Click on **0 controls selected (1)** of `Session` Section under the Access Control option.
+      - in the **Session** pane, select the check Box saying **use Global Secure Access Security profile (2)** **(2)** and select **Webprofile (3)**
+      - Then click on **Select** **(4)**
+
+         ![](./Images/ETS2327.png)
+   
+      - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
+
+         ![](./Images/ETS1418.png)
+
+1. Open the ClientVM, verify the Global Secure Access client is connected from system tray.
+
+   ![](./Images/ETS2328.png)
+
+1. Now open Edge browser and paste the below link and verify that the website 
+
+   ```
+   netflix.com
+   ```
+
+   ![](./Images/ETS2329.png)
+   >**Note**: These changes may take upto 1 hour to reflect. you can check this at the end of the lab. please proceed with next exercise.
+
+1. Now open other websites as your wish and check the website.
 
 ## Task 5: Validate Access and Review Logs
-
-**Estimated Duration: 10 minutes**
-
-### Step 1: Test End-User Access
 
 1. On the **Microsoft Entra joined test device** with the Global Secure Access client connected:
 
@@ -384,7 +399,6 @@ Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters
    - Attempt to access a blocked category website (test with a known safe test URL or use a URL categorized under a blocked category)
    - Verify the access is blocked and a block page is displayed
 
-2. Document the results of each test.
 
 ### Step 2: Review Traffic Logs in Global Secure Access Dashboard
 
@@ -450,26 +464,15 @@ Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters
    - Policies are being correctly applied
    - No traffic is bypassing the GSA tunnel
 
----
-
 ## Summary
 
 In this exercise, you have:
 
-- ✅ Enabled and configured Microsoft Entra Global Secure Access in your tenant
-- ✅ Installed the Global Secure Access client on a Windows endpoint
-- ✅ Deployed a Private Access connector for on-premises resource access
-- ✅ Configured Private Access application segments for RDP access
-- ✅ Applied Conditional Access policies to Private Access traffic
-- ✅ Enabled Internet Access with web content filtering
-- ✅ Created security profiles with linked content filtering policies
-- ✅ Validated access and reviewed traffic logs and security insights
-
-## Additional Resources
-
-- [Microsoft Entra Global Secure Access Documentation](https://learn.microsoft.com/en-us/entra/global-secure-access/)
-- [Microsoft Entra Private Access Overview](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-private-access)
-- [Microsoft Entra Internet Access Overview](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-internet-access)
-- [Configure Web Content Filtering](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-web-content-filtering)
-- [Global Secure Access Client for Windows](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-install-windows-client)
-- [Deploy and Configure Private Access Connector](https://learn.microsoft.com/en-us/entra/global-secure-access/how-to-configure-connectors)
+-  Enabled and configured Microsoft Entra Global Secure Access in your tenant
+-  Installed the Global Secure Access client on a Windows endpoint
+-  Deployed a Private Access connector for on-premises resource access
+-  Configured Private Access application segments for RDP access
+-  Applied Conditional Access policies to Private Access traffic
+-  Enabled Internet Access with web content filtering
+-  Created security profiles with linked content filtering policies
+- Validated access and reviewed traffic logs and security insights

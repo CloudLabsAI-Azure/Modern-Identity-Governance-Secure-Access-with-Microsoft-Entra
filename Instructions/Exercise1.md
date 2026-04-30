@@ -13,8 +13,6 @@ In this exercise, you will explore Microsoft Entra ID Governance capabilities in
 - Microsoft Entra ID P2 or Microsoft Entra Governance license (required for Lifecycle Workflows and Access Reviews)
 - At least 2–3 test user accounts in your tenant
 
----
-
 ## Task 1: Manage Users using Dynamic groups
 
 Dynamic groups in Microsoft Entra ID automatically manage membership based on user or device attributes. This eliminates the need to manually add or remove members when attributes change.
@@ -114,15 +112,15 @@ Dynamic groups in Microsoft Entra ID automatically manage membership based on us
    ![](./Images/ETS1117.png)
    >**Note:** If user is not appeared then wait a few minutes and then click Refresh.
 
-1. Repeat for **Managers** group to confirm the `ADUser1` added as a member in the group.
+1. Check for **Managers** group to confirm the `ADUser1` added as a member in the group.
 
    ![](./Images/ETS1118.png)
 
 1. You can also validate the users by using **Validate rules**.
 
-1. Click on **Dynamic membership rules (1)** and select **Validate rules (2)**
+1. Click on **Dynamic membership rules (1)** and select **Validate rules (2)**.
 
-1. Click on **+Add user (3)**, select **ADUser2 (4)** and check the **validation (5)**
+1. Click on **+ Add user (3)**, select **ADUser2 (4)** and check the **validation (5)** details.
 
    ![](./Images/ETS1119.png)
 
@@ -166,11 +164,11 @@ In this task, you are going to create onboarding workflow using the built in tem
 
 1. Click on **Save (1)**.
 
- Review the order of tasks. Drag tasks to reorder them if needed. Recommended order:
-   1. Enable user account
-   2. Send welcome email
-   3. Add user to groups
-   4. Generate Temporary Access Pass
+1.  Review the order of tasks. Drag tasks to reorder them if needed. Recommended order:
+      - Enable user account
+      - Send welcome email
+      - Add user to groups
+      - Generate Temporary Access Pass
 
 1. Click **Next: Review + create (2)**.
 
@@ -459,7 +457,7 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
                     "body": {
                         "To": "@triggerBody()?['data']?['subject']?['email']",
                         "Subject": "Welcome Onboarding",
-                        "Body": "<p class=\"editor-paragraph\">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login:<br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href=\"https://\" class=\"editor-link\">portal.office.com</a><br><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222<br>Welcome “On-Board”!</p>",
+                        Body": "<p class=\"editor-paragraph\">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login:<br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href=\"https://portal.office.com\" class=\"editor-link\">portal.office.com</a><br><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222<br>Welcome “On-Board”!</p>",
                         "Cc": "@triggerBody()?['data']?['subject']?['manager']?['email']",
                         "Importance": "Normal"
                     },
@@ -692,11 +690,10 @@ Conditional Access policies enforce security requirements based on conditions su
 
 1. Configure the Conditional Access Policy with the following details:
 
-   - Name: **Require MFA for IT Department - Cloud Apps** **(1)**
-   - **Assignments**:
-     - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
-     - A new window will slide in, click on **Select users and Groups** **(3)** and then select the check box saying **Users and groups** **(4)**
-     - Now a Select window will open, here select **IT-Department** and then click on **Select** **(5)** button.
+      - Name: **Require MFA for IT Department - Cloud Apps** **(1)**
+      - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
+      - A new window will slide in, click on **Select users and Groups** **(3)** and then select the check box saying **Users and groups** **(4)**
+      - Now a Select window will open, here select **IT-Department** and then click on **Select** **(5)** button.
    
          ![](./Images/ETS1412.png)
    
@@ -730,10 +727,9 @@ Conditional Access policies enforce security requirements based on conditions su
 
          ![](./Images/ETS1417.png)
    
-1. Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
+      - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
       ![](./Images/ETS1418.png)
-
 
 1. Open an **Incognito browser**, paste the provided link, and log in using below **credentials**.
 
