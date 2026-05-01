@@ -4,18 +4,30 @@
 
 ## Overview
 
-In this exercise, you will explore Microsoft Entra ID Governance capabilities including Identity Lifecycle Management, Access Reviews, and Conditional Access Policies. Entra ID Governance helps organizations balance security and employee productivity by ensuring the right people have the right access at the right time.
+In this exercise, you will explore how to implement core Identity Governance capabilities using Microsoft Entra ID. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
 
 ## Prerequisites
 
-- An active Microsoft Entra ID (Azure Active Directory) tenant
-- A user account with the **Global Administrator** or **Identity Governance Administrator** role
-- Microsoft Entra ID P2 or Microsoft Entra Governance license (required for Lifecycle Workflows and Access Reviews)
-- At least 2–3 test user accounts in your tenant
+The following are prerequisites to complete this exercise which are already configured in this lab environment:
 
-## Task 1: Manage Users using Dynamic groups
+- An active Microsoft Entra ID tenant
+- A user account with Global Administrator or Identity Governance Administrator role
+- Microsoft Entra ID P2 / Governance /Entra suite license enabled  
+- 2–3 test users available for validation
 
-Dynamic groups in Microsoft Entra ID automatically manage membership based on user or device attributes. This eliminates the need to manually add or remove members when attributes change.
+## Lab Objectives
+
+In this lab, you will complete the following exercise:
+
+- Task 1: Manage Users and Groups
+- Task 2: Entra ID Lifecycle Management
+- Task 3: Setting Up Access Reviews
+- Task 4: Implementing Conditional Access Policies
+- Task 5: Monitoring and Auditing with Entra ID (Optional)
+
+## Task 1: Manage Users and Groups
+
+In this task, you will create dynamic groups based on user attributes and define rules to automatically manage group membership and validate that memberships are updated dynamically based on the configured conditions.
 
 1. Open a new tab in the browser and navigate to **Microsoft Entra admin center** using below link.
 
@@ -126,11 +138,11 @@ Dynamic groups in Microsoft Entra ID automatically manage membership based on us
 
 ## Task 2: Entra ID Lifecycle Management
 
-Microsoft Entra Lifecycle Workflows automate identity processes across the employee lifecycle — from onboarding (joiner) to role changes (mover) to offboarding (leaver). This replaces manual HR-driven processes and reduces the risk of orphaned accounts.
+Microsoft Entra Lifecycle Workflows automate identity processes across the employee lifecycle from onboarding (joiner) to role changes (mover) to offboarding (leaver). This replaces manual HR-driven processes and reduces the risk of orphaned accounts.
 
 ### Task 2.1: Configure Onboarding Workflow
 
-In this task, you are going to create onboarding workflow using the built in templates
+In this task, you will set up a lifecycle workflow to automate the onboarding process for new employees. You will configure triggers and automate tasks such as sending welcome emails, assigning licenses, and adding users to groups.
 
 1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**
 
@@ -150,15 +162,27 @@ In this task, you are going to create onboarding workflow using the built in tem
 
 1. On the **Review tasks** page, you will see pre-configured tasks. Click **+ Add task (1)** to add additional tasks.
 
-1. Select **Generate TAP and send email (2)** then click on **Add (3)**.
+1. Select **Generate TAP and send email (2)** and **Add license to User (3)** then click on **Add (4)**.
 
-   ![](./Images/ETS124.png)
+   ![](./Images/ETS1241.png)
 
-1. Click on **Add user to group** then click on **0 group selected**
+1. Click on **Add license to User (1)** then click on **0 license selected (2)**
+
+   ![](./Images/ETS1242.png)
+
+1. Select **Office 365 E1 (1)** then clcik on **select (2)**.
+
+   ![](./Images/ETS1243.png)
+
+1. Click on **Save**.
+
+   ![](./Images/ETS1244.png)
+
+1. Now click on **Add user to group (1)** then click on **0 group selected (2)**
 
    ![](./Images/ETS125.png)
 
-1. Select **New joiners (1)** group and the click on **Select**
+1. Select **New joiners (1)** group and the click on **Select (2)**
 
    ![](./Images/ETS126.png)
 
@@ -168,7 +192,8 @@ In this task, you are going to create onboarding workflow using the built in tem
       - Enable user account
       - Send welcome email
       - Add user to groups
-      - Generate Temporary Access Pass
+      - Generate TAP and send Email
+      - Assign license to User
 
 1. Click **Next: Review + create (2)**.
 
@@ -178,81 +203,9 @@ In this task, you are going to create onboarding workflow using the built in tem
 
    ![](./Images/ETS128.png)
 
-### Task 2.2: Configure Provisioning and License Handling
+### Task 2.2: Implement Custom Extensions
 
-In this task you will assign the license and application provisioning to the user
-
-1. Open a new tab in the browser and navigate to **M365 admin center** using below link.
-
-   ```
-   https://admin.microsoft.com/Adminportal/Home?referrer=entra#/licenses
-   ```
-   ![](./Images/ETS1210.png)
-
-1. Expand **Team & groups (1)** then select **Active teams & groups (2)**.
-
-1. Click on **security groups (3)**. Select the **IT-Department (4)** group created in Task 1.
-
-   ![](./Images/ETS1211.png)
-
-1. Select **License and apps (1)** then select **Office 365 E1 (2)** and click on **Save changes (3)**.
-
-   ![](./Images/ETS1212.png)
-
-   > **Note:** With group-based licensing, any user added to **IT-Department** (manually or through the dynamic rule) will automatically receive the assigned licenses.
-
-1. In the Microsoft Entra admin center, navigate to **Identity** > **Applications** > **Enterprise applications**.
-
-2. Click **+ New application**.
-
-3. Search for **ServiceNow** (or another application available for provisioning in your tenant) and select it.
-
-4. Click **Create** to add it to your tenant.
-
-5. In the ServiceNow application page, select **Provisioning** from the left menu.
-
-6. Click **Get started** or change **Provisioning Mode** to **Automatic**.
-
-7. In the **Admin Credentials** section, provide the required connection details:
-   - **Tenant URL**: Your ServiceNow instance URL (e.g., `https://instance.service-now.com/api/now/table/sys_user`)
-   - **Secret Token**: ServiceNow admin credentials or OAuth token
-
-   > **Lab Note:** In a lab environment, you may use a provisioning-enabled application already configured in your tenant. If ServiceNow is not available, you can use **AWS Single Sign-On** or **Box** as alternatives.
-
-8. Click **Test Connection** to verify connectivity.
-
-9. Under **Mappings**, click **Provision Microsoft Entra ID Users** to review attribute mappings.
-
-10. Under **Settings**, configure:
-    - **Provisioning Status**: On
-    - **Scope**: Sync only assigned users and groups
-
-11. Click **Save**.
-
-12. Navigate to **Users and groups** in the application and click **+ Add user/group**.
-
-13. Select the **Dynamic-Department-IT** group and click **Assign**.
-
-   > **Result:** All users in the Dynamic-Department-IT group will now be automatically provisioned into the target application.
-
-#### Step 3: Validate License Assignment and Provisioning
-
-1. Navigate to **Identity** > **Users** > **All users** and select a user in the IT department.
-
-2. Click **Licenses** in the user's menu to verify the Microsoft 365 license has been assigned via group inheritance.
-
-3. Navigate back to the provisioning application and select **Provisioning logs** to review the provisioning activity:
-   - Filter by **Status**: Success or Failure
-   - Review the **Action** column: Create, Update, or Disable
-   - Click on individual log entries to see detailed provisioning steps
-
-   ![Provisioning logs](Images/ex1-task2-provisioning-logs.png)
-
----
-
-### Task 2.3: Implement Custom Extensions
-
-Custom task extensions allow you to extend Lifecycle Workflows with custom business logic using Azure Logic Apps. This is useful for scenarios such as creating IT tickets, sending notifications to external systems, or triggering custom workflows.
+In this task, you will create a custom task extension using a Logic App. This extension will be integrated into the lifecycle workflow to perform additional actions, such as sending notifications, and you will test its execution.
 
 1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**.
 
@@ -273,7 +226,7 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
 1. On the Details page, Provide the below details and click on **Create logoc app(4)**
       - **Subscription**: Leave it as default **(1)**
-      - **Resource group**: <inject key="Resourcegroup"></inject> **(2)**
+      - **Resource group**:  **(2)**
       - **Logic app name**: `custom-task-workflow` **(3)**
    ![](./Images/ETS1216.png)
 
@@ -491,8 +444,13 @@ Custom task extensions allow you to extend Lifecycle Workflows with custom busin
 
    ![](./Images/ETS1229.png)
 
-1. In the left pane, Go to **Identity (1)**
-and make the status **On (2)** then click on **Save(3)**.
+1. In the left pane, go to **Logic app designer** and check the flow of logic app
+
+   ![](./Images/ETS1245.png)
+
+   >**Note**: The manual step is the trigger that starts the Logic App when the lifecycle workflow sends a request. The HTTP action processes the request and marks the task as completed, and the Send an email (V2) step sends a notification to the user and manager.
+
+1. Now go to **Identity (1)** and make the status **On (2)** then click on **Save(3)**.
 
    ![](./Images/ETS1230.png)
 
@@ -504,19 +462,19 @@ and make the status **On (2)** then click on **Save(3)**.
 
 1. Click **Tasks (1)** in the workflow menu and then click **+ Add task (2)**.
 
-   ![](./Images/ETS1221.png)
+   ![](./Images/ETS1246.png)
 
 1. Select **Run a Custom Task Extension (1)** from the task list and click on **Save (2)**.
 
-   ![](./Images/ETS1222.png)
+   ![](./Images/ETS1247.png)
 
 1. Click on **Run a Custom Task Extension (1)** , Select custom extension as **Onboarding email notification (2)** then click on **Save(3)**.
 
-   ![](./Images/ETS1223.png)
+   ![](./Images/ETS1248.png)
 
 1. Then Click **Save**.
 
-   ![](./Images/ETS1224.png)
+   ![](./Images/ETS1249.png)
 
 1. Now go to **Overview (1)** and select **Run on demand (2)**. 
 
@@ -530,9 +488,18 @@ and make the status **On (2)** then click on **Save(3)**.
 
    ![](./Images/ETS1227.png)
 
-1. After a few minutes, check the **Workflow history (1)** to verify. click on **ADUser3 (2)** and check each task shows a **Completed (3)** status.
+1. Refresh it and after few minutes,. click on **ADUser3** and check each task shows a **Completed** status.
 
-   ![](./Images/ETS1231.png)
+   ![](./Images/ETS1273.png)
+
+1. Navigate to **Users** under Entra ID and click on **ADUser3**.
+
+   ![](./Images/ETS1250.png)
+
+1. Now click on **Group** to check the user has been assigned to the group **Newjoiner** and also check **license** that has been assigned to the user.
+
+   ![](./Images/ETS1271.png)
+   ![](./Images/ETS1272.png)
 
 1. Open a new tab and navigate to outlook using below link
 
@@ -545,11 +512,20 @@ and make the status **On (2)** then click on **Save(3)**.
 
    - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-1. Check the email inbox (or Logic App run history) to confirm the notification was sent.
+   ![](./Images/ETS1232.png)
+
+1. Navigate back to **Microsoft entra admin portal** and select **users** under Entra ID and click on **ADUser3**.
 
    ![](./Images/ETS1232.png)
 
-### Task 2.4: Configure Offboarding Workflow
+1. Now click on **Group** to check the user has been assigned to the group **Newjoiner** and also check **license** that has been assigned to the user.
+
+   ![](./Images/ETS1271.png)
+   ![](./Images/ETS1272.png)
+
+### Task 2.3: Configure Offboarding Workflow
+
+In this task, you will configure a lifecycle workflow to handle employee offboarding. You will automate tasks such as removing licenses, disabling accounts, and cleaning up group memberships, and validate the complete offboarding process.
 
 1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**
 
@@ -587,7 +563,7 @@ and make the status **On (2)** then click on **Save(3)**.
 
    ![](./Images/ETS1256.png)
 
-1. Click on **+ Select users** then select **ADUser3** and click **Select**.
+1. Click on **+ Select users (1)** then select **ADUser3 (2)** and click **Select (3)**.
 
    ![](./Images/ETS1257.png)
 
@@ -605,7 +581,7 @@ and make the status **On (2)** then click on **Save(3)**.
 
 ## Task 3: Setting Up Access Reviews
 
-Access Reviews in Microsoft Entra ID Governance enable organizations to efficiently manage group memberships, application assignments, and privileged role assignments. Reviewers can approve or deny access based on actual business need.
+In this task, you will create and configure access reviews to regularly validate user access to groups or applications. You will define reviewers, schedules, and perform approval or denial actions while reviewing audit logs.
 
 1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**
 
@@ -682,7 +658,7 @@ Access Reviews in Microsoft Entra ID Governance enable organizations to efficien
 
 ## Task 4: Implementing Conditional Access Policies
 
-Conditional Access policies enforce security requirements based on conditions such as user identity, device compliance, location, and application being accessed. In this task, you will create a policy that requires MFA for cloud app access.
+In this task, you will create a Conditional Access policy to enforce multi-factor authentication (MFA). You will configure conditions such as users, apps, and locations, and validate the policy using sign-in logs.
 
 1. In the Entra Admin portal left pane, expand **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
 
@@ -800,6 +776,8 @@ Conditional Access policies enforce security requirements based on conditions su
 
 ## Task 5: Monitoring and Auditing with Entra ID (Optional/Read Only)
 
+In this task, you will explore audit logs, sign-in logs, and reporting dashboards to monitor identity activities. This helps in gaining visibility into governance operations and improving security posture.
+
 1. In the Microsoft Entra admin center, navigate to **Entra ID** > **Monitoring & health** > **Audit logs**.
 
 1. Review the Audit logs activity across your tenant.
@@ -820,7 +798,7 @@ Conditional Access policies enforce security requirements based on conditions su
 
 ## Summary
 
-In this exercise, you implemented key Identity Governance capabilities in Microsoft Entra ID, including dynamic group-based access, automated onboarding and offboarding workflows, and automatic license and application provisioning. You also integrated a custom Logic App extension, performed access reviews, and enforced security through Conditional Access with MFA. Additionally, you monitored activity using audit and sign-in logs. Together, these features establish a strong foundation for a modern Identity Governance and Administration (IGA) solution.
+In this exercise, you implemented key Identity Governance capabilities in Microsoft Entra ID, including dynamic group-based access, automated onboarding and offboarding workflows, and automatic license provisioning. You also integrated a custom Logic App extension, performed access reviews, and enforced security through Conditional Access with MFA. Additionally, you monitored activity using audit and sign-in logs. Together, these features establish a strong foundation for a modern Identity Governance and Administration (IGA) solution.
 
 Now, click on Next from the lower right corner to move on to the next page.
 
