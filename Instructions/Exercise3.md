@@ -2,11 +2,9 @@
 
 **Estimated Duration: 60 minutes**
 
-> **Note:** Advanced users may complete this exercise in 20–30 minutes.
-
 ## Overview
 
-Microsoft Entra Verified ID is a decentralized identity solution built on open standards (W3C Verifiable Credentials and DID). It allows organizations to issue digitally-signed credentials that users store in their Microsoft Authenticator wallet, and to verify those credentials without relying on a central identity provider database.
+In this exercise, you set up Verified ID, registered a DID, and verified your domain. You created and issued a credential and stored it in the Authenticator app. You then verified the credential through a sample application. Finally, you explored a help desk scenario to understand how Verified ID enables secure, passwordless identity verification.
 
 **Key Concepts:**
 
@@ -22,377 +20,234 @@ Microsoft Entra Verified ID is a decentralized identity solution built on open s
 
 - Microsoft Entra ID P1 or P2 license (Verified ID is included)
 - Global Administrator role
-- A custom domain configured in your Microsoft Entra tenant (or a pre-configured lab domain)
-- A smartphone with **Microsoft Authenticator** app installed (version 6.6.8 or later)
-- For Task 3: Access to the Azure portal to deploy a sample application
-
----
+- A custom domain configured in your Microsoft Entra tenant.
+- A smartphone with **Microsoft Authenticator** app installed
 
 ## Task 1: Configure Verified ID Issuer
 
-**Estimated Duration: 20 minutes**
+In this task, you will set up Microsoft Entra Verified ID for your organization. You will register your DID, verify your domain, and create a verified credential that can be issued to users.
 
-### Step 1: Enable Verified ID Service
+1. On the Microsoft Entra admin center left navigation pane, expand **Verified ID** and click **Overview (1)** then click on **Configure (2)**.
 
-1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com) using your Global Administrator credentials.
+   ![](./Images/ETS3101.png)
 
-2. In the left navigation pane, expand **Verified ID** and click **Overview** (or navigate to **Verified ID** > **Setup**).
+1. Provide the below details and click on **Select keys (3)** for Key vault selection.
 
-   ![Verified ID overview](Images/ex3-task1-verified-id-overview.png)
+   - **Organization**: VerifiedID **(1)**
+   - **Trusted domain**: <inject key="Trusteddomain"></inject> **(2)**
+      ![](./Images/ETS3102.png)
 
-3. Click **Get started** to begin the Verified ID setup wizard.
+1. Leave the Subscription as **default (1)**. From the Key vault dropdown, select **AKV-<inject key="DeploymentID"></inject> (2)** and click on **Select (3)**.
 
-4. Review the **Before you begin** information:
-   - Custom domain requirement
-   - Azure Key Vault requirement
-   - Licensing requirements
+   ![](./Images/ETS3103.png)
 
-5. Click **Next** to proceed.
+1. Click on **Save**
 
-### Step 2: Configure Azure Key Vault
+   ![](./Images/ETS3104.png)
 
-1. In the Verified ID setup wizard, you will be prompted to configure Azure Key Vault.
+1. Now on the overview page, Click on **Register** under the Register decentralized ID.
 
-2. Click **Create a key vault** (or select an existing Key Vault if available):
+   ![](./Images/ETS3105.png)
 
-   a. Navigate to the [Azure portal](https://portal.azure.com) in a new tab
-   
-   b. Search for **Key vaults** and click **+ Create**
-   
-   c. Configure:
-      - **Subscription**: Your lab subscription
-      - **Resource group**: `rg-identity-lab`
-      - **Key vault name**: `kv-verifiedid-lab` (must be globally unique)
-      - **Region**: Select your preferred region
-      - **Pricing tier**: Standard
-   
-   d. Click **Review + create**, then **Create**
-   
-   e. After deployment, copy the **Key Vault URI** (e.g., `https://kv-verifiedid-lab.vault.azure.net/`)
+1. Click on **Download (1)** then select the file location as **Desktop (2)** and click on **Save (3)**
 
-3. Return to the Microsoft Entra admin center Verified ID setup.
+   ![](./Images/ETS3106.png)
 
-4. Enter or select the Key Vault details.
+1. Open a new tab, paste the provided link, and log in into Azure portal using below **credentials**.
 
-### Step 3: Configure the Issuer Authority and DID Registration
-
-1. Back in the Verified ID setup wizard, configure the **Organization details**:
-   - **Organization name**: `Contoso Corporation` (or your organization name)
-   - **Trusted domain**: Your custom domain (e.g., `contoso.com`)
-
-   > **Lab Note:** The trusted domain must be a verified domain in your Microsoft Entra tenant. In a lab environment, this is typically pre-configured.
-
-2. Review the **DID (Decentralized Identifier)** that will be created:
-   - The DID will be anchored using the **Web DID method** (did:web)
-   - Example: `did:web:contoso.com`
-
-3. Click **Save** or **Register**.
-
-4. The system will:
-   a. Create the DID document
-   b. Instruct you to publish the DID document to your web domain at `https://yourdomain.com/.well-known/did.json`
-   
-   > **Important:** For production environments, you must publish the DID document to your domain. In a lab environment, this step may be pre-automated.
-
-5. Follow the instructions to publish the DID document:
-   - Download the `did.json` file
-   - Upload it to your website at the path `/.well-known/did.json`
-   - Verify it is publicly accessible
-
-6. Click **Verify** to confirm the DID document is accessible.
-
-   ![DID registration](Images/ex3-task1-did-registration.png)
-
-### Step 4: Create Credential Type and Display Definition
-
-1. Navigate to **Verified ID** > **Credentials** in the Microsoft Entra admin center.
-
-2. Click **+ Add credential** to create a new credential type.
-
-3. Select **Custom credential** (or select from available templates if present).
-
-   > **Available templates include:** Verified Employee, Verified Customer, Custom credential
-
-4. Click **Custom credential** and then **Next**.
-
-5. On the **Credential name** page:
-   - **Credential name**: `VerifiedEmployee`
-   - **Description**: `Verified employee credential for Contoso Corporation`
-
-6. Click **Next: Display**.
-
-7. On the **Display definition** page, configure how the credential will appear in the user's wallet:
-
-   Paste the following JSON for the display definition:
-   ```json
-   {
-     "locale": "en-US",
-     "card": {
-       "title": "Verified Employee",
-       "issuedBy": "Contoso Corporation",
-       "backgroundColor": "#000000",
-       "textColor": "#ffffff",
-       "logo": {
-         "uri": "https://raw.githubusercontent.com/Azure-Samples/active-directory-verifiable-credentials/main/1-node-api-idtokenhint/public/images/did_logo.png",
-         "description": "Contoso Logo"
-       },
-       "description": "This credential verifies your employment at Contoso Corporation"
-     },
-     "consent": {
-       "title": "Do you want to accept the Verified Employee credential?",
-       "instructions": "Sign in and receive your credential."
-     },
-     "claims": [
-       {
-         "claim": "vc.credentialSubject.displayName",
-         "label": "Name",
-         "type": "String"
-       },
-       {
-         "claim": "vc.credentialSubject.givenName",
-         "label": "First Name",
-         "type": "String"
-       },
-       {
-         "claim": "vc.credentialSubject.surname",
-         "label": "Last Name",
-         "type": "String"
-       },
-       {
-         "claim": "vc.credentialSubject.jobTitle",
-         "label": "Job Title",
-         "type": "String"
-       },
-       {
-         "claim": "vc.credentialSubject.preferredLanguage",
-         "label": "Preferred Language",
-         "type": "String"
-       }
-     ]
-   }
+   ```
+   portal.azure.com
    ```
 
-8. Click **Next: Rules**.
+   - Username: Paste the username  **<inject key="AzureUserEmail"></inject>** then click on **Next**.
+      ![](./Images/ETS3107.png)
 
-9. On the **Rules definition** page, configure what claims will be included in the credential:
+   - Password:  Paste the password **<inject key="AzureUserEmail"></inject> (1)** and click on **Sign in (2)**.
+      ![](./Images/ETS3108.png)
 
-   Paste the following JSON for the rules definition:
-   ```json
-   {
-     "attestations": {
-       "idTokenHints": [
-         {
-           "mapping": [
-             {
-               "outputClaim": "displayName",
-               "required": true,
-               "inputClaim": "$.displayName",
-               "indexed": false
-             },
-             {
-               "outputClaim": "givenName",
-               "required": true,
-               "inputClaim": "$.givenName",
-               "indexed": false
-             },
-             {
-               "outputClaim": "surname",
-               "required": true,
-               "inputClaim": "$.surname",
-               "indexed": true
-             },
-             {
-               "outputClaim": "jobTitle",
-               "required": false,
-               "inputClaim": "$.jobTitle",
-               "indexed": false
-             },
-             {
-               "outputClaim": "preferredLanguage",
-               "required": false,
-               "inputClaim": "$.preferredLanguage",
-               "indexed": false
-             }
-           ],
-           "required": false
-         }
-       ]
-     },
-     "validityInterval": 2592000,
-     "vc": {
-       "type": [
-         "VerifiedEmployee"
-       ]
-     }
-   }
-   ```
+   >**Note:** If there's a dialog box saying **Stay signed in**, then select the **No** option.
 
-   > **Note:** `validityInterval` is in seconds. 2592000 seconds = 30 days.
+      ![](./Images/ETS1421.png)   
 
-10. Click **Next: Review** and then **Create credential**.
 
-   ![Credential created](Images/ex3-task1-credential-created.png)
+1. Search for **storage account (1)** and select  **Storage accounts (2)**.
 
-11. Note the **Credential issuer DID** and the **Credential manifest URL** shown on the credential details page. You will need these in Task 2.
+   ![](./Images/ETS3109.png)
 
----
+1. Select **verifiedid<inject key="DeploymentID"></inject>** storage account.
+
+   ![](./Images/ETS3110.png)
+
+1. Go to **Containers (1)** under Data storage and select **$web (2)**.
+
+   ![](./Images/ETS3111.png)
+
+1. Click on **+ Add directory (1)** then provide the name as **.well-known (2)** and click on **Ok (3)**.
+   
+   ![](./Images/ETS3112.png)
+   ![](./Images/ETS3113.png)
+
+1. Click on **Upload (1)** and select **Browse for the files (2)**.
+
+   ![](./Images/ETS3114.png)
+
+1. Click on **Desktop (1)** and select **did.json (2)** then click on **Open (3)**.
+
+   ![](./Images/ETS3115.png)
+
+1. Click on **Upload**.
+
+   ![](./Images/ETS3116.png)
+
+1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. If the registration is successful **(2)**, click on **Close (3)**.
+
+   ![](./Images/ETS3117.png)
+
+1. Now on the overview page, Click on **Verify** under Verify domain membership.
+
+   ![](./Images/ETS3118.png)
+
+1. Click on **Download (1)** then select the file location as **Desktop (2)** and click on **Save (3)**
+
+   ![](./Images/ETS3119.png)
+
+1. Navigate back to Azure portal and click on **Upload (1)** and select **Browse for the files (2)**.
+
+   ![](./Images/ETS3120.png)
+
+1. Click on **Desktop (1)** and select **did-configuration.json (2)** then click on **Open (3)**.
+
+   ![](./Images/ETS3122.png)
+
+1. Click on **Upload**.
+
+   ![](./Images/ETS3123.png)
+
+1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. If the registration is successful **(2)**, click on **Close (3)**.
+
+   ![](./Images/ETS3124.png)
+
+1. On the Overview page, now you can see the **Verified Domain**
+
+   ![](./Images/ETS3125.png)
+   >**Note**: if it is still showing **Domain may not be verified**, click on **Verify**,click on **Refresh registration status**. If the registration is successful, click on **Close** and check again.
+   ![](./Images/ETS3126.png)
+
+1. Now, click on **+ Add credential** to create a new credential type.
+
+   ![](./Images/ETS3127.png)
+
+1. Click **Verified credential** and then **Next**.
+
+   ![](./Images/ETS3128.png)
+
+1. Provide below Information and click on **Update (4)** and verify the display card styling:
+
+   - **Logo URL**: https://avd233.blob.core.windows.net/avdtest/VerifiedID.jpg **(1)**
+   - **Text color**: #FFFFFF **(2)**
+   - **Background color** : #0068cd **(3)**.
+
+   ![](./Images/ETS3129.png)
+
+1. Scroll down and click on **Create**.
+
+   ![](./Images/ETS3130.png)
 
 ## Task 2: Issue Verifiable Credentials
 
-**Estimated Duration: 20 minutes**
-
-### Overview
-
 In this task, you will configure the credential issuance process and issue a verifiable credential to a test user who will receive it in their Microsoft Authenticator app.
 
-### Step 1: Review the Credential Issuance Request Configuration
+1. Now on the **Verified employee** page, click on **Issue a credential**.
 
-1. In the Microsoft Entra admin center, navigate to **Verified ID** > **Credentials**.
+   ![](./Images/ETS3131.png)
 
-2. Select the **VerifiedEmployee** credential type created in Task 1.
+1. Ensure **Allow all Microsoft Entra ID users within the tenant (1)** is selected and check the box **Issue credentials through My Account (2)**.
 
-3. Review the **Credential manifest URL** — this is the endpoint that issuance apps call to initiate credential issuance.
+   ![](./Images/ETS3132.png)
 
-4. Click **Issue credential** to open the quick issuance interface.
+1. Scroll down and click on **Save**.
 
-   ![Issue credential button](Images/ex3-task2-issue-credential.png)
+   ![](./Images/ETS3133.png)
 
-### Step 2: Use the Sample Issuance Application
+1. Now click on **Overview (1)** under Verified ID and click on **Try it now (2)** under Get the new credentials.
 
-Microsoft provides a sample application to demonstrate credential issuance. In this step, you will deploy or use the pre-deployed sample.
+   ![](./Images/ETS3134.png)
 
-> **Lab Note:** In a lab environment, the sample issuance app may already be deployed. If so, navigate to the provided URL and skip steps 3–8 below.
+1. It will be redirect to the **MyAccount** portal. Click on **Get my Verified ID**. 
 
-#### Option A: Use the Microsoft Quick Issue Feature (Recommended for Lab)
+   ![](./Images/ETS3136.png)
+   >**Note**: if you haven't get the option **Get my Verified ID**, wait for few minutes and click on refresh.
 
-1. In the Microsoft Entra admin center, navigate to **Verified ID** > **Credentials**.
+1. A QR code is displayed. Scan it from the Authenticator app in your mobile and **Add** the credentials to your Verified ID. Once it is completed click on **Done**
 
-2. Select **VerifiedEmployee** and click **Issue credential**.
+   ![](./Images/ETS3137.png)
 
-3. In the **Issue credential** panel, fill in the credential data:
-   - **Display Name**: Enter the test user's full name (e.g., `Alex Johnson`)
-   - **Given Name**: `Alex`
-   - **Surname**: `Johnson`
-   - **Job Title**: `IT Manager`
-   - **Preferred Language**: `en-US`
+1. Now navigate back to Microsoft Entra admin center. on the Overview page of Verified ID, click on **Try it now** under use your credentials.
 
-4. Click **Issue** to generate a QR code.
+   ![](./Images/ETS3135.png)
 
-5. A **QR code** will be displayed on screen.
+1. It will redirect to a sample website to use your credentials. Click on **Access discounts**.
 
-#### Option B: Deploy the Sample Application (Advanced)
+   ![](./Images/ETS3138.png)
 
-1. Open the [Microsoft Entra Verified ID samples repository](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet).
+1. On the sign-in page, Click on **Verify my employee credentials**
 
-2. Follow the README to deploy the **1-asp-net-core-api-idtokenhint** sample:
-   
-   a. Clone the repository or use the Azure "Deploy to Azure" button
-   
-   b. Configure the app settings with your tenant ID, client ID, and credential manifest URL
-   
-   c. Deploy to Azure App Service
+   ![](./Images/ETS3139.png)
 
-3. Navigate to the deployed sample application URL.
+1. A QR will be displayed. Scan it from the Authenticator App in your mobile and click on **Share**.
 
-4. Click **Issue Credential** on the sample app.
+1. Once it is successful, you can see discount is applied and price of the latops has been changes.
 
-5. A QR code will be displayed on screen.
-
-### Step 3: Receive the Credential in Microsoft Authenticator
-
-1. On your smartphone, open the **Microsoft Authenticator** app.
-
-   > **Requirements:**
-   > - Microsoft Authenticator version 6.6.8 or later
-   > - Available on iOS (App Store) and Android (Google Play)
-
-2. In the Authenticator app:
-   - Tap the **+** icon or the menu
-   - Select **Add account**
-   - Select **Other account** or **Verifiable credential** (depending on version)
-   - Or: Tap **More** (three dots) > **Verified ID**
-
-   > **Alternative:** Some versions of Authenticator will prompt you to scan a QR code when you tap on a notification or directly from the wallet section.
-
-3. Tap **Scan QR code** and scan the QR code displayed in the browser.
-
-4. Review the credential offer details:
-   - **Issuer**: Contoso Corporation
-   - **Credential type**: Verified Employee
-   - **Claims**: Your name, job title, etc.
-
-5. Tap **Accept** to add the credential to your wallet.
-
-6. The credential will now appear in the **Credentials** section of the Microsoft Authenticator app.
-
-   ![Credential in Authenticator](Images/ex3-task2-credential-wallet.png)
-
-### Step 4: Verify Credential Storage and Details
-
-1. In the Microsoft Authenticator app, navigate to the **Credentials** or **Verified ID** section.
-
-2. Tap on the **Verified Employee** credential.
-
-3. Review the credential details:
-   - **Issuer**: Contoso Corporation (or your organization)
-   - **Issued date**: Today's date
-   - **Expiry date**: 30 days from today
-   - **Claims**: Display name, job title, etc.
-
-4. Review the credential design (background color and logo as configured in the display definition).
-
-5. Back in the Microsoft Entra admin center, navigate to **Verified ID** > **Credentials** > **VerifiedEmployee** and review:
-   - **Issuance activity**: Number of credentials issued
-   - **Recent issuances**: The test issuance should appear
-
----
+   ![](./Images/ETS3140.png)
 
 ## Task 3: Verify Credentials in Sample Application (Help Desk Scenario)
 
-**Estimated Duration: 20 minutes**
+In this task, you will simulate a real-world help desk identity verification scenario using Microsoft Entra Verified ID. Instead of traditional methods like passwords or security questions, the user will present a verified credential to securely prove their identity.
 
-### Overview
+1. Now navigate back to Microsoft Entra admin center. click on **Organization setting** under Verified ID and copy the **DID Authority** and paste it in the notepad.
 
-In this task, you will simulate a help desk identity verification scenario. A user needs to contact the IT help desk, and instead of relying on knowledge-based authentication (passwords, security questions), they will present their Verified ID credential to prove their identity.
+   ![](./Images/ETS3201.png)
 
-### Step 1: Deploy the Sample Verification Application
+1. Open a new tab and Paste the below link to deploy a helpdesk app using App services in Azure portal.
 
-> **Lab Note:** In the lab environment, the sample verification application should already be deployed. If so, navigate to the provided URL and proceed to Step 2.
+   ```
+   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Factive-directory-verifiable-credentials-dotnet%2Fmain%2F6-woodgrove-helpdesk%2FARMTemplate%2Ftemplate.json
+   ```
 
-#### Option A: Use Pre-Deployed Lab Application
+1. If Prompted to sign in, provide the below credentials:
 
-Navigate to the URL provided in your lab guide for the pre-deployed verification application.
+   - Username: Paste the username  **<inject key="AzureUserEmail"></inject>** then click on **Next**.
+      ![](./Images/ETS3107.png)
 
-#### Option B: Deploy the Sample Verification App
+   - Password:  Paste the password **<inject key="AzureUserEmail"></inject> (1)** and click on **Sign in (2)**.
+      ![](./Images/ETS3108.png)
 
-1. Navigate to the [Verified ID Woodgrove Demo application](https://aka.ms/vcdemo) or use the [GitHub sample](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet).
+      >**Note:** If there's a dialog box saying **Stay signed in**, then select the **No** option.
 
-2. To deploy using the Azure portal:
+1. provide the below information and click on **Review + create (5)**.
 
-   a. Open the Azure portal and navigate to **App Services**.
-   
-   b. Click **+ Create** > **Web App**.
-   
-   c. Configure:
-      - **App name**: `verifiedid-helpdesk-lab` (must be globally unique)
-      - **Runtime stack**: .NET 7 (or the version used by the sample)
-      - **Region**: Your preferred region
-   
-   d. Click **Review + create**, then **Create**.
+   - **Subscription**: Leave it as default **(1)**
+   - **Resource group**: ODL-<inject key="DeploymentID"></inject> **(2)**
+   - **Webapp name**: Appservices<inject key="DeploymentID"></inject> **(3)**
+   - **DID Authority**: Paste DID Authority (copied in task 3 step) **(4)**.
 
-3. After deployment, configure the application settings:
-   - Navigate to **Configuration** > **Application settings**
-   - Add the following settings (from your Verified ID configuration):
-     - `AppSettings__TenantId`: Your tenant ID
-     - `AppSettings__ClientId`: Your app registration client ID
-     - `AppSettings__ClientSecret`: Your app registration client secret
-     - `AppSettings__VCServiceScope`: `3db474b9-6a0c-4840-96ac-1fceb342124f/.default`
-     - `AppSettings__IssuerAuthority`: Your Verified ID issuer DID
-     - `AppSettings__VerifierAuthority`: Your Verified ID verifier DID
+   ![](./Images/ETS3202.png)
 
-4. Deploy the application code from the GitHub repository.
+1. Click on **Create**.
 
-5. Navigate to the deployed application URL.
+   ![](./Images/ETS3203.png)
+
+1. Once the deployment is succeeded then click on **Go to resource group**>
+
+   ![](./Images/ETS3204.png)
+
+1. Click on **Appservice<inject key="DeploymentID"></inject>**. 
+
+   ![](./Images/ETS3205.png)
+
+1. On the overview page, click on **Default domain**.
+
+   ![](./Images/ETS3206.png)
 
 ### Step 2: Configure Verification Request with Required Claims
 
@@ -501,29 +356,6 @@ The help desk scenario demonstrates several key benefits of Verified ID:
 
 5. **High-Value Transaction Authorization**: Require employees to present a Verified ID credential before approving high-value financial transactions.
 
----
-
 ## Summary
 
-In this exercise, you have:
-
-- ✅ Enabled the Microsoft Entra Verified ID service in your tenant
-- ✅ Configured Azure Key Vault for credential signing key storage
-- ✅ Registered a DID (Decentralized Identifier) for your organization
-- ✅ Created a custom **VerifiedEmployee** credential type with display and rules definitions
-- ✅ Issued a verifiable credential to a test user's Microsoft Authenticator wallet
-- ✅ Deployed and configured a verification application simulating a help desk scenario
-- ✅ Presented the credential from Authenticator to verify identity
-- ✅ Reviewed verification results and audit logs
-- ✅ Explored real-world use cases for decentralized identity verification
-
-## Additional Resources
-
-- [Microsoft Entra Verified ID Documentation](https://learn.microsoft.com/en-us/entra/verified-id/)
-- [Verified ID Overview and Architecture](https://learn.microsoft.com/en-us/entra/verified-id/decentralized-identifier-overview)
-- [Set Up Verified ID Tenant Configuration](https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-tenant)
-- [Issue Verifiable Credentials](https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-issuer)
-- [Verify Verifiable Credentials](https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-verifier)
-- [GitHub: Verified ID Code Samples](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet)
-- [Microsoft Authenticator App](https://www.microsoft.com/en-us/security/mobile-authenticator-app)
-- [W3C Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/)
+In this exercise, you configured Microsoft Entra Verified ID by setting up the issuer, registering a decentralized identifier (DID), and verifying domain ownership. You created and issued a verified credential, stored it in the Authenticator app, and successfully used it for identity verification. Finally, you simulated a help desk scenario to understand how Verified ID can replace traditional authentication methods with a more secure and user-friendly approach.

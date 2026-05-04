@@ -36,7 +36,7 @@ Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) 
 
 1. Ensure the following prerequisites are met for your test device:
    - Windows 10 version 21H2 or later, or Windows 11
-   - Device is Microsoft Entra joined (not just registered)
+   - Device is Microsoft Entra joined
    - Device has outbound TCP connectivity to internet on port 443
 
 1. In the Microsoft Entra admin center, navigate to **Connect (1)** and click on **Client download (2)**.

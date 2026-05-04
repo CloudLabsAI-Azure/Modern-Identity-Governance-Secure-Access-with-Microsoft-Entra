@@ -37,9 +37,9 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. If prompted, provide the credentials below:
 
-   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+   - **Email/Username:** <inject key="AzureUserEmail"></inject>
 
-   - **Password:** <inject key="AzureAdUserPassword"></inject>
+   - **Password:** <inject key="AzureUserPassword"></inject>
 
 1. Take a moment to familiarize yourself with Microsoft Entra admin center.
 
