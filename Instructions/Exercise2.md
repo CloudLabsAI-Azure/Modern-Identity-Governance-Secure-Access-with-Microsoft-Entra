@@ -3,13 +3,11 @@
 **Estimated Duration: 60 minutes**
 
 ## Overview
-
-Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) solution that combines identity-aware network security with Zero Trust network access. It provides two core capabilities:
-
-- **Microsoft Entra Private Access**: Replaces traditional VPN by providing Zero Trust access to private/on-premises resources
-- **Microsoft Entra Internet Access**: Provides Secure Web Gateway (SWG) capabilities for internet-bound traffic
+In this lab, you will configure Microsoft Entra Global Secure Access to securely manage access to private and internet resources. You will enable the service, install the client, and set up Private Access to connect to internal resources without a VPN. You will apply Conditional Access policies to enforce security controls and configure Internet Access for web filtering. Finally, you will validate connectivity and review logs to ensure policies are working as expected.
 
 ## Prerequisites
+
+The following are prerequisites to complete this exercise which are already configured in this lab environment:
 
 - Microsoft Entra ID P1 or P2 license
 - **Microsoft Entra Internet Access** and **Microsoft Entra Private Access** licenses (included in Microsoft Entra Suite)
@@ -18,36 +16,42 @@ Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) 
 - For Private Access: An on-premises server or Azure VM to act as the Private Access connector host
 - Internet connectivity from the connector server to Microsoft Entra
 
+## Lab Objectives
+
+In this lab, you will complete the following exercise:
+
+- Task 1: Enable Microsoft Entra Global Secure Access
+- Task 2: Configure Entra Private Access
+- Task 3: Apply Conditional Access Policies to Private Access
+- Task 4: Configure Entra Internet Access
+- Task 5: Validate Access and Review Logs
+
 ## Task 1: Enable Microsoft Entra Global Secure Access
+
+Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) solution that combines identity-aware network security with Zero Trust network access. It provides two core capabilities:
+
+- **Microsoft Entra Private Access**: Replaces traditional VPN by providing Zero Trust access to private/on-premises resources
+- **Microsoft Entra Internet Access**: Provides Secure Web Gateway (SWG) capabilities for internet-bound traffic.
+
+In this task, you will activate Microsoft Entra Global Secure Access in your tenant and prepare the environment for secure access to both private and internet resources. You will also download the Global Secure Access client, which will be used in later tasks to connect endpoint devices securely
 
 1. In the left navigation pane, expand **Global Secure Access (1)** then select **Dashboard (2)** and click on **Activate (3)**.
 
    ![](./Images/ETS2101.png)
 
-1. Review the licensing requirements shown on the page:
-   - **Microsoft Entra Internet Access**: Requires Microsoft Entra Internet Access add-on or Microsoft Entra Suite
-   - **Microsoft Entra Private Access**: Requires Microsoft Entra Private Access add-on or Microsoft Entra Suite
-
 1. Once activated, you will get a notification Tenant activation is completed successfully.
 
    ![](./Images/ETS2102.png)
 
-1. Navigate to **Global Secure Access** > **Settings** to review tenant-level settings.
-
-1. Ensure the following prerequisites are met for your test device:
-   - Windows 10 version 21H2 or later, or Windows 11
-   - Device is Microsoft Entra joined
-   - Device has outbound TCP connectivity to internet on port 443
-
 1. In the Microsoft Entra admin center, navigate to **Connect (1)** and click on **Client download (2)**.
 
-2. Click on **Download client (3)** to download the **Global Secure Access client** installer for your endpoint OS.
+1. Click on **Download client (3)** to download the **Global Secure Access client** installer for your endpoint OS.
 
    ![](./Images/ETS2103.png)
+   >**Note**: Global Secure Access client software will be installed in the next exercise on the endpoint device
 
 ## Task 2: Configure Entra Private Access
-
-Entra Private Access provides Zero Trust Network Access (ZTNA) to private resources without requiring a traditional VPN. You will set up a Private Access connector and configure access to an internal RDP server.
+In this task, you will configure Microsoft Entra Private Access by enabling traffic forwarding and deploying a Private Access connector. You will create an application segment and assign users to securely access internal resources. Finally, you will validate connectivity by accessing a private resource (RDP) through the Global Secure Access client without using a traditional VPN.
 
 1. In the Microsoft Entra admin center, navigate to **Traffic forwarding(1)**
 and enable the **Private access profile (2)**. Once it is enabled click on **View (3)** to add the user and group assignments.
@@ -117,7 +121,7 @@ and enable the **Private access profile (2)**. Once it is enabled click on **Vie
    ![](./Images/ETS2118.png)
    >**Note**: If you could not find users and groups option, click on **Quick access** again in the left pane to get the option.
 
-1. Select **** user/ group and click on **select**
+1. Click on **None selected (1)** then select **IT-Department (2)** and click on **select**
 
    ![](./Images/ETS2119.png)
 
@@ -129,13 +133,13 @@ and enable the **Private access profile (2)**. Once it is enabled click on **Vie
 
    ![](./Images/ETS2121.png)
 
-1. Provide Computer Name as <inject key="DNSname"></inject> then click on **Connect**.
+1. Provide Computer Name as <inject key="ClientDNSname"></inject> then click on **Connect**.
 
    ![](./Images/ETS2122.png)
 
 1. Now click on **More choices (1)** then select **Use different account (2)**. Provide the below credentials and click on **Ok (5)**.
 
-      - Username :  .\ <inject key="username"></inject> **(3)**
+      - Username :  .\ <inject key="adminUsername"></inject> **(3)**
       - Password :  <inject key="Password"></inject> **(4)**
 
       ![](./Images/ETS2123.png)
@@ -196,7 +200,7 @@ and enable the **Private access profile (2)**. Once it is enabled click on **Vie
 
 1. Enter the credentials for the RDP server when prompted and click on **Ok (3)**.
 
-      - Username :   <inject key="username"></inject> **(1)**
+      - Username : <inject key="username"></inject> **(1)**
       - Password :  <inject key="Password"></inject> **(2)**
 
       ![](./Images/ETS2127.png)
@@ -213,7 +217,7 @@ and enable the **Private access profile (2)**. Once it is enabled click on **Vie
 
 ## Task 3: Apply Conditional Access Policies to Private Access
 
-You can apply Conditional Access policies specifically to Private Access traffic, requiring device compliance and MFA before users can connect to private resources.
+In this task, you will apply Conditional Access policies specifically to Private Access traffic, requiring device compliance and MFA before users can connect to private resources.
 
 1. In the Lab VM, navigate back to Microsoft Entra admin center and select **Conditional access (1)** in the **Quick Access** page and click on **+ New policy (2)**.
 
@@ -249,7 +253,7 @@ You can apply Conditional Access policies specifically to Private Access traffic
    
       - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
-      ![](./Images/ETS2215.png)
+         ![](./Images/ETS2215.png)
 
 3. To validate, attempt an RDP connection from the test device:
 
@@ -268,7 +272,7 @@ You can apply Conditional Access policies specifically to Private Access traffic
 
 ## Task 4: Configure Entra Internet Access
 
-Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters internet-bound traffic, enforces web content filtering policies, and optimizes Microsoft 365 traffic.
+In this task, you will configure Microsoft Entra Internet Access by enabling traffic forwarding profiles and applying web content filtering policies. You will create a security profile and enforce it using Conditional Access to control and restrict access to specific websites. Finally, you will validate the policy by testing internet access from a client device.
 
 1. In the Microsoft Entra admin center, navigate to **Global Secure Access** expand **Connect (1)** and click on **Traffic forwarding (2)** then toggle the **Internet access profile (3)** to **Enabled**.
 
@@ -298,16 +302,11 @@ Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters
 
 4. Under **Policy rules**, click **+ Add rule (1)**:
 
-   - **Rule name**: `Blockweb`
-   - **Destination type**: URL
-   - **Url destination**: netflix.com
+   - **Rule name**: `Blockcategory` **(2)**
+   - **Destination type**: Webcategory **(3)**
+   - **Url destination**: Search and select **Streaming media and download **(4)**
 
-   **Rule 2 – Block Gambling:**
-   - **Rule name**: `Block Gambling Sites`
-   - **Action**: Block
-   - **Destination type**: Web category
-   - **Categories**: Select:
-     - Gambling
+1. Click on **Add (5)** and click on **Next (6)** 
 
    ![](./Images/ETS2316.png)
 
@@ -466,13 +465,8 @@ Microsoft Entra Internet Access provides a Secure Web Gateway (SWG) that filters
 
 ## Summary
 
-In this exercise, you have:
+In this exercise, you configured Microsoft Entra Global Secure Access and set up secure connectivity for both private and internet resources. You deployed the client and Private Access connector, enabled secure RDP access without a VPN, and applied Conditional Access policies for enhanced security. You also configured Internet Access with web filtering and security profiles. Finally, you validated access and reviewed logs to understand traffic flow and policy enforcement.
 
--  Enabled and configured Microsoft Entra Global Secure Access in your tenant
--  Installed the Global Secure Access client on a Windows endpoint
--  Deployed a Private Access connector for on-premises resource access
--  Configured Private Access application segments for RDP access
--  Applied Conditional Access policies to Private Access traffic
--  Enabled Internet Access with web content filtering
--  Created security profiles with linked content filtering policies
-- Validated access and reviewed traffic logs and security insights
+Now, click on Next from the lower right corner to move on to the next page.
+
+   ![](./Images/Nextpage.png)

@@ -37,7 +37,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. If prompted, provide the credentials below:
 
-   - **Email/Username:** <inject key="AzureUserEmail"></inject>
+   - **Email/Username:** <inject key="azureUserName"></inject>
 
    - **Password:** <inject key="AzureUserPassword"></inject>
 
@@ -242,209 +242,201 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ```
    {
-    "definition": {
-        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-        "contentVersion": "1.0.0.0",
-        "triggers": {
-            "manual": {
-                "type": "Request",
-                "kind": "Http",
-                "inputs": {
-                    "schema": {
+   "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "HTTP": {
+        "inputs": {
+          "authentication": {
+            "audience": "https://graph.microsoft.com",
+            "type": "ManagedServiceIdentity"
+          },
+          "body": {
+            "data": {
+              "operationStatus": "Completed"
+            },
+            "source": "sample",
+            "type": "lifecycleEvent"
+          },
+          "method": "POST",
+          "uri": "https://graph.microsoft.com/beta@{triggerBody()?['data']?['callbackUriPath']}"
+        },
+        "runAfter": {},
+        "type": "Http"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "inputs": {
+          "schema": {
+            "properties": {
+              "data": {
+                "properties": {
+                  "callbackUriPath": {
+                    "description": "CallbackUriPath used for Resume Action",
+                    "title": "Data.CallbackUriPath",
+                    "type": "string"
+                  },
+                  "subject": {
+                    "properties": {
+                      "displayName": {
+                        "description": "DisplayName of the Subject",
+                        "title": "Subject.DisplayName",
+                        "type": "string"
+                      },
+                      "email": {
+                        "description": "Email of the Subject",
+                        "title": "Subject.Email",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Id of the Subject",
+                        "title": "Subject.Id",
+                        "type": "string"
+                      },
+                      "manager": {
                         "properties": {
-                            "data": {
-                                "properties": {
-                                    "callbackUriPath": {
-                                        "description": "CallbackUriPath used for Resume Action",
-                                        "title": "Data.CallbackUriPath",
-                                        "type": "string"
-                                    },
-                                    "subject": {
-                                        "properties": {
-                                            "displayName": {
-                                                "description": "DisplayName of the Subject",
-                                                "title": "Subject.DisplayName",
-                                                "type": "string"
-                                            },
-                                            "email": {
-                                                "description": "Email of the Subject",
-                                                "title": "Subject.Email",
-                                                "type": "string"
-                                            },
-                                            "id": {
-                                                "description": "Id of the Subject",
-                                                "title": "Subject.Id",
-                                                "type": "string"
-                                            },
-                                            "manager": {
-                                                "properties": {
-                                                    "displayName": {
-                                                        "description": "DisplayName parameter for Manager",
-                                                        "title": "Manager.DisplayName",
-                                                        "type": "string"
-                                                    },
-                                                    "email": {
-                                                        "description": "Mail parameter for Manager",
-                                                        "title": "Manager.Mail",
-                                                        "type": "string"
-                                                    },
-                                                    "id": {
-                                                        "description": "Id parameter for Manager",
-                                                        "title": "Manager.Id",
-                                                        "type": "string"
-                                                    }
-                                                },
-                                                "type": "object"
-                                            },
-                                            "userPrincipalName": {
-                                                "description": "UserPrincipalName of the Subject",
-                                                "title": "Subject.UserPrincipalName",
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "task": {
-                                        "properties": {
-                                            "displayName": {
-                                                "description": "DisplayName for Task Object",
-                                                "title": "Task.DisplayName",
-                                                "type": "string"
-                                            },
-                                            "id": {
-                                                "description": "Id for Task Object",
-                                                "title": "Task.Id",
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "taskProcessingResult": {
-                                        "properties": {
-                                            "createdDateTime": {
-                                                "description": "CreatedDateTime for TaskProcessingResult Object",
-                                                "title": "TaskProcessingResult.CreatedDateTime",
-                                                "type": "string"
-                                            },
-                                            "id": {
-                                                "description": "Id for TaskProcessingResult Object",
-                                                "title": "TaskProcessingResult.Id",
-                                                "type": "string"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "workflow": {
-                                        "properties": {
-                                            "displayName": {
-                                                "description": "DisplayName for Workflow Object",
-                                                "title": "Workflow.DisplayName",
-                                                "type": "string"
-                                            },
-                                            "id": {
-                                                "description": "Id for Workflow Object",
-                                                "title": "Workflow.Id",
-                                                "type": "string"
-                                            },
-                                            "workflowVersion": {
-                                                "description": "WorkflowVersion for Workflow Object",
-                                                "title": "Workflow.WorkflowVersion",
-                                                "type": "integer"
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                },
-                                "type": "object"
-                            },
-                            "source": {
-                                "description": "Context in which an event happened",
-                                "title": "Request.Source",
-                                "type": "string"
-                            },
-                            "type": {
-                                "description": "Value describing the type of event related to the originating occurrence.",
-                                "title": "Request.Type",
-                                "type": "string"
-                            }
+                          "displayName": {
+                            "description": "DisplayName parameter for Manager",
+                            "title": "Manager.DisplayName",
+                            "type": "string"
+                          },
+                          "email": {
+                            "description": "Mail parameter for Manager",
+                            "title": "Manager.Mail",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "Id parameter for Manager",
+                            "title": "Manager.Id",
+                            "type": "string"
+                          }
                         },
                         "type": "object"
-                    }
-                }
-            }
-        },
-        "actions": {
-            "HTTP": {
-                "runAfter": {},
-                "type": "Http",
-                "inputs": {
-                    "uri": "https://graph.microsoft.com/beta@{triggerBody()?['data']?['callbackUriPath']}",
-                    "method": "POST",
-                    "body": {
-                        "data": {
-                            "operationStatus": "Completed"
-                        },
-                        "source": "sample",
-                        "type": "lifecycleEvent"
+                      },
+                      "userPrincipalName": {
+                        "description": "UserPrincipalName of the Subject",
+                        "title": "Subject.UserPrincipalName",
+                        "type": "string"
+                      }
                     },
-                    "authentication": {
-                        "audience": "https://graph.microsoft.com",
-                        "type": "ManagedServiceIdentity"
-                    }
-                }
-            },
-            "Send_an_email_(V2)": {
-                "runAfter": {
-                    "HTTP": [
-                        "Succeeded"
-                    ]
+                    "type": "object"
+                  },
+                  "task": {
+                    "properties": {
+                      "displayName": {
+                        "description": "DisplayName for Task Object",
+                        "title": "Task.DisplayName",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Id for Task Object",
+                        "title": "Task.Id",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "taskProcessingResult": {
+                    "properties": {
+                      "createdDateTime": {
+                        "description": "CreatedDateTime for TaskProcessingResult Object",
+                        "title": "TaskProcessingResult.CreatedDateTime",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Id for TaskProcessingResult Object",
+                        "title": "TaskProcessingResult.Id",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "workflow": {
+                    "properties": {
+                      "displayName": {
+                        "description": "DisplayName for Workflow Object",
+                        "title": "Workflow.DisplayName",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Id for Workflow Object",
+                        "title": "Workflow.Id",
+                        "type": "string"
+                      },
+                      "workflowVersion": {
+                        "description": "WorkflowVersion for Workflow Object",
+                        "title": "Workflow.WorkflowVersion",
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  }
                 },
-                "type": "ApiConnection",
-                "inputs": {
-                    "host": {
-                        "connection": {
-                            "name": "@parameters('$connections')['office365']['connectionId']"
-                        }
-                    },
-                    "method": "post",
-                    "body": {
-                        "To": "@triggerBody()?['data']?['subject']?['email']",
-                        "Subject": "Welcome Onboarding",
-                        Body": "<p class=\"editor-paragraph\">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login:<br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href=\"https://portal.office.com\" class=\"editor-link\">portal.office.com</a><br><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222<br>Welcome “On-Board”!</p>",
-                        "Cc": "@triggerBody()?['data']?['subject']?['manager']?['email']",
-                        "Importance": "Normal"
-                    },
-                    "path": "/v2/Mail"
-                }
-            }
+                "type": "object"
+              },
+              "source": {
+                "description": "Context in which an event happened",
+                "title": "Request.Source",
+                "type": "string"
+              },
+              "type": {
+                "description": "Value describing the type of event related to the originating occurrence.",
+                "title": "Request.Type",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
         },
-        "outputs": {},
-        "parameters": {
-            "$connections": {
-                "type": "Object",
-                "defaultValue": {}
-            }
-        }
-    },
-    "parameters": {
-        "$connections": {
-            "type": "Object",
-            "value": {
-                "office365": {
-                    "id": "/subscriptions/ecbef7ad-49f5-464f-b511-51b084562ecd/providers/Microsoft.Web/locations/eastus/managedApis/office365",
-                    "connectionId": "/subscriptions/ecbef7ad-49f5-464f-b511-51b084562ecd/resourceGroups/ODL-DFC-2199368/providers/Microsoft.Web/connections/office365",
-                    "connectionName": "office365",
-                    "connectionProperties": {}
-                }
-            }
-        }
+        "kind": "Http",
+        "type": "Request"
+      }
     }
+   },
+   "parameters": {}
    }
    ```
 
    ![](./Images/ETS1229.png)
 
-1. In the left pane, go to **Logic app designer** and check the flow of logic app
+1. In the left pane, go to **Logic app designer (1)** then click on **+ (2)** and select **Add an action(3)**.
+
+   ![](./Images/ETS12111.png)
+
+1. Search for **send an email (1)** and select **Send an email (V2) (2)** under `Office 365 outlook`.
+
+   ![](./Images/ETS12112.png)
+
+1. Click on **Sign in**. A new window will pop-up, select the **ODL_user_<inject key="DeploymentID"></inject>**.
+
+   ![](./Images/ETS12113.png)
+   ![](./Images/ETS12114.png)
+
+1. Provide the below information in the `Parameters` tab.
+
+   - **To**: @triggerBody()?['data']?['subject']?['email'] **(1)**
+   - **Subject**: Welcome Onboarding **(2)**
+   - **Body** : <p class=\"editor-paragraph\">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login:<br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href=\"https://portal.office.com\" class=\"editor-link\">portal.office.com</a><br><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222<br>Welcome “On-Board”!</p> **(3)**
+
+   ![](./Images/ETS12115.png)
+
+1. Scroll down and click on the dropdown of the Advanced option **(1)** then select **CC (2)**.
+
+   ![](./Images/ETS12116.png)
+
+1. In the cc box provide the following text **(1)** to add Manager ID and save it **(2)**
+
+   ```
+   @triggerBody()?['data']?['subject']?['manager']?['email']
+   ```
+
+   ![](./Images/ETS12117.png)
+
+1. Check the flow of logic app
 
    ![](./Images/ETS1245.png)
 

@@ -18,10 +18,20 @@ In this exercise, you set up Verified ID, registered a DID, and verified your do
 
 ## Prerequisites
 
+The following are prerequisites to complete this exercise which are already configured in this lab environment:
+
 - Microsoft Entra ID P1 or P2 license (Verified ID is included)
 - Global Administrator role
 - A custom domain configured in your Microsoft Entra tenant.
 - A smartphone with **Microsoft Authenticator** app installed
+
+## Lab Objectives
+
+In this lab, you will complete the following exercise:
+
+- Task 1: Configure Verified ID Issuer
+- Task 2: Issue Verifiable Credentials
+- Task 3: Verify Credentials in Sample Application (Help Desk Scenario)
 
 ## Task 1: Configure Verified ID Issuer
 
@@ -68,7 +78,6 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
    >**Note:** If there's a dialog box saying **Stay signed in**, then select the **No** option.
 
       ![](./Images/ETS1421.png)   
-
 
 1. Search for **storage account (1)** and select  **Storage accounts (2)**.
 
@@ -359,3 +368,5 @@ The help desk scenario demonstrates several key benefits of Verified ID:
 ## Summary
 
 In this exercise, you configured Microsoft Entra Verified ID by setting up the issuer, registering a decentralized identifier (DID), and verifying domain ownership. You created and issued a verified credential, stored it in the Authenticator app, and successfully used it for identity verification. Finally, you simulated a help desk scenario to understand how Verified ID can replace traditional authentication methods with a more secure and user-friendly approach.
+
+## Congratulations! You have successfully completed the lab.
