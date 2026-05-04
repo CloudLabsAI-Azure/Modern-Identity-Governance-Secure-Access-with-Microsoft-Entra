@@ -476,7 +476,30 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/ETS1249.png)
 
-1. Now go to **Overview (1)** and select **Run on demand (2)**. 
+1. Before running the Lifecysle workflow, you need to updated few properties of the user.
+
+1. Navigate to **Users (1)** under Entra ID and click on **ADUser3 (2)**.
+
+   ![](./Images/ETS1250.png)
+
+1. Click **Edit properties**.
+
+   ![](./Images/ETS1274.png)
+
+1. Select **All** then scroll down and set the following attributes and then click on **Save (4)**
+
+   - **Employee Hire date**: Select today's date **(1)**
+   - **Manager**: <inject key="AzureEmail"></inject> **(2)**
+   - **Email**:<inject key="AzureAdUser3Email"></inject> **(3)**
+
+    ![](./Images/ETS1276.png)
+    ![](./Images/ETS1277.png)
+
+1. Now expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Select **Workflows (3)**, then click on **Onboard New Employee - IT Department (4)**.
+
+   ![](./Images/ETS1220.png)
+
+1. Go to **Overview (1)** and select **Run on demand (2)**. 
 
    ![](./Images/ETS1225.png)
 
@@ -492,7 +515,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/ETS1273.png)
 
-1. Navigate to **Users** under Entra ID and click on **ADUser3**.
+1. Navigate to **Users (1)** under Entra ID and click on **ADUser3 (2)**.
 
    ![](./Images/ETS1250.png)
 
@@ -571,13 +594,17 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/ETS1258.png)
 
-1. Verify:
-   - The user account is disabled
-   - The user has been removed from groups
-   - The user has been removed from teams
-   - Licenses have been removed
+1. Refresh it and after few minutes,. click on **ADUser3** and check each task shows a **Completed** status.
 
-1. Navigate to the user profile to confirm the status changes.
+   ![](./Images/ETS1278.png)
+
+1. Navigate to **Users (1)** under Entra ID and click on **ADUser3 (2)**.
+
+   ![](./Images/ETS1250.png)
+
+1. Verify the **Groups Memberships (1)** and **License (2)** of the **ADUser3** has been revoked and account is **disabled (3)**.
+
+   ![](./Images/ETS1279.png)
 
 ## Task 3: Setting Up Access Reviews
 
@@ -705,7 +732,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
    
       - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
-      ![](./Images/ETS1418.png)
+        ![](./Images/ETS1418.png)
 
 1. Open an **Incognito browser**, paste the provided link, and log in using below **credentials**.
 
