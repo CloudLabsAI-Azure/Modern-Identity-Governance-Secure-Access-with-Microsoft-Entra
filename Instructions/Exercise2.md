@@ -51,6 +51,7 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
    >**Note**: Global Secure Access client software will be installed in the next exercise on the endpoint device
 
 ## Task 2: Configure Entra Private Access
+
 In this task, you will configure Microsoft Entra Private Access by enabling traffic forwarding and deploying a Private Access connector. You will create an application segment and assign users to securely access internal resources. Finally, you will validate connectivity by accessing a private resource (RDP) through the Global Secure Access client without using a traditional VPN.
 
 1. In the Microsoft Entra admin center, navigate to **Traffic forwarding(1)**
@@ -205,7 +206,7 @@ and enable the **Private access profile (2)**. Once it is enabled click on **Vie
 
       ![](./Images/ETS2127.png)
 
-1. Now Click on **Yes** to connect to the **Client VM**
+1. Now Click on **Yes** to connect to the **RDPserver**
 
       ![](./Images/ETS2124.png)
 
@@ -213,7 +214,7 @@ and enable the **Private access profile (2)**. Once it is enabled click on **Vie
 
    > **Note:** RDP should connect successfully using only the private IP address, even without a VPN, because the Global Secure Access client is tunneling the traffic to the Private Access connector on the corporate network.
 
-1. Once connected close the Remote desktop connection
+1. Once connected close the Remote desktop connection of RDP server.
 
 ## Task 3: Apply Conditional Access Policies to Private Access
 
@@ -254,21 +255,32 @@ In this task, you will apply Conditional Access policies specifically to Private
       - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
          ![](./Images/ETS2215.png)
+         >**Note**: Applying Conditional access policy will take few minutes to reflect.
 
-3. To validate, attempt an RDP connection from the test device:
+1. Now again in the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
 
-   a. Ensure the Global Secure Access client is connected.
-   
-   b. Open Remote Desktop Connection and connect to the private IP address.
-   
-   c. Observe if MFA or compliance prompts appear.
+   ![](./Images/ETS2121.png)
 
-4. Review sign-in logs to verify the policy evaluation:
-   - Navigate to **Identity** > **Monitoring & health** > **Sign-in logs**
-   - Find the sign-in event for the Private Access application
-   - Check the **Conditional Access** tab for policy results
+1. In the **Computer** field, enter the **private IP address** of the RDP server  `10.0.0.5`. Click **Connect**.
 
-5. Once validated, change the policy to **On** and save.
+   ![](./Images/ETS2122.png)
+
+1. It will prompt for MFA. Enter the digit displayed on the Screen in the Authenticator app on your mobile and tap on **Yes**.
+
+   ![](./Images/ETS2187.png)
+
+1. Once it is authenticated, enter the credentials for the RDP server when prompted and click on **Ok (3)**.
+
+      - Username : <inject key="username"></inject> **(1)**
+      - Password :  <inject key="Password"></inject> **(2)**
+
+      ![](./Images/ETS2127.png)
+
+1. Now Click on **Yes** to connect to the **RDPserver**
+
+      ![](./Images/ETS2124.png)
+
+1. Once connected close the Remote desktop connection of RDP server.
 
 ## Task 4: Configure Entra Internet Access
 
@@ -370,7 +382,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
    ![](./Images/ETS2328.png)
 
-1. Now open Edge browser and paste the below link and verify that the website 
+1. Now open Edge browser and paste the below link and verify that the website is not reachable.
 
    ```
    netflix.com
@@ -383,85 +395,64 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
 ## Task 5: Validate Access and Review Logs
 
-1. On the **Microsoft Entra joined test device** with the Global Secure Access client connected:
+In this task, you will collect and analyze network traffic using the Global Secure Access client and apply filters to validate Private and Internet access behavior. You will also review traffic logs and insights in the Entra portal to confirm policy enforcement and usage patterns.
 
-   **Test Private Access:**
-   - Open Remote Desktop Connection
-   - Connect to the private IP of the RDP server
-   - Verify successful connection (traffic goes through Private Access)
+1. On the Client VM, right click on Global secure access client on the systems tray and select **Advanced logs**.
 
-   **Test Internet Access:**
-   - Open a web browser and navigate to a legitimate website (e.g., `https://www.microsoft.com`)
-   - Verify the page loads successfully
+   ![](./Images/ETS2511.png)
 
-   **Test Web Content Filtering:**
-   - Attempt to access a blocked category website (test with a known safe test URL or use a URL categorized under a blocked category)
-   - Verify the access is blocked and a block page is displayed
+1. Select **Traffic (1)** and click on **Start collecting logs (2)**.
 
+   ![](./Images/ETS2512.png)
 
-### Step 2: Review Traffic Logs in Global Secure Access Dashboard
+1. Open browser and search for **Netflix or primevideo** and verify that the pages are not acceesiable.
 
-1. In the Microsoft Entra admin center, navigate to **Global Secure Access** > **Monitor** > **Traffic logs**.
+   ![](./Images/ETS2513.png)
 
-2. Review the traffic log dashboard:
-   - **Source IP**: The IP of the client device
-   - **Destination**: The accessed resource
-   - **Action**: Allow or Block
-   - **Traffic type**: Private Access or Internet Access
-   - **User**: The authenticated user
+1. Now open **Remote desktop connection** and login into RDP server `10.0.0.5` using below credentials
 
-   ![Global Secure Access traffic logs](Images/ex2-task5-traffic-logs.png)
+      - Username : <inject key="username"></inject> **(1)**
+      - Password :  <inject key="Password"></inject> **(2)**
 
-3. Filter logs by:
-   - **Date**: Last 1 hour
-   - **Action**: Block (to see filtered traffic)
-   - **Traffic profile**: Internet Access
+      ![](./Images/ETS2127.png)
 
-4. Click on individual log entries to see detailed information including:
-   - Policy that triggered the action
-   - Web category (for internet traffic)
-   - Application segment (for private access traffic)
+1. Once connected close the Remote desktop connection of RDP server.
 
-### Step 3: Analyze Security Insights and Policy Violations
+1. Now open **Global secure access client- advanced diagnostics** and click on **Stop collecting** and check the logs.
 
-1. Navigate to **Global Secure Access** > **Monitor** > **Dashboard**.
+   ![](./Images/ETS2514.png)
 
-2. Review the overview metrics:
-   - Total traffic volume
-   - Number of blocked requests
-   - Top users by traffic
-   - Top blocked categories
+1. You can add filter as well. Click on **Add filter** and provide the below information and click on **Ok (4)**
 
-3. Look for any anomalies or unexpected patterns:
-   - Unusual traffic volumes from specific users
-   - Access attempts to blocked categories
-   - Failed private access connection attempts
+   - **Filter**: Channel **(1)**
+   - **Operator**: == **(2)**
+   - **Vaule** : Private **(3)**
 
-4. Navigate to **Global Secure Access** > **Monitor** > **Security alerts** (if available).
+   ![](./Images/ETS2515.png)
 
-5. Review any alerts triggered by:
-   - Policy violations
-   - Suspicious traffic patterns
-   - Connector connectivity issues
+1. You can verify from the logs that the Action is shown as Tunnel, which indicates that the RDP traffic is being routed through the Global Secure Access client tunnel using Private Access.
 
-### Step 4: Verify Traffic Routing and Policy Application
+   ![](./Images/ETS2516.png)
 
-1. Navigate to **Global Secure Access** > **Monitor** > **Remote network health** (if applicable).
+1. Add the filter for **Internet access** and check the logs
 
-2. Check the health status of:
-   - Private Access connectors (should show as Healthy/Active)
-   - Traffic forwarding profiles (should show as Enabled)
+   ![](./Images/ETS2517.png)
 
-3. Navigate to **Global Secure Access** > **Applications** > **Enterprise applications** (Private Access).
+1. Now, in the lab VM, navigate to Microsoft Entra admin center and click on **Dashboard** under Global secure access and check the insights like users and devices, uasge profiling, top used cloud applications etc.
 
-4. Select **Lab-RDP-Server** and review:
-   - **Usage**: Recent access attempts and their status
-   - **User sessions**: Active and recent sessions
+   ![](./Images/ETS2518.png)
 
-5. Confirm that:
-   - Traffic from the test device is being routed through Global Secure Access
-   - Policies are being correctly applied
-   - No traffic is bypassing the GSA tunnel
+1. Scroll down and check the web content filtering, top used deninations and top discovered application segment etc.
+
+   ![](./Images/ETS2519.png)
+
+1. Now expand Monitor and click on **Traffic log** to check the all the logs (Internet access, Private access, Micorsoft 365 access logs).
+
+   ![](./Images/ETS2520.png)
+
+1. you can also filter the logs. For example click on add filter and select the destination FQDN and provide value as **netflix.com** and apply. You can the actions as blocked.
+
+   ![](./Images/ETS2521.png)
 
 ## Summary
 
