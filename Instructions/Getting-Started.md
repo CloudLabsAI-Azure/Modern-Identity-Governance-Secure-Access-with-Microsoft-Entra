@@ -3,20 +3,39 @@
 ## Overall Estimated Duration: 4 hours
 
 ## Overview
+In this hands-on lab, you will explore modern identity governance, secure access management, and decentralized identity solutions using Microsoft Entra. You will gain practical experience configuring identity governance capabilities, implementing secure access to private and internet resources with Global Secure Access, and enabling passwordless identity verification using Verified ID.
+
+The lab demonstrates how organizations can adopt a Zero Trust security model by securing identities, enforcing adaptive access controls, automating user lifecycle processes, and validating user identities through verifiable credentials. Throughout the exercises, you will work with Microsoft Entra services to manage users and groups, configure Conditional Access, review access activity, secure enterprise applications, and validate identity-based access scenarios.
+
+By the end of this lab, you will understand how Microsoft Entra helps organizations strengthen security, simplify identity management, and provide secure access experiences across cloud and hybrid environments.
 
 ## Objective
 
-This lab is designed to equip participants with hands-on experience in 
+After completing this lab, you will be able to:
+- Understand the fundamentals of Identity Governance and Zero Trust security concepts
+- Manage identities, groups, and access policies using Microsoft Entra
+- Automate user onboarding and offboarding processes with Lifecycle Workflows
+- Implement secure access controls using Conditional Access policies
+- Configure and validate Microsoft Entra Global Secure Access for private and internet resources
+- Monitor and review identity-related activities and access events
+- Configure decentralized identity solutions using Microsoft Entra Verified ID
+- Issue and verify verifiable credentials using Microsoft Authenticator
+- Understand how Microsoft Entra services integrate to provide secure and modern identity management
 
 ### Prerequisites
 
-Participants should have:
-
-* Basic understanding of 
+Before starting this lab, you should have:
+- Basic understanding of cloud computing and identity concepts
+- Familiarity with the Azure portal and Microsoft Entra admin center
+- Basic knowledge of authentication, authorization, and security concepts
+- Understanding of users, groups, and role-based access control (RBAC)
+- Familiarity with Conditional Access and MFA concepts is beneficial
+- Basic understanding of networking concepts such as internet and private access
+- General awareness of Zero Trust security principles
 
 ## Architecture
 
-The architecture flow begins with 
+
 
 ## Architecture Diagram
 
