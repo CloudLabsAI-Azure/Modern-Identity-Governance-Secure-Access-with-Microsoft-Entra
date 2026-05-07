@@ -222,7 +222,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 1. Open a new tab and Paste the below link to deploy a helpdesk app using App services in Azure portal.
 
    ```
-   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Factive-directory-verifiable-credentials-dotnet%2Fmain%2F6-woodgrove-helpdesk%2FARMTemplate%2Ftemplate.json
+   https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Factive-directory-verifiable-credentials-node%2Fmain%2F1-node-api-idtokenhint%2FARMTemplate%2Ftemplate.json
    ```
 
 1. If Prompted to sign in, provide the below credentials:
@@ -352,7 +352,7 @@ In this task, you will simulate a real-world help desk identity verification sce
    - The credential type presented
    - Whether verification was successful
 
-### Step 6: Understanding Real-World Help Desk Use Cases
+### Task 3.6: Understanding Real-World Help Desk Use Cases
 
 Consider a scenario where an employee contacts the IT help desk requesting access to a sensitive internal application or requesting an account unlock.
 
