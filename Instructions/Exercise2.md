@@ -43,11 +43,72 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
    ![](./Images/E2T1S2.png)
 
+1. Now, in your desktop **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
+
+   ![](./Images/E3T3S3.png)
+
+1. Provide Computer Name as <inject key="ClientVM DNS Name"></inject> **(1)** then click on **Connect (2)**.
+
+   ![](./Images/E3T3S4.png)
+
+1. Now click on **More choices (1)** then select **Use a different account (2)**. Provide the below credentials and click on **OK (5)**.
+
+      - Username :  .\ <inject key="ClientVM Admin Username"></inject> **(3)**
+      - Password :  <inject key="ClientVM Admin Password"></inject> **(4)**
+
+         ![](./Images/E2T1S19.png)
+
+1. Now Click on **Yes** to connect to the **Client VM**
+
+      ![](./Images/ETS2124.png)
+
+   >Note: A window will appeat to Choose privacy setting for your device, click on **Next** and then **Accept**.
+      ![](./Images/ETS4111.png)
+
+1. On the Start menu, search for **settings (1)** and click on **Setting (2)**.
+
+      ![](./Images/ETS4112.png)
+
+1. Select **Accounts (1)** and click on **Access work or school (2)**.
+
+      ![](./Images/ETS4113.png)
+
+1. Click on **Connect**.
+
+      ![](./Images/ETS4114.png)
+
+1. Select **Join this device to Microsoft Entra ID**.
+
+      ![](./Images/ETS4115.png)
+
+1. It will prompt to sign in. Provide the below credentials:
+
+   - **Username:** Paste the username  <inject key="AzureAdUserEmail"></inject> in the **Sign in** field. Click **Next** to continue.
+
+      ![](./Images/GS6.png)   
+
+   - **Password:**  Paste the password <inject key="AzureAdUserPassword"></inject> **(1)** and click **Sign in (2)**.
+
+      ![](./Images/GS6-1.png)  
+
+1. Click on **Join** and then click on **Done**.
+
+      ![](./Images/ETS4116.png)
+      ![](./Images/ETS4117.png)
+
+1. On the Start menu, search for **cmd (1)** and click on **Command Prompt (2)**.
+
+      ![](./Images/ETS4118.png)
+
+1. Paste the below command and check the status of the device as **AzureADjoined**.
+
+      ![](./Images/ETS4119.png)
+
 ## Task 2: Configure Entra Private Access
 
 In this task, you will configure Microsoft Entra Private Access by enabling traffic forwarding and deploying a Private Access connector. You will create an application segment and assign users to securely access internal resources. Finally, you will validate connectivity by accessing a private resource (RDP) through the Global Secure Access client without using a traditional VPN.
 
-1. In the Microsoft Entra admin center, navigate to **Traffic forwarding(1)**
+1. On the Lab VM, in the Microsoft Entra admin center, navigate to **Traffic forwarding(1)**
 and enable the **Private access profile (2)**. Click on **Ok** on the pop-up window.
 
    ![](./Images/E2T2S1.png)
@@ -132,27 +193,6 @@ and enable the **Private access profile (2)**. Click on **Ok** on the pop-up win
 1. Click on **Assign** to add the group.
 
    ![](./Images/E2T2S16.png)
-
-1. Now, in your desktop **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
-
-   ![](./Images/E3T3S3.png)
-
-1. Provide Computer Name as <inject key="ClientVM DNS Name"></inject> **(1)** then click on **Connect (2)**.
-
-   ![](./Images/E3T3S4.png)
-
-1. Now click on **More choices (1)** then select **Use a different account (2)**. Provide the below credentials and click on **OK (5)**.
-
-      - Username :  .\ <inject key="ClientVM Admin Username"></inject> **(3)**
-      - Password :  <inject key="ClientVM Admin Password"></inject> **(4)**
-
-         ![](./Images/E2T1S19.png)
-
-1. Now Click on **Yes** to connect to the **Client VM**
-
-      ![](./Images/ETS2124.png)
-
-   >Note: A window will appeat to Choose privacy setting for your device, click on **Next** and then **Accept**.
 
 1. On the Client VM Desktop, double click on **Global Secure Access Client** installer file.
    
