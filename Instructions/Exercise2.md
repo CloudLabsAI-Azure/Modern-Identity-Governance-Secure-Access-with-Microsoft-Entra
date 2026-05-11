@@ -7,7 +7,7 @@ In this lab, you will configure Microsoft Entra Global Secure Access to securely
 
 ## Prerequisites
 
-The following are prerequisites to complete this exercise which are already configured in this lab environment:
+The following are prerequisites to complete this exercise:
 
 - Microsoft Entra ID P1 or P2 license
 - **Microsoft Entra Internet Access** and **Microsoft Entra Private Access** licenses (included in Microsoft Entra Suite)
@@ -107,6 +107,10 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
    ```
 
       ![](./Images/ETS4119.png)
+
+1. Once it is done, minimize the Client VM.
+
+      ![](./Images/ETS5114.png)
 
 ## Task 2: Configure Entra Private Access
 

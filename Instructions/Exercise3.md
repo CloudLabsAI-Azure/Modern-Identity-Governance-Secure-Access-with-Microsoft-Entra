@@ -67,7 +67,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 1. Open a new tab, paste the provided link, and log in into Azure portal using below **credentials**.
 
    ```
-   portal.azure.com
+   https://portal.azure.com
    ```
 
    - **Username:** Paste the username  **<inject key="AzureAdUserEmail"></inject>** then click on **Next**.

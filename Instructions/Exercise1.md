@@ -38,8 +38,14 @@ In this task, you will create dynamic groups based on user attributes and define
 1. If prompted, provide the credentials below:
 
    - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
-
-   - **Password:** <inject key="AzureAdUserPassword"></inject>
+ 
+    ![Enter Your Username](./Images/GS6.png)
+ 
+3. Next, provide your temporary password **(1)** and select **Sign in (2)**.
+ 
+   - **Temporary Access Pass:** <inject key="AzureAdUserPassword"></inject>
+ 
+      ![Enter Your Password](./Images/GS6-1.png)
 
    >**Note:** If pop-up appears asking about Give feedback to Microsoft, close it. 
 
@@ -141,6 +147,8 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S21-1.png)
 
+1. For AD User2, the job title attribute does not contain "Manager", therefore the user is not added to the group dynamically.
+
    ![](./Images/E1T1S21-2.png)
 
 ## Task 2: Entra ID Lifecycle Management
@@ -179,7 +187,7 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S7.png)
 
-1. Select **Office_365_E1_(no_Teams) (1)** then clcik on **Select (2)**.
+1. Select **Office_365_E1_(no_Teams) (1)** then click on **Select (2)**.
 
    ![](./Images/E1T2-1S8.png)
 
@@ -252,7 +260,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S7.png)
 
-1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then clcik **Ctrl + V** to paste the code and then click on **Save (3)** to save the code
+1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then click **Ctrl + V** to paste the code and then click on **Save (3)** to save the code
 
    ```
    {
@@ -713,18 +721,20 @@ In this task, you will create and configure access reviews to regularly validate
 
 1. It will navigate to my access portal.
 
-1. Now select **ADUser 1** and click on **Deny**. Optionally, provide a justification in the **Reason** field and **Sumbit**.
+1. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
+   ![](./Images/ETS5111.png)
 
-   ![](./Images/ETS1312.png)
-   ![](./Images/ETS1313.png)
+1. Provide a justification in the reason as **Valid access (1)** field and **Sumbit (2)**.
+
+   ![](./Images/ETS5112.png)
 
 1. Navigate back to Entra admin portal and select **Access review** under ID Governance. 
 
    ![](./Images/ETS1314.png)
 
-1. Now click on **Results** to see the denied log.
+1. Now click on **Results** to see the log.
 
-   ![](./Images/ETS1315.png)
+   ![](./Images/ETS5113.png)
 
 ## Task 4: Implementing Conditional Access Policies
 
