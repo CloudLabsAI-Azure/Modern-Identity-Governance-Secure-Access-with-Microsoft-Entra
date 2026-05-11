@@ -83,7 +83,7 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
 1. It will prompt to sign in. Provide the below credentials:
 
-   - **Username:** Paste the username  <inject key="AzureAdUserEmail"></inject> in the **Sign in** field. Click **Next** to continue.
+   - **Username:** Paste the username  <inject key="AzureAdUserEmail"></inject> in the **Sign in (1)** field. Click **Next (2)** to continue.
 
       ![](./Images/GS6.png)   
 
@@ -100,7 +100,11 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
       ![](./Images/ETS4118.png)
 
-1. Paste the below command and check the status of the device as **AzureADjoined**.
+1. Paste the below command **(1)** and check the status of the device as **AzureADjoined (2)**.
+
+   ```
+   dsregcmd /status
+   ```
 
       ![](./Images/ETS4119.png)
 
