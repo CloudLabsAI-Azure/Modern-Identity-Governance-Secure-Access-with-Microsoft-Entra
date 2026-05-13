@@ -10,10 +10,10 @@ In this exercise, you will explore how to implement core Identity Governance cap
 
 The following are prerequisites to complete this exercise which are already configured in this lab environment:
 
-- An active Microsoft Entra ID tenant
-- A user account with Global Administrator or Identity Governance Administrator role
-- Microsoft Entra ID P2 / Governance /Entra suite license enabled  
-- 2–3 test users available for validation
+- An active Microsoft Entra ID tenant.
+- A user account with Global Administrator or Identity Governance Administrator role.
+- Microsoft Entra ID P2 / Governance /Entra suite license enabled.
+- 2–3 test users available for validation.
 
 ## Lab Objectives
 
@@ -21,8 +21,8 @@ In this lab, you will complete the following exercise:
 
 - Task 1: Manage Users and Groups
 - Task 2: Entra ID Lifecycle Management
-- Task 3: Setting Up Access Reviews
-- Task 4: Implementing Conditional Access Policies
+- Task 3: Implementing Conditional Access Policies
+- Task 4: Setting Up Access Reviews
 - Task 5: Monitoring and Auditing with Entra ID (Optional)
 
 ## Task 1: Manage Users and Groups
@@ -116,7 +116,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S15.png)
 
-1. Select **Job Information (1)** and set the following attributes and then click on **Save (4)**
+1. Select **Job Information (1)** and set the following attributes and then click on **Save (4)**.
 
    - **Job title**: `IT Manager` **(2)**
    - **Department**: `IT` **(3)**
@@ -159,7 +159,7 @@ Microsoft Entra Lifecycle Workflows automate identity processes across the emplo
 
 In this task, you will set up a lifecycle workflow to automate the onboarding process for new employees. You will configure triggers and automate tasks such as sending welcome emails, assigning licenses, and adding users to groups.
 
-1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**.
 
    ![](./Images/E1T2-1S1.png)
 
@@ -183,7 +183,7 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S6.png)
 
-1. Click on **Add license to User (1)** then click on **0 license selected (2)**
+1. Click on **Add license to User (1)** then click on **0 license selected (2)**.
 
    ![](./Images/E1T2-1S7.png)
 
@@ -195,11 +195,11 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S9.png)
 
-1. Now click on **Add user to group (1)** then click on **0 group selected (2)**
+1. Now click on **Add user to group (1)** then click on **0 group selected (2)**.
 
    ![](./Images/E1T2-1S10.png)
 
-1. Select **New joiners (1)** group and the click on **Select (2)**
+1. Select **New joiners (1)** group and the click on **Select (2)**.
 
    ![](./Images/E1T2-1S11.png)
 
@@ -229,18 +229,18 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S1.png)
 
-1. On the Basics tab, provide the below details then click on **Next Task behavior (3)**
+1. On the Basics tab, provide the below details then click on **Next Task behavior (3)**.
 
       - **Name**: Onboarding email notification **(1)**
       - **Description**: Send the onboarding email notification to New joinee **(2)**.
 
          ![](./Images/E1T2-2S2.png)
 
-1. On the Task behavior tab, leave it as default and click on **Next Details**
+1. On the Task behavior tab, leave it as default and click on **Next Details**.
 
    ![](./Images/E1T2-2S3.png)
 
-1. On the Details page, Provide the below details and click on **Create logoc app(4)**
+1. On the Details page, Provide the below details and click on **Create logic app(4)**.
 
       - **Subscription**: Leave it as default **(1)**
       - **Resource group**: **ODL-Entra-<inject key="Deployment ID" enableCopy="false"></inject>-01 (2)**
@@ -260,7 +260,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S7.png)
 
-1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then click **Ctrl + V** to paste the code and then click on **Save (3)** to save the code
+1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then click **Ctrl + V** to paste the code and then click on **Save (3)** to save the code.
 
    ```
    {
@@ -445,35 +445,12 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Subject**: ```Welcome Onboarding``` **(2)**
 
-   - **Body** : Copy and paste the below content **(3)**
+   - **Body** : Click on **Code view** icon then copy and paste the below content **(4)**
       ```
-      <p class="editor-paragraph">
-      Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>
-
-      Welcome to your first day at work.<br><br>
-
-      Attached, you will find the information for your first login.<br><br>
-
-      Use the following username to log in:<br>
-      @{triggerBody()?['data']?['subject']?['email']}<br><br>
-
-      Set it up here:
-      <a href="https://portal.office.com" class="editor-link">portal.office.com</a><br><br>
-
-      If you have any questions, please contact your manager:<br>
-      @{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>
-
-      <a href="mailto:@{triggerBody()?['data']?['subject']?['manager']?['email']}">
-      @{triggerBody()?['data']?['subject']?['manager']?['email']}
-      </a><br><br>
-
-      You can reach our helpdesk at 00011112222.<br><br>
-
-      Welcome On-Board!
-      </p>
+      <p class="editor-paragraph">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login.<br><br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href="https://Portal.azure.com" class="editor-link">Azure Portal</a></p><p class="editor-paragraph"><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222.<br><br>Welcome On-Board!</p><br>
       ```
     
-      ![](./Images/E1T2-2S12.png)
+      ![](./Images/ETS5116.png)
 
 1. Scroll down and click on the dropdown of the Advanced parameters **(1)** then select **CC (2)**.
 
@@ -487,7 +464,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
    @triggerBody()?['data']?['subject']?['manager']?['email']
    ```
 
-   ![](./Images/E1T2-2S14.png)
+   ![](./Images/ETS5115.png)
 
 1. Check the flow of the logic app.
 
@@ -534,7 +511,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 1. Select **All** then scroll down and set the following attributes and then click on **Save (4)**
 
    - **Employee Hire date**: Select today's date **(1)**
-   - **Manager**: Click on **+Add manager** and select <inject key="AzureAdUserEmail"></inject>**(2)**
+   - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**
    - **Email**: Go to Environment tab and copy **User 03 UPN (3)**
 
       ![](./Images/E1T2-2S25.png)
@@ -586,7 +563,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
 1. After login, check that the email has recieved in Inbox.
 
-   ![](./Images/ETS1232.png)
+   ![](./Images/ETS5117.png)
 
 ### Task 2.3: Configure Offboarding Workflow
 
@@ -657,86 +634,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S15.png)
 
-## Task 3: Setting Up Access Reviews
-
-In this task, you will create and configure access reviews to regularly validate user access to groups or applications. You will define reviewers, schedules, and perform approval or denial actions while reviewing audit logs.
-
-1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**
-
-   ![](./Images/E1T3S1.png)
-
-1. Under **Review access to a resource type**, click on **Select**.
-
-   ![](./Images/E1T3S2.png)
-
-1. On the **Review type** page, provide the below details:
-      - Select what to review :**Teams + Groups (1)**
-      - Review scope : **Select Teams + groups (2)**
-      - Group : click on **+ Select groups (3)**
-
-         ![](./Images/E1T3S3.png)
-
-      -  Under Groups, select **IT-Department (4)** and then click on **Select (5)**.
-
-         ![](./Images/E1T3S3-1.png)
-
-1. Select **All users (1)** under scope and click on **Next Reviews (2)**.
-
-   ![](./Images/E1T3S4.png)
-
-1. In the select reviewers drop down, click on **Selected user(s) or group(s)**
-
-   ![](./Images/ETS1266.png)
-
-1. Then click on **+ select reviwers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **select (3)**.
-
-   ![](./Images/ETS1267.png)
-
-1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**
-
-   ![](./Images/ETS1268.png)
-
-1. Click on **Next Review + Create**
-
-1. On the **Review + create** page, provide Review name as **Access review (1)** and click on **Create (2)**.
-
-   ![](./Images/ETS1269.png)
-
-1. The designated reviewer will receive an email notification to perform the review.
-
-1. Open a new tab and navigate to outlook using below link
-
-   ```
-   https://outlook.office.com/
-   ```
-1. If prompted to sign, provide the credentials below:
-
-   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
-
-   - **Password:** <inject key="AzureAdUserPassword"></inject>
-
-1. You will receive a mail. Select the mail and click on **Start review**.
-
-   ![](./Images/ETS1311.png)
-
-1. It will navigate to my access portal.
-
-1. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
-   ![](./Images/ETS5111.png)
-
-1. Provide a justification in the reason as **Valid access (1)** field and **Sumbit (2)**.
-
-   ![](./Images/ETS5112.png)
-
-1. Navigate back to Entra admin portal and select **Access review** under ID Governance. 
-
-   ![](./Images/ETS1314.png)
-
-1. Now click on **Results** to see the log.
-
-   ![](./Images/ETS5113.png)
-
-## Task 4: Implementing Conditional Access Policies
+## Task 3: Implementing Conditional Access Policies
 
 In this task, you will create a Conditional Access policy to enforce multi-factor authentication (MFA). You will configure conditions such as users, apps, and locations, and validate the policy using sign-in logs.
 
@@ -746,10 +644,10 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
 1. Configure the Conditional Access Policy with the following details:
 
-      - Name: **Require MFA for IT Department - Cloud Apps** **(1)**
+      - Name: **CA01-AllCloudApps: Requires MFA for IT department when on any network** **(1)**
       - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
 
-         ![](./Images/E1T4S2-1.png)
+         ![](./Images/ETS2227.png)
 
       - A new window will slide in, click on **Select users and Groups** **(1)** and then select the check box for **Users and groups** **(2)**.
 
@@ -761,7 +659,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
    
       - Click on **No target resources selected** **(1)** under Target resources option.
 
-         ![](./Images/E1T4S2-4.png)
+         ![](./Images/ETS2228.png)
 
       - Click on **All resources (formally All cloud apps)** **(2)**
 
@@ -787,9 +685,9 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-10.png)
 
-      - Now in the Client Apps blade, toggle the *Configure* switch to **Yes** **(1)** and make sure that all the checkboxes below are selected **(2)**. Then click on **Done** **(3)**.
+      - Now in the Client Apps blade, toggle the *Configure* switch to **Yes** **(1)** and uncheck the boxes for **Legecy authentication client (2)**. Then click on **Done** **(3)**.
 
-         ![](./Images/E1T4S2-11.png)
+         ![](./Images/ETS2229.png)
 
       - Click on **0 controls selected (1)** of `Grant` Section under the Access Control option.
 
@@ -806,7 +704,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 1. Open a **New InPrivate window**, paste the provided link, and log in using below **credentials**.
 
       ```
-      portal.azure.com
+      https://portal.azure.com
       ```
 
    - **Username:** Paste the username **<inject key="User 01 UPN"></inject>**
@@ -867,6 +765,94 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 1. Return to the Microsoft Entra admin center and navigate to **Entra ID** > **Monitoring & health (1)** > **Sign-in logs (2)**. Verify the recent User sign-ins **(3)**.
 
    ![](./Images/E1T4S8.png)
+
+## Task 4: Setting Up Access Reviews
+
+In this task, you will create and configure access reviews to regularly validate user access to groups or applications. You will define reviewers, schedules, and perform approval or denial actions while reviewing audit logs.
+
+1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**
+
+   ![](./Images/E1T3S1.png)
+
+1. Under **Review access to a resource type**, click on **Select**.
+
+   ![](./Images/E1T3S2.png)
+
+1. On the **Review type** page, provide the below details:
+      - Select what to review :**Teams + Groups (1)**
+      - Review scope : **Select Teams + groups (2)**
+      - Group : click on **+ Select groups (3)**
+
+         ![](./Images/E1T3S3.png)
+
+      -  Under Groups, select **Newjoiners (4)** and then click on **Select (5)**.
+
+         ![](./Images/ETS5118.png)
+
+1. Select **All users (1)** under scope and click on **Next Reviews (2)**.
+
+   ![](./Images/ETS5119.png)
+
+1. In the select reviewers drop down, click on **Selected user(s) or group(s)**
+
+   ![](./Images/ETS1266.png)
+
+1. Then click on **+ select reviwers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **select (3)**.
+
+   ![](./Images/ETS1267.png)
+
+1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**
+
+   ![](./Images/ETS1268.png)
+
+1. Click on **Next Review + Create**
+
+1. On the **Review + create** page, provide Review name as **Access review (1)** and click on **Create (2)**.
+
+   ![](./Images/ETS1269.png)
+
+1. The designated reviewer will receive an email notification to perform the review.
+
+1. Open a new tab and navigate to outlook using below link
+
+   ```
+   https://outlook.office.com/
+   ```
+1. If prompted to sign, provide the credentials below:
+
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+
+   - **Password:** <inject key="AzureAdUserPassword"></inject>
+
+1. You will receive a mail. Select the mail and click on **Start review**.
+
+   ![](./Images/ETS1311.png)
+
+1. It will navigate to my access portal.
+
+1. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
+
+   ![](./Images/ETS2222.png)
+
+1. Provide a justification in the reason as **Valid access (1)** and **Sumbit (2)**.
+
+   ![](./Images/ETS5112.png)
+
+1. Now select **ADUser 2 (1)** and click on **Deny (2)**. 
+
+   ![](./Images/ETS2223.png)
+
+1. Provide a justification in the reason as **Inactive user (1)** and **Sumbit (2)**.
+
+   ![](./Images/ETS2224.png)
+
+1. Navigate back to Entra admin portal and select **Access review** under ID Governance. 
+
+   ![](./Images/ETS2225.png)
+
+1. Now click on **Results (1)** to see the logs **(2)** and also click on **View** to see audit details.
+
+   ![](./Images/ETS2226.png)
 
 ## Task 5: Monitoring and Auditing with Entra ID (Optional/Read Only)
 

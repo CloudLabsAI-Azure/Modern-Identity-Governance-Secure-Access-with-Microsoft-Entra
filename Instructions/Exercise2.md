@@ -283,10 +283,10 @@ In this task, you will apply Conditional Access policies specifically to Private
 
 1. Configure the Conditional Access Policy with the following details:
 
-   - **Name:** Require Compliant Device for Private Access **(1)**
+   - **Name:** CA02-Private access: Requires MFA and Device compliance for IT department **(1)**
    - **Assignments**: Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
 
-      ![](./Images/E2T3S2-1.png)
+      ![](./Images/ETS2233.png)
 
    - A new window will slide in, click on **Select users and Groups** **(1)** then select the check box saying **Users and groups** **(2)**
 
@@ -296,11 +296,11 @@ In this task, you will apply Conditional Access policies specifically to Private
    
    - Click on **1 resources included** **(1)** under Target resources option and verify that **Quick actions** **(2)** is already selected.
 
-      ![](./Images/E2T3S2-3.png)
+      ![](./Images/ETS2234.png)
 
    - Click on **0 conditions selected** **(1)** under Conditions option. Then select **Not configured (2)** under Device platforms.
 
-      ![](./Images/E2T3S2-4.png)
+      ![](./Images/ETS2235.png)
 
    - Now in the Device platforms blade, toggle the *Configure* switch to **Yes (1)** and make sure that all **Any device (2)** option is selected. Then click on **Done** **(3)**
 
@@ -310,9 +310,13 @@ In this task, you will apply Conditional Access policies specifically to Private
 
       ![](./Images/E2T3S2-6.png)
 
-   - In the **Grant** pane, click on **Grant access**. Select the check box for **Require multi-factor authentication (1)** and **Require device to be marked as compliant (2)**. Then click on **Select** **(3)**. 
+   - In the **Grant** pane, click on **Grant access**. Select the check box for **Require multi-factor authentication (1)** and **Require device to be marked as compliant (2)**.
 
-      ![](./Images/E2T3S2-7.png)
+      ![](./Images/ETS2231.png)
+   
+   - Scroll down and ensure that **Requires all the selected control (1)** option is selected. Then click on **Select** **(2)**. 
+
+      ![](./Images/ETS2232.png)
    
    - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
@@ -422,10 +426,10 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
 1. Configure the Conditional Access Policy with the following details:
 
-      - Name: **Streamingwebsiteblocked** **(1)**
+      - Name: **CA03-Internet access: block Streaming websites for IT department** **(1)**
       - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
 
-         ![](./Images/E2T4S17-1.png)
+         ![](./Images/ETS2236.png)
 
       - A new window will slide in, click on **Select users and groups** **(1)** and then select the check box for **Users and groups** **(2)**. Then, select window will open, click on **IT-Department (3)** and then **Select** button.
 
@@ -433,7 +437,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
       - Click on **No target resources selected** **(1)** under Target resources option.
 
-         ![](./Images/E2T4S17-3.png)
+         ![](./Images/ETS2237.png)
 
       - Click on **All internet resources with Global secure access** **(2)**
 
@@ -441,7 +445,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
       - Click on **0 controls selected (1)** of `Session` Section under the Access Control option.
 
-         ![](./Images/E2T4S17-5.png)
+         ![](./Images/ETS2238.png)
 
       - In the **Session** pane, select the check Box for **use Global Secure Access Security profile (1)** then, select **Webprofile (2)** and click on **Select (3)**.
 
@@ -449,7 +453,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
    
       - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
-         ![](./Images/E2T4S17-7.png)
+         ![](./Images/ETS2240.png)
 
 1. Open the ClientVM, verify the Global Secure Access client is connected from system tray.
 
@@ -458,7 +462,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 1. Now open Edge browser and paste the below link and verify that the website is not reachable.
 
    ```
-   netflix.com
+   https://www.netflix.com
    ```
 
    ![](./Images/ETS2329.png)
