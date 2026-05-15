@@ -334,6 +334,8 @@ In this task, you will apply Conditional Access policies specifically to Private
 
 1. It will prompt for MFA. Enter the digit displayed on the Screen in the Authenticator app on your mobile and tap on **Yes**.
 
+   ![](./Images/ETS2187.png)
+
 1. Once it is authenticated, enter the credentials for the RDP server when prompted and click on **OK (3)**.
 
       - Username : <inject key="adminUsername"></inject> **(1)**

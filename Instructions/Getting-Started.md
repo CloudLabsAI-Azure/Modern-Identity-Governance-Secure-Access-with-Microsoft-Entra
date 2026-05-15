@@ -2,6 +2,14 @@
 
 ## Overall Estimated Duration: 4 hours
 
+## Lab Scenario
+
+You are part of the Cloud Identity team at Contoso, a growing organization that is facing challenges with manual user onboarding and offboarding, excessive or outdated access permissions, reliance on traditional VPN for internal resource access, and dependence on password-based authentication. These challenges have resulted in increased security risks, limited visibility into user access, and inefficient operational processes.
+
+To solve this, Contoso plans to adopt Microsoft Entra to modernize its identity and access management by implementing Identity Governance for automated lifecycle management, enforcing Conditional Access policies for secure access control, and enabling centralized visibility through monitoring and access reviews.
+
+To achieve this, you will configure dynamic groups and lifecycle workflows, deploy Global Secure Access to provide secure connectivity to private and internet resources without VPN, apply Conditional Access policies for enhanced security, and implement Verified ID to enable passwordless identity verification using decentralized digital credentials.
+
 ## Overview
 In this hands-on lab, you will explore modern identity governance, secure access management, and decentralized identity solutions using Microsoft Entra. You will configure Identity Governance features, implement secure access to private and internet resources with Global Secure Access, and enable passwordless identity verification using Verified ID.
 
