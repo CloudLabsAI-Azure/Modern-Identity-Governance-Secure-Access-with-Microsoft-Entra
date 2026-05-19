@@ -1,29 +1,29 @@
 # Exercise 3: Microsoft Entra Verified ID
 
-**Estimated Duration: 60 minutes**
+## Estimated Duration: 70 minutes
 
 ## Overview
 
-In this exercise, you set up Verified ID, registered a DID, and verified your domain. You created and issued a credential and stored it in the Authenticator app. You then verified the credential through a sample application. Finally, you explored a help desk scenario to understand how Verified ID enables secure, passwordless identity verification.
+In this hands-on exercise, you will set up a **Verified ID** using which we will register a **Decentralized identifier (DID)**, and verify the domain. You will create and issue a credential which would stored in the **Authenticator app**. You then verify the credential through a sample application. Finally, you will explore a **Help Desk scenario** to understand how Verified ID enables secure, passwordless identity verification.
 
 **Key Concepts:**
 
 | Concept | Description |
 |---------|-------------|
-| **Issuer** | An organization that creates and issues verifiable credentials to users |
-| **Holder** | The user who receives and stores credentials in their digital wallet (Microsoft Authenticator) |
-| **Verifier** | An organization or application that requests and verifies credentials from the holder |
-| **DID (Decentralized Identifier)** | A globally unique identifier anchored to a blockchain or DID registry |
-| **Verifiable Credential (VC)** | A tamper-evident credential containing claims about the holder, signed by the issuer |
+| **Issuer** | An organization that creates and issues verifiable credentials to users. |
+| **Holder** | The user who receives and stores credentials in their digital wallet (Microsoft Authenticator). |
+| **Verifier** | An organization or application that requests and verifies credentials from the holder. |
+| **DID (Decentralized Identifier)** | A globally unique identifier anchored to a blockchain or DID registry. |
+| **Verifiable Credential (VC)** | A tamper-evident credential containing claims about the holder, signed by the issuer. |
 
 ## Prerequisites
 
 The following are prerequisites to complete this exercise which are already configured in this lab environment:
 
-- Microsoft Entra ID P1 or P2 license (Verified ID is included)
-- Global Administrator role
+- Microsoft Entra ID P1 or P2 license (Verified ID is included).
+- Global Administrator role.
 - A custom domain configured in your Microsoft Entra tenant.
-- A smartphone with **Microsoft Authenticator** app installed
+- A smartphone with **Microsoft Authenticator** app installed.
 
 ## Lab Objectives
 
@@ -37,30 +37,30 @@ In this lab, you will complete the following exercise:
 
 In this task, you will set up Microsoft Entra Verified ID for your organization. You will register your DID, verify your domain, and create a verified credential that can be issued to users.
 
-1. On the Microsoft Entra admin center left navigation pane, expand **Verified ID** and click **Overview (1)** then click on **Configure (2)**.
+1. On the Microsoft Entra admin center left navigation pane, expand **Verified ID** and select **Overview (1)** then click on **Configure (2)**.
 
    ![](./Images/E3T1S1.png)
 
-1. Provide the below details and click on **Select keys (3)** for Key vault selection.
+1. On the **Define organization settings** wizard, Provide the below details and click on **Select keys (3)** for Key vault selection.
 
-   - **Organization**: VerifiedID **(1)**
-   - **Trusted domain**: Open the Azurecreds file located on Desktop and copy **(1)** and paste the endpoint **(2)**.
+   - **Organization**: `VerifiedID` **(1)**.
+   - **Trusted domain**: Open the **AzureCreds** file located on Desktop then copy and paste the endpoint **(2)**.
 
       ![](./Images/E3T1S2.png)
 
-1. Leave the Subscription as **default (1)**. From the Key vault dropdown, select **kv-<inject key="DeploymentID"></inject> (2)** and click on **Select (3)**.
+1. On the **Select keys from Azure Key Vault** wizard, leave the Subscription as **default (1)** then from the Key vault dropdown, select **kv-<inject key="DeploymentID"></inject> (2)** and click on **Select (3)**.
 
    ![](./Images/E3T1S3.png)
 
-1. Click on **Save**
+1. Click on **Save** to save the organization settings.
 
    ![](./Images/E3T1S4.png)
 
-1. Now on the overview page, Click on **Register** under the Register decentralized ID.
+1. Now on the **Overview** page, Click on **Register** under the Register decentralized ID.
 
    ![](./Images/E3T1S5.png)
 
-1. Click on **Download (1)**.
+1. Click on **Download**.
 
    ![](./Images/E3T1S6.png)
 
@@ -70,7 +70,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
    https://portal.azure.com
    ```
 
-   - **Username:** Paste the username  **<inject key="AzureAdUserEmail"></inject>** then click on **Next**.
+   - **Username:** Paste the username  **<inject key="AzureAdUserEmail"></inject> (1)** then click on **Next (2)**.
 
       ![](./Images/GS6.png)
 
@@ -88,7 +88,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S9.png)
 
-1. Go to **Containers (1)** under Data storage and select **$web (2)**.
+1. Go to **Containers (1)** under Data storage and select **$web (2)** container.
 
    ![](./Images/E3T1S10.png)
 
@@ -96,7 +96,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
    
    ![](./Images/E3T1S11.png)
 
-   ![](./Images/E3T1S11-1.png)
+   ![](./Images/E3T1S11i.png)
 
 1. Click on **Upload (1)** and select **Browse for the files (2)**.
 
@@ -106,11 +106,11 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S13.png)
 
-1. Click on **Upload**.
+1. Click on **Upload** to upload the file to the directory.
 
    ![](./Images/E3T1S14.png)
 
-1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
+1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. Once the status is **Registered (2)**, click on **Close (3)**.
 
    ![](./Images/E3T1S15.png)
 
@@ -130,15 +130,15 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S19.png)
 
-1. Click on **Upload**.
+1. Click on **Upload** to upload the file to the directory.
 
    ![](./Images/E3T1S20.png)
 
-1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
+1. Now, naviagte back to **Microsoft Entra admin center**, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
 
    ![](./Images/E3T1S21.png)
 
-1. On the Overview page, now you can see the **Verified Domain**
+1. On the **Overview** page, now you can see the **Verified Domain**.
 
    ![](./Images/E3T1S22.png)
 
@@ -149,13 +149,13 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S23.png)
 
-1. Click **Verified credential** and then **Next**.
+1. Click **Verified employee** and then **Next**.
 
    ![](./Images/E3T1S24.png)
 
 1. Provide below Information and click on **Update (4)** and verify the display card styling:
 
-   - **Logo URL**: https://avd233.blob.core.windows.net/avdtest/VerifiedID.jpg **(1)**
+   - **Logo URL**: `https://avd233.blob.core.windows.net/avdtest/VerifiedID.jpg` **(1)**
    - **Text color**: #FFFFFF **(2)**
    - **Background color** : #0068cd **(3)**.
 
@@ -173,11 +173,11 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S1-1.png)
 
-1. Scroll down and click on **Save**.
+1. Scroll down and then click on **Save**.
 
    ![](./Images/E3T2S2.png)
 
-1. Navigate to  **Overview (1)** under Verified ID and click on **Try it now (2)** under Get the new credentials.
+1. Navigate to  **Overview (1)** blade in **Verified ID** section, then click on **Try it now (2)** under Get the new credentials.
 
    ![](./Images/E3T2S3.png)
 
@@ -185,13 +185,17 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S4-1.png)
 
+   > **Note**: If there is any popup wizard appears with **Feedback to Microsoft** click on **Skip**.
+
+      ![](./Images/E3T2S4N.png)
+
  1. Click on **Get my Verified ID**. 
 
     ![](./Images/E3T2S4.png)
 
-   >**Note**: If you haven't get the option **Get my Verified ID**, wait for few minutes and click on refresh.
+      >**Note**: If you haven't get the option **Get my Verified ID**, wait for few minutes and click on refresh.
 
-1. A QR code is displayed **(1)**. Scan it from the Authenticator app in your mobile and **Add** the credentials to your Verified ID. Once it is completed click on **Done (2)**
+1. A QR code is displayed **(1)**. Scan it from the Authenticator app in your mobile and **Add** the credentials to your Verified ID. Once it is completed click on **Done (2)**.
 
    ![](./Images/E3T2S5.png)
 
@@ -203,7 +207,7 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S7.png)
 
-1. On the sign-in page, Click on **Verify my employee credentials**
+1. On the sign-in page, Click on **Verify my employee credentials**.
 
    ![](./Images/E3T2S8.png)
 
@@ -215,9 +219,13 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S10.png)
 
-1. Navigate back to Entra admin portal, then Credenitals under Verified ID. Select Verified employee. 
+1. Navigate back to **Microsoft Entra Admin Centre** portal, then **Credenitals (1)** under Verified ID. Select **Verified employee(2)**. 
 
-1. Copy the Manifesh URL and paste it in notepad.
+   ![](./Images/E3T2S11.png)
+
+1. Copy the **Manifest URL** and Paste the value into Notepad for later use.
+
+   ![](./Images/E3T2S12.png)
 
 ## Task 3: Verify Credentials in Sample Application (Help Desk Scenario)
 
@@ -225,31 +233,34 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 ### Task 3.1: Deploy sample verification application
 
-1. Navigate back to the Microsoft Entra admin center. Under **Verified ID**, select **Organization settings** and copy the **Decentralized identifier (DID)**. Paste the value into Notepad for later use.
+1. Over the Microsoft Entra admin center, in the left navigation click on **Organization settings** under **Verified ID**, then copy the **Decentralized identifier (DID)** and paste the value into Notepad for later use.
 
    ![](./Images/E3T3-1S1.png)
 
 1. Navigate back to the Azure portal and search for **Microsoft Entra ID**.
 
-1. From the left navigation pane, select **App registrations (1)** and then click on **All applications (2)**. Select the application named **odl_user_sp_<inject key="DeploymentID" enableCopy="false" /> (3)**.
+   ![](./Images/E3T3-1S2.png)
+
+1. From the left navigation pane, select **App registrations (1)** and then click on **All applications (2)**. Select the application with name **odl_user_sp_<inject key="DeploymentID" enableCopy="false" /> (3)**.
 
    ![](./Images/E3T3-1S3.png)
 
 
-1. From the **Overview** page, copy the following values and paste them into Notepad:
+1. From the **Overview** page of the application, copy the following values and paste them into Notepad:
+
    - **Application (client) ID**
    - **Directory (tenant) ID**
 
       ![](./Images/E3T3-1S4.png)
 
-1. From the left navigation pane, select **Certificates & secrets**. Under **Client secrets**, click on **+ New client secret**.
+1. From the left navigation pane, select **Certificates & secrets** from **Manage** Section. Under **Client secrets** tab, click on **+ New client secret**.
 
    ![](./Images/E3T3-1S5.png)
 
-1. On the **Add a client secret** page, provide the following details and Click on **Add**.
+1. On the **Add a client secret** page, provide the following details and Click on **Add (3)**.
 
-   - **Description**: `authentication`
-   - **Expires**: Keep the default value
+   - **Description**: `authentication` **(1)**.
+   - **Expires**: Keep the default value **(2)**.
 
       ![](./Images/E3T3-1S6.png)
 
@@ -257,7 +268,9 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](./Images/E3T3-1S7.png)
 
-1. From the left navigation pane, select **API permissions (1)** and then click on **+ Add a permission (2)**.
+   > **Note**: Once you navigate from this page the secret value will be encrypted and will not able to copy it again. 
+
+1. Now from the **Manage** section, select **API permissions (1)** and then click on **+ Add a permission (2)**.
 
    ![](./Images/E3T3-1S8.png)
 
@@ -277,7 +290,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](./Images/E3T3-1S12.png)
 
-1. Open a new browser tab and paste the following link to deploy the Help Desk verification application using Azure App Service.
+1. Open a new browser tab and paste the following link to deploy the **Help Desk verification application** using Azure App Service.
 
    ```
    https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Factive-directory-verifiable-credentials-node%2Fmain%2F1-node-api-idtokenhint%2FARMTemplate%2Ftemplate.json
@@ -285,7 +298,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 1. If Prompted to sign in, provide the below credentials:
 
-   - Username: Paste the username  **<inject key="AzureUserEmail"></inject>** then click on **Next**.
+   - Username: Paste the username  **<inject key="AzureUserEmail"></inject>** **(1)** then click on **Next (2)**.
 
       ![](./Images/GS6.png)
 
@@ -297,27 +310,27 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 1. Provide the below detail, click on **Review + create (10)** and then **Create**.
 
-   - **Subscription**: Leave it as default **(1)**
-   - **Resource group**: ODL-Entra-<inject key="DeploymentID"></inject>-01 **(2)**
-   - **Web App name**: helpdesk<inject key="DeploymentID"></inject> **(3)**
-   - **Az Tenant Id:** Paste the tenant ID copied in Step 4 **(4)**
-   - **Az Client Id:** Paste the application ID copied in Step 4 **(5)**
-   - **Az Client Secret:** Paste the value copied in Step 7 **(6)**
-   - **DID Authority**: Paste DID Authority copied in Step 1 **(7)**
-   - **Credential Manifest:** Paste the value copied in Task 2 Step 12 **(8)**
-   - **Credential Type:** **VerifiedEmploee** **(9)**
+   - **Subscription**: Leave it as default **(1)**.
+   - **Resource group**: ODL-Entra-<inject key="DeploymentID"></inject>-01 **(2)**.
+   - **Web App name**: helpdesk<inject key="DeploymentID"></inject> **(3)**.
+   - **Az Tenant Id:** Paste the tenant ID copied in Step 4 **(4)**.
+   - **Az Client Id:** Paste the application ID copied in Step 4 **(5)**.
+   - **Az Client Secret:** Paste the value copied in Step 7 **(6)**.
+   - **DID Authority**: Paste DID Authority copied in Step 1 **(7)**.
+   - **Credential Manifest:** Paste the value copied in Task 2 Step 12 **(8)**.
+   - **Credential Type:** ``VerifiedEmployee`` **(9)**.
 
       ![](./Images/E3T3-1S15.png)
 
-1. Once the deployment is succeeded then click on **Go to resource group**
+1. Once the deployment is succeeded then click on **Go to resource group**.
 
    ![](./Images/E3T3-1S16new.png)
 
-1. Click on **helpdesk<inject key="DeploymentID"></inject>**. 
+1. Click on **helpdesk<inject key="DeploymentID"></inject>** app service that is listed in the resource group.
 
    ![](./Images/E3T3-1S17.png)
 
-1. From the left navigation pane of the App Service, under **Settings**, select **Environment variables (1)**. Locate the setting named **issuancePinCodeLength (2)** and select it.
+1. From the left navigation pane of the App Service, under **Settings** select **Environment variables (1)**. Locate the setting named **issuancePinCodeLength (2)** and select it.
 
    ![](./Images/E3T3-1S18.png)
 
@@ -332,7 +345,7 @@ In this task, you will simulate a real-world help desk identity verification sce
    ```
    ![](./Images/E3T3-1S20.png)
 
-1. On the overview page, click on **Default domain**.
+1. On the **Overview** page, click on **Default domain** to open the application page.
 
    ![](./Images/E3T3-1S21.png)
 
@@ -352,9 +365,9 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 1. On Authenticator, click on Sign in to your account, add an account by providing below mentioned credentials and click on **Next**.
    
-      - Enter **Username/Email:** <inject key="AzureAdUserEmail"></inject> in the **Sign in** field. Click **Next** to continue.
+      - Enter **Username/Email: <inject key="AzureAdUserEmail"></inject>** in the **Sign in** field. Click **Next** to continue.
 
-      - Enter **Password:** <inject key="AzureAdUserPassword"></inject> and click **Sign in**
+      - Enter **Password: <inject key="AzureAdUserPassword"></inject>** and click **Sign in**.
 
 1. Once the credentials are added, on the sample application, you will get a message stating **Issuance completed**. 
 
@@ -362,13 +375,13 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 ### Task 3.3: Present Credential from Authenticator to Verify Identity
 
-1. Navigate back to Azure portal, click on Default Domain to launch the sample application.
+1. Navigate back to Azure portal, click on Default Domain to launch the sample application again.
 
 1. On the application page, click **Verify Credential**.
 
    ![](Images/E3T3-3S2.png)
 
-1. On the Presentation of VerifiedEmployee page, click on **Verify Credential**.
+1. On the **Presentation of VerifiedEmployee** page, click on **Verify Credential**.
 
    ![](Images/E3T3-3S3.png)
 
@@ -380,7 +393,7 @@ In this task, you will simulate a real-world help desk identity verification sce
    
    - Open the **Microsoft Authenticator** app, scan the QR code.
    
-   - It will navigate to the **Verified ID** section
+   - It will navigate to the **Verified ID** section.
    
    - Tap on the **Verified Employee** credential and then **confirm**. Select **Next**.
 
@@ -413,9 +426,9 @@ In this task, you will simulate a real-world help desk identity verification sce
       ![](Images/E3T3-4S3.png)
    
 1. Verify that:
-   - The credential type is displayed as `VerifiedEmployee`
-   - The credential revocation status shows `VALID`
-   - The credential contains the expected user identity claims
+   - The credential type is displayed as `VerifiedEmployee`.
+   - The credential revocation status shows `VALID`.
+   - The credential contains the expected user identity claims.
 
       ![](Images/E3T3-4S4.png)
 
@@ -425,11 +438,11 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 ### Task 3.5: Review Verification Logs in Microsoft Entra
 
-1. Navigate to **Entra ID** > **Monitoring & health** > **Audit logs**.
+1. Navigate to **Entra Admin center** portal, under the **Monitoring & health** click on **Audit logs**.
 
 1. Apply the following filers:
-   - **Service**: Verified ID 
-   - **Date range**: Last 24 hours
+   - **Service**: Verified ID.
+   - **Date range**: Last 24 hours.
       
       ![](Images/E3T3-5S1.png)
 
@@ -502,13 +515,13 @@ In this task, you will review how Face Check can be integrated into the Help Des
    - Capture a live selfie using the mobile device camera.
    - Select **Use photo** to attach the image to the credential.
 
-1. Once the photo **(1)** is uploaded, click on **Issue Credential**. You will get a message stating **Issuance completed (3)**. Observe that the captured photo is not permanently stored by the application and is only embedded into the issued credential stored in the user’s wallet. 
+1. Once the photo **(1)** is uploaded, click on **Issue Credential (2)**. You will get a message stating **Issuance completed (3)**. Observe that the captured photo is not permanently stored by the application and is only embedded into the issued credential stored in the user’s wallet. 
 
    ![](Images/E3T3-6S8.png)
 
    ![](Images/E3T3-6S8-1.png)
 
-1. Navigate back to Azure portal, click on Default Domain to launch the sample application. On the application page, click **Verify Credential**. 
+1. Navigate back to **Azure Portal**, click on Default Domain to launch the sample application. On the application page, click **Verify Credential**. 
 
    ![](Images/E3T3-6S9.png)
 
@@ -556,10 +569,10 @@ The help desk scenario demonstrates several key benefits of Verified ID:
 | Vulnerable to social engineering attacks | Resistant to social engineering — credential cannot be forged |
 
 Observe how:
-- The credential was verified cryptographically
-- Claims were securely shared from Microsoft Authenticator
-- Identity verification was completed within seconds
-- Verification activity was recorded for auditing purposes
+- The credential was verified cryptographically.
+- Claims were securely shared from Microsoft Authenticator.
+- Identity verification was completed within seconds.
+- Verification activity was recorded for auditing purposes.
 
 **Additional Use Cases for Verified ID:**
 

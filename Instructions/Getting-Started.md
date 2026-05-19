@@ -4,7 +4,7 @@
 
 ## Lab Scenario
 
-You are part of the Cloud Identity team at Contoso, a growing organization that is facing challenges with manual user onboarding and offboarding, excessive or outdated access permissions, reliance on traditional VPN for internal resource access, and dependence on password-based authentication. These challenges have resulted in increased security risks, limited visibility into user access, and inefficient operational processes.
+You are part of the **Cloud Identity team** at Contoso, a growing organization that is facing challenges with manual user onboarding and offboarding, excessive or outdated access permissions, reliance on traditional VPN for internal resource access, and dependence on password-based authentication. These challenges have resulted in increased security risks, limited visibility into user access, and inefficient operational processes.
 
 To solve this, Contoso plans to adopt Microsoft Entra to modernize its identity and access management by implementing Identity Governance for automated lifecycle management, enforcing Conditional Access policies for secure access control, and enabling centralized visibility through monitoring and access reviews.
 
@@ -20,25 +20,25 @@ By the end of this lab, you will understand how Microsoft Entra helps organizati
 ## Objective
 
 After completing this lab, you will be able to:
-- Understand Identity Governance and Zero Trust security concepts
-- Manage users, groups, and access policies using Microsoft Entra
-- Automate onboarding and offboarding with Lifecycle Workflows
-- Implement Conditional Access and MFA policies
-- Configure Microsoft Entra Global Secure Access for private and internet resources
-- Monitor and review identity-related activities and access events
-- Configure Microsoft Entra Verified ID
-- Issue and verify verifiable credentials using Microsoft Authenticator
-- Understand how Microsoft Entra services work together to provide secure identity and access management
+- Understand Identity Governance and Zero Trust security concepts.
+- Manage users, groups, and access policies using Microsoft Entra.
+- Automate onboarding and offboarding with Lifecycle Workflows.
+- Implement Conditional Access and MFA policies.
+- Configure Microsoft Entra Global Secure Access for private and internet resources.
+- Monitor and review identity-related activities and access events.
+- Configure Microsoft Entra Verified ID.
+- Issue and verify verifiable credentials using Microsoft Authenticator.
+- Understand how Microsoft Entra services work together to provide secure identity and access management.
 
 ### Prerequisites
 
 Before starting this lab, you should have:
-- Basic understanding of cloud and identity concepts
-- Familiarity with the Azure portal and Microsoft Entra admin center
-- Basic knowledge of authentication, authorization, and MFA concepts
-- Understanding of users, groups, and role-based access control (RBAC)
-- Basic understanding of networking concepts such as private and internet access
-- General awareness of Zero Trust security principles
+- Basic understanding of cloud and identity concepts.
+- Familiarity with the Azure portal and Microsoft Entra admin center.
+- Basic knowledge of authentication, authorization, and MFA concepts.
+- Understanding of users, groups, and role-based access control (RBAC).
+- Basic understanding of networking concepts such as private and internet access.
+- General awareness of Zero Trust security principles.
 
 ## Architecture
 

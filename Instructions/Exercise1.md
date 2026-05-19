@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this exercise, you will explore how to implement core Identity Governance capabilities using Microsoft Entra ID. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
+In this hands-on exercise, you will explore how to implement **Core Identity Governance** capabilities using Microsoft Entra ID. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
 
 ## Prerequisites
 
@@ -37,62 +37,61 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. If prompted, provide the credentials below:
 
-   - **Email/Username:** <inject key="AzureAdUserEmail"></inject>
+   - **Email/Username:** <inject key="AzureAdUserEmail"></inject> **(1)** and select **Next (2)**.
  
-    ![Enter Your Username](./Images/GS6.png)
+     ![Enter Your Username](./Images/GS6.png)
  
-3. Next, provide your temporary password **(1)** and select **Sign in (2)**.
- 
-   - **Temporary Access Pass:** <inject key="AzureAdUserPassword"></inject>
+   - **Temporary Access Pass:** <inject key="AzureAdUserPassword"></inject> and select **Sign in (2)**.
  
       ![Enter Your Password](./Images/GS6-1.png)
 
-   >**Note:** If pop-up appears asking about Give feedback to Microsoft, close it. 
+      > **Note:** If pop-up appears asking about Give feedback to Microsoft, **Skip** it. 
+   
+      ![](./Images/E3T2S4N.png)
 
-1. Take a moment to familiarize yourself with Microsoft Entra admin center.
+1. Take a moment to familiarize yourself with **Microsoft Entra admin center**.
 
-   ![](./Images/Adminportal.png)
+   ![](./Images/E1T1S4.png)
 
 1. In the left pane, expand **Entra ID (1)** and select **Groups (2)** then click on **New group (3)**.
 
-   ![](./Images/ETS114.png)
+   ![](./Images/E1T1S5.png)
 
 1. On the **New Group** page, configure the following:
 
-   - **Group type**: Security **(1)**
+   - **Group type**: ``Security`` **(1)**
    - **Group name**: `IT-Department` **(2)**
    - **Group description**: `Dynamic group for IT Department members` **(3)**
-   - **Membership type**: Dynamic User **(4)**
+   - **Membership type**: `Dynamic User` **(4)**
 
-1. Under **Dynamic user members**, click **Add dynamic query (5)**.
+1. Under **Dynamic user members**, click on **Add dynamic query (5)**.
 
    ![](./Images/ETS116.png)
 
 1. In the **Dynamic membership rules** page, configure the following rules and click on **Save (5)**.
 
-   - **Property**: `department` **(1)**
-   - **Operator**: `Equals` **(2)**
-   - **Value**: `IT`**(3)**
+   - **Property**: `department` **(1)**.
+   - **Operator**: `Equals` **(2)**.
+   - **Value**: `IT`**(3)**.
+   - **Rule syntax**: the rule expression should like below **(4)**:
+      ```
+      (user.department -eq "IT")
+      ```
+      ![](./Images/ETS117.png)
 
-   In the Rule syntax, the rule expression should like below **(4)**:
-   ```
-   (user.department -eq "IT")
-   ```
-   ![](./Images/ETS117.png)
-
-1. Click **Create**.
+1. Once after adding the **Dynamic query**, now click on **Create**.
 
    ![](./Images/ETS118.png)
 
-1. Click **+ New group** again to create another dynamic group.
+1. Let's create another dynamic group, now click again on **+ New group**.  
 
-   ![](./Images/ETS119.png)
+   ![](./Images/E1T1S5.png)
 
-1. On the **New Group** page, configure the following:
-   - **Group type**: Security **(1)**
+1. On the **New Group** wizard, configure the following:
+   - **Group type**: `Security` **(1)**
    - **Group name**: `Managers` **(2)**
    - **Group description**: `Dynamic group for all managers` **(3)**
-   - **Membership type**: Dynamic User **(4)**
+   - **Membership type**: `Dynamic User` **(4)**
 
 1. Under **Dynamic user members**, click **Add dynamic query (5)**.
 
@@ -104,40 +103,40 @@ In this task, you will create dynamic groups based on user attributes and define
    ```
    ![](./Images/ETS1111.png)
 
-1. Click **Create**.
+1.  Once after adding the **Dynamic query**, now click on **Create**.
 
-   ![](./Images/ETS1112.png)
+    ![](./Images/ETS1112.png)
 
 1. In the left pane, go to **Users (1)**, click on **AD User1 (2)** to open the profile.
 
    ![](./Images/E1T1S14.png)
 
-1. Click **Edit properties**.
+1. Over the **Overview** page of the user, click on **Edit properties**.
 
    ![](./Images/E1T1S15.png)
 
-1. Select **Job Information (1)** and set the following attributes and then click on **Save (4)**.
+1. Select **Job Information (1)** tab and set the following attributes and then click on **Save (4)**.
 
    - **Job title**: `IT Manager` **(2)**
    - **Department**: `IT` **(3)**
 
       ![](./Images/E1T1S16.png)
 
-1. Navigate back to **Groups (1)**, select **All groups (2)** and Click on **IT-Department (3)**.
+1. Navigate back to **Groups (1)**, select **All groups (2)** and then click on **IT-Department (3)**.
 
-   ![](./Images/ETS1116.png)
+   ![](./Images/E1T1S17.png)
 
-1. Select **Members**, verify that **AD User1** is now added to the group dynamically. Click **Cancel**.
+1. Select **Members**, verify that **AD User1** is now added to the group dynamically.
 
    ![](./Images/E1T1S18.png)
 
    >**Note:** If user is not appeared then wait a few minutes and then click Refresh.
 
-1. From the list, select **Managers** group. Select **Members**, verify that **AD User1** is added as a member in the group.
+1. From the **Groups | All groups** page, select **Managers** group. Select **Members** under Manage Section, verify that **AD User1** is added as a member in the group.
 
    ![](./Images/E1T1S19.png)
 
-1. You can also validate the users by using **Validate rules**. Click on **Dynamic membership rules (1)** under **Manage**, select **Validate rules (2)** and then **+ Add users (3)**.
+1. You can also validate the users by using **Validate rules**. Click on **Dynamic membership rules (1)** under **Manage**, select **Validate rules (2)** tab and then click on **+ Add users (3)**.
 
    ![](./Images/E1T1S20.png)
 
@@ -147,7 +146,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S21-1.png)
 
-1. For AD User2, the job title attribute does not contain "Manager", therefore the user is not added to the group dynamically.
+1. For **AD User2**, the job title attribute does not contain "Manager", therefore the user is not added to the group dynamically.
 
    ![](./Images/E1T1S21-2.png)
 
@@ -159,7 +158,7 @@ Microsoft Entra Lifecycle Workflows automate identity processes across the emplo
 
 In this task, you will set up a lifecycle workflow to automate the onboarding process for new employees. You will configure triggers and automate tasks such as sending welcome emails, assigning licenses, and adding users to groups.
 
-1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**.
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)** on the overview page.
 
    ![](./Images/E1T2-1S1.png)
 
@@ -191,7 +190,7 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S8.png)
 
-1. Click on **Save**.
+1. Click on **Save** to add the user to the group.
 
    ![](./Images/E1T2-1S9.png)
 
@@ -203,11 +202,11 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S11.png)
 
-1. Click on **Save (1)**.
+1. Click on **Save** to add the user to the group.
 
    ![](./Images/E1T2-1S12.png)
 
-1.  Review the order of tasks. Drag tasks to reorder them if needed. Recommended order is mentioned below **(1)**. Click **Review + create (2)**.
+1.  Review the order of tasks. Drag tasks to reorder them if needed. Recommended order is mentioned below **(1)**, then click on **Review + create (2)**.
 
       - Enable user account
       - Send welcome email
@@ -231,7 +230,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
 1. On the Basics tab, provide the below details then click on **Next Task behavior (3)**.
 
-      - **Name**: Onboarding email notification **(1)**
+      - **Name**: Onboarding email notification **(1)**.
       - **Description**: Send the onboarding email notification to New joinee **(2)**.
 
          ![](./Images/E1T2-2S2.png)
@@ -468,7 +467,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
 1. Check the flow of the logic app.
 
-   ![](./Images/E1T2-2S15new.png)
+   ![](./Images/E1T2-2S15.png)
 
    >**Note**: The manual step is the trigger that starts the Logic App when the lifecycle workflow sends a request. The HTTP action processes the request and marks the task as completed, and the Send an email (V2) step sends a notification to the user and manager.
 
@@ -500,19 +499,19 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22new.png)
 
-1. Before running the Lifecysle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and click on **AD User3 (2)**.
+1. Before running the Lifecysle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
 
    ![](./Images/E1T2-2S22-1.png)
 
-1. Click **Edit properties**.
+1. On the **Overview** page of the user, click on **Edit properties**.
 
    ![](./Images/E1T2-2S23.png)
 
-1. Select **All** then scroll down and set the following attributes and then click on **Save (4)**
+1. Select **All** then scroll down and set the following attributes and then click on **Save (4)**.
 
-   - **Employee Hire date**: Select today's date **(1)**
-   - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**
-   - **Email**: Go to Environment tab and copy **User 03 UPN (3)**
+   - **Employee Hire date**: Select today's date **(1)**.
+   - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**.
+   - **Email**: Go to Environment tab and copy **User 03 UPN (3)**.
 
       ![](./Images/E1T2-2S25.png)
 
@@ -520,7 +519,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S18.png)
 
-1. Select **Run on demand** under Overview. 
+1. On **Onboard New Employee - IT Department | Overview** page, select **Run on demand**. 
 
    ![](./Images/E1T2-2S27.png)
 
@@ -528,7 +527,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S28.png)
 
-1. Click **Run workflow**.
+1. After selecting the user, click **Run workflow** to start the onboarding workflow immediately.
 
    ![](./Images/E1T2-2S29.png)
 
@@ -569,7 +568,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
 In this task, you will configure a lifecycle workflow to handle employee offboarding. You will automate tasks such as removing licenses, disabling accounts, and cleaning up group memberships, and validate the complete offboarding process.
 
-1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**
+1. In the Microsoft Entra admin center, expand **ID Governance (1)** in the left navigation pane and select **Lifecycle workflows (2)**. Then click on **+ Create workflow (3)**.
 
    ![](./Images/E1T2-1S1.png)
 
@@ -589,7 +588,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S5.png)
 
-1. Select **Remove all licenses for user  (2)** then click on **Add (3)**.
+1. Select **Remove all licenses for user  (2)**, then click on **Add (3)**.
 
    ![](./Images/E1T2-3S6.png)   
 
@@ -602,7 +601,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
       ![](./Images/E1T2-3S7.png)  
 
-1. Click **Create**.
+1. Click on **Create** to complete the **Offboarding Workflow**.
 
    ![](./Images/E1T2-3S8.png)
 
@@ -614,7 +613,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S10.png)
 
-1. Now click on **Run workflow**.
+1. Now after selecting the user, click **Run workflow** to start the onboarding workflow immediately.
 
    ![](./Images/E1T2-3S11.png)
 
@@ -622,7 +621,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S12.png)
 
-1. On the pop-up ntice that each task shows a status as **Completed**. Click on cancel. 
+1. On the pop-up ntice that each task shows a status as **Completed**. Click on **Cancel**. 
 
    ![](./Images/E1T2-3S13.png)
 
@@ -644,7 +643,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
 1. Configure the Conditional Access Policy with the following details:
 
-      - Name: **CA01-AllCloudApps: Requires MFA for IT department when on any network** **(1)**
+      - **Name**: `CA01-AllCloudApps: Requires MFA for IT department when on any network` **(1)**
       - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
 
          ![](./Images/ETS2227.png)
@@ -669,7 +668,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
          
          ![](./Images/E1T4S2-6.png)
 
-      - Now in the Device platforms blade, toggle the *Configure* switch to **Yes** **(1)** and make sure that **Any device (2)** option is selected. Then click on **Done** **(3)**
+      - Now in the Device platforms blade, toggle the *`Configure`* switch to **Yes** **(1)** and make sure that **Any device (2)** option is selected. Then click on **Done** **(3)**
 
          ![](./Images/E1T4S2-7.png)
 
@@ -677,7 +676,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-8.png)
 
-      - Now in the Location blade, toggle the *Configure* switch to **Yes** **(1)** and select **Any network or location (2)**.
+      - Now in the Location blade, toggle the *`Configure`* switch to **Yes** **(1)** and select **Any network or location (2)**.
 
          ![](./Images/E1T4S2-9.png)
   
@@ -685,7 +684,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-10.png)
 
-      - Now in the Client Apps blade, toggle the *Configure* switch to **Yes** **(1)** and uncheck the boxes for **Legecy authentication client (2)**. Then click on **Done** **(3)**.
+      - Now in the Client Apps blade, toggle the *`Configure`* switch to **Yes** **(1)** and uncheck the boxes for **Legecy authentication client (2)**. Then click on **Done** **(3)**.
 
          ![](./Images/ETS2229.png)
 
@@ -707,11 +706,11 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
       https://portal.azure.com
       ```
 
-   - **Username:** Paste the username **<inject key="User 01 UPN"></inject>**
+   - **Username**: **<inject key="User 01 UPN"></inject>** **(1)** and click **Next (2)**.
 
       ![](./Images/ETS1419.png)   
 
-   - **Password:** Paste the password **<inject key="User's Password"></inject> (1)** and click on **Sign in (2)**
+   - **Password**: **<inject key="User's Password"></inject> (1)** and click on **Sign in (2)**.
 
       ![](./Images/ETS1420.png)   
 
@@ -728,7 +727,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
        ![](./Images/ETS1422.png)    
 
-     - Click **Next**.
+     - Click on **Next**.
 
        ![](./Images/ETS1423.png)     
 
@@ -770,18 +769,18 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
 In this task, you will create and configure access reviews to regularly validate user access to groups or applications. You will define reviewers, schedules, and perform approval or denial actions while reviewing audit logs.
 
-1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**
+1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**.
 
    ![](./Images/E1T3S1.png)
 
-1. Under **Review access to a resource type**, click on **Select**.
+1. On **Create an access review** page, under the **Review access to a resource type**, click on **Select**.
 
    ![](./Images/E1T3S2.png)
 
 1. On the **Review type** page, provide the below details:
-      - Select what to review :**Teams + Groups (1)**
-      - Review scope : **Select Teams + groups (2)**
-      - Group : click on **+ Select groups (3)**
+      - Select what to review :**Teams + Groups (1)**.
+      - Review scope : **Select Teams + groups (2)**.
+      - Group : click on **+ Select groups (3)**.
 
          ![](./Images/E1T3S3.png)
 
@@ -793,7 +792,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS5119.png)
 
-1. In the select reviewers drop down, click on **Selected user(s) or group(s)**
+1. In the select reviewers drop down, click on **Selected user(s) or group(s)**.
 
    ![](./Images/ETS1266.png)
 
@@ -801,11 +800,11 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS1267.png)
 
-1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**
+1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**.
 
    ![](./Images/ETS1268.png)
 
-1. Click on **Next Review + Create**
+1. Click on **Next: Review + Create**.
 
 1. On the **Review + create** page, provide Review name as **Access review (1)** and click on **Create (2)**.
 
@@ -813,7 +812,7 @@ In this task, you will create and configure access reviews to regularly validate
 
 1. The designated reviewer will receive an email notification to perform the review.
 
-1. Open a new tab and navigate to outlook using below link
+1. Open a new tab and navigate to outlook using below link:
 
    ```
    https://outlook.office.com/
@@ -828,9 +827,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS1311.png)
 
-1. It will navigate to my access portal.
-
-1. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
+1. It will navigate to **My Access** portal. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
 
    ![](./Images/ETS2222.png)
 
@@ -850,7 +847,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS2225.png)
 
-1. Now click on **Results (1)** to see the logs **(2)** and also click on **View** to see audit details.
+1. Now, select **Results (1)** to review the access review outcomes **(2)**. You can also click **View** under Audit Details to examine the audit information for each user.
 
    ![](./Images/ETS2226.png)
 
@@ -858,7 +855,7 @@ In this task, you will create and configure access reviews to regularly validate
 
 In this task, you will explore audit logs, sign-in logs, and reporting dashboards to monitor identity activities. This helps in gaining visibility into governance operations and improving security posture.
 
-1. In the Microsoft Entra admin center, navigate to **Entra ID** > **Monitoring & health** > **Audit logs**. Review the Audit logs activity across the tenant.
+1. In the Microsoft Entra admin center, navigate to **Entra ID > Monitoring & health > Audit logs**, to review activity across the tenant.
 
    ![](./Images/E1T5S1.png)
 
@@ -876,6 +873,6 @@ In this task, you will explore audit logs, sign-in logs, and reporting dashboard
 
 In this exercise, you implemented key Identity Governance capabilities in Microsoft Entra ID, including dynamic group-based access, automated onboarding and offboarding workflows, and automatic license provisioning. You also integrated a custom Logic App extension, performed access reviews, and enforced security through Conditional Access with MFA. Additionally, you monitored activity using audit and sign-in logs. Together, these features establish a strong foundation for a modern Identity Governance and Administration (IGA) solution.
 
-Now, click on Next from the lower right corner to move on to the next page.
+### You have successfully completed this exercise. Kindly click **Next >>** to proceed further
 
    ![](./Images/Nextpage.png)

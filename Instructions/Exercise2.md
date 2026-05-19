@@ -1,20 +1,21 @@
 # Exercise 2: Microsoft Entra Global Secure Access (Internet & Private Access)
 
-**Estimated Duration: 60 minutes**
+## Estimated Duration: 60 minutes
 
 ## Overview
-In this lab, you will configure Microsoft Entra Global Secure Access to securely manage access to private and internet resources. You will enable the service, install the client, and set up Private Access to connect to internal resources without a VPN. You will apply Conditional Access policies to enforce security controls and configure Internet Access for web filtering. Finally, you will validate connectivity and review logs to ensure policies are working as expected.
+
+In this hands-on exercise, you will configure **Microsoft Entra Global Secure Access** to securely manage access to private and internet resources. You will enable the service, install the client, and set up Private Access to connect to internal resources without a VPN. You will apply **Conditional Access Policies** to enforce security controls and configure Internet Access for web filtering. Finally, you will validate connectivity and review logs to ensure configured policies are working as expected.
 
 ## Prerequisites
 
 The following are prerequisites to complete this exercise:
 
-- Microsoft Entra ID P1 or P2 license
-- **Microsoft Entra Internet Access** and **Microsoft Entra Private Access** licenses (included in Microsoft Entra Suite)
-- Global Administrator or Security Administrator role
-- A Windows 10/11 device that is either **Microsoft Entra joined** or **Microsoft Entra hybrid joined**
-- For Private Access: An on-premises server or Azure VM to act as the Private Access connector host
-- Internet connectivity from the connector server to Microsoft Entra
+- Microsoft Entra ID P1 or P2 license.
+- **Microsoft Entra Internet Access** and **Microsoft Entra Private Access** licenses (included in Microsoft Entra Suite).
+- Global Administrator or Security Administrator role.
+- A Windows 10/11 device that is either **Microsoft Entra joined** or **Microsoft Entra hybrid joined**.
+- For Private Access: An on-premises server or Azure VM to act as the Private Access connector host.
+- Internet connectivity from the connector server to Microsoft Entra.
 
 ## Lab Objectives
 
@@ -30,73 +31,73 @@ In this lab, you will complete the following exercise:
 
 Microsoft Entra Global Secure Access is Microsoft's Security Service Edge (SSE) solution that combines identity-aware network security with Zero Trust network access. It provides two core capabilities:
 
-- **Microsoft Entra Private Access**: Replaces traditional VPN by providing Zero Trust access to private/on-premises resources
+- **Microsoft Entra Private Access**: Replaces traditional VPN by providing Zero Trust access to private/on-premises resources.
 - **Microsoft Entra Internet Access**: Provides Secure Web Gateway (SWG) capabilities for internet-bound traffic.
 
-In this task, you will activate Microsoft Entra Global Secure Access in your tenant and prepare the environment for secure access to both private and internet resources. You will also download the Global Secure Access client, which will be used in later tasks to connect endpoint devices securely
+In this task, you will activate **Microsoft Entra Global Secure Access** in your tenant and configure the environment to securely access both private and internet-based resources. You will also download the **Global Secure Access** client, which will be used in later tasks to connect endpoint devices securely.
 
 1. In the left navigation pane, expand **Global Secure Access (1)** then select **Dashboard (2)** and click on **Activate (3)**.
 
    ![](./Images/E2T1S1new.png)
 
-1. Once activated, you will get a notification Tenant activation is completed successfully.
+1. Once activated, you will get a notification **Tenant activation is completed successfully**.
 
    ![](./Images/E2T1S2.png)
 
-1. Now, in your desktop **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
+1. On your **LabVM Desktop**, click on **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
 
    ![](./Images/E3T3S3.png)
 
-1. Provide Computer Name as <inject key="ClientVM DNS Name"></inject> **(1)** then click on **Connect (2)**.
+1. Provide **Computer** name as <inject key="ClientVM DNS Name"></inject> **(1)** then click on **Connect (2)**.
 
    ![](./Images/E3T3S4.png)
 
 1. Now click on **More choices (1)** then select **Use a different account (2)**. Provide the below credentials and click on **OK (5)**.
 
-      - Username :  .\ <inject key="ClientVM Admin Username"></inject> **(3)**
-      - Password :  <inject key="ClientVM Admin Password"></inject> **(4)**
+      - **Username** :  .\ <inject key="ClientVM Admin Username"></inject> **(3)**
+      - **Password** : <inject key="ClientVM Admin Password"></inject> **(4)**
 
          ![](./Images/E2T1S19.png)
 
-1. Now Click on **Yes** to connect to the **Client VM**
+1. Now, click on **Yes** to connect to the **Client VM**.
 
       ![](./Images/ETS2124.png)
 
-   >Note: A window will appeat to Choose privacy setting for your device, click on **Next** and then **Accept**.
+   >**Note**: A window will appeat to Choose privacy setting for your device, click on **Next** and then **Accept**.
       ![](./Images/ETS4111.png)
 
-1. On the Start menu, search for **settings (1)** and click on **Setting (2)**.
+1. On the **Start** menu, search for **settings (1)** and click on **Settings (2)**.
 
       ![](./Images/ETS4112.png)
 
-1. Select **Accounts (1)** and click on **Access work or school (2)**.
+1. Navigate to **Accounts (1)** and select  **Access work or school (2)** to continue.
 
       ![](./Images/ETS4113.png)
 
-1. Click on **Connect**.
+1. Then click on **Connect** to add your organizational account.
 
       ![](./Images/ETS4114.png)
 
-1. Select **Join this device to Microsoft Entra ID**.
+1. Click on **Join this device to Microsoft Entra ID** to join the device to Entra ID.
 
       ![](./Images/ETS4115.png)
 
-1. It will prompt to sign in. Provide the below credentials:
+1. It will prompt to **Sign in**. Provide the below credentials:
 
-   - **Username:** Paste the username  <inject key="AzureAdUserEmail"></inject> in the **Sign in (1)** field. Click **Next (2)** to continue.
+   - **Username:** <inject key="AzureAdUserEmail"></inject> **(1)** and click on **Next (2)** to continue.
 
       ![](./Images/GS6.png)   
 
-   - **Password:**  Paste the password <inject key="AzureAdUserPassword"></inject> **(1)** and click **Sign in (2)**.
+   - **Password:** <inject key="AzureAdUserPassword"></inject> **(1)** and click on**Sign in (2)**.
 
       ![](./Images/GS6-1.png)  
 
-1. Click on **Join** and then click on **Done**.
+1. Click on **Join** to connect, and then select **Done** to complete the process.
 
       ![](./Images/ETS4116.png)
       ![](./Images/ETS4117.png)
 
-1. On the Start menu, search for **cmd (1)** and click on **Command Prompt (2)**.
+1. On the **Start** menu, search for **cmd (1)** and click on **Command Prompt (2)**.
 
       ![](./Images/ETS4118.png)
 
@@ -114,20 +115,19 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
 ## Task 2: Configure Entra Private Access
 
-In this task, you will configure Microsoft Entra Private Access by enabling traffic forwarding and deploying a Private Access connector. You will create an application segment and assign users to securely access internal resources. Finally, you will validate connectivity by accessing a private resource (RDP) through the Global Secure Access client without using a traditional VPN.
+In this task, you will configure **Microsoft Entra Private Access** by enabling traffic forwarding and deploying a **Private Access connector**. You will create an application segment and assign users to securely access internal resources. Finally, you will validate connectivity by accessing a private resource (RDP) through the Global Secure Access client without using a traditional VPN.
 
-1. On the Lab VM, in the Microsoft Entra admin center, navigate to **Traffic forwarding(1)**
-and enable the **Private access profile (2)**. Click on **Ok** on the pop-up window.
+1. In the **Microsoft Entra admin center** on the Lab VM, go to **Traffic forwarding (1)**, enable the **Private access profile (2)**, and then click **OK** in the confirmation pop-up wizard.
 
    ![](./Images/E2T2S1.png)
 
    ![](./Images/E2T2S1-1.png)
 
-1. Once it is enabled click on **View (3)** to add the user and group assignments.
+1. Once it is enabled, click on **View (3)** to add the user and group assignments.
 
    ![](./Images/E2T2S2.png)
 
-1. Enable **Assign to all users (1)**, on pop-up, click on **OK (2)**, once enabled select **Done (3)**.
+1. Enable **Assign to all users (1)** toggle. In the pop-up window, click **OK (2)**, and once the setting is enabled, select **Done (3)**.
 
    ![](./Images/E2T2S3-1.png)
 
@@ -135,160 +135,161 @@ and enable the **Private access profile (2)**. Click on **Ok** on the pop-up win
 
    ![](./Images/E2T2S3-3.png)
 
-1. Now navigate to **Connectors and sensors (1)** and click **Download connector service (2)** to download the Private Access connector installer.
+1. Now, navigate to **Connectors and sensors (1)** and click **Download connector service (2)** to download the Private Access connector installer.
 
    ![](./Images/E2T2S4.png)
 
-1. Click on **Accept terms & Download**.
+1. Click on **Accept terms & Download** to download the installer.
 
    ![](./Images/E2T2S5.png)
 
-1. Once installer file is downloaded click on **Open file**
+1. Once installer file is downloaded, click on **Open file**
 
    ![](./Images/ETS2108.png)
 
-1. Check the box **(1)** and click on **Install (2)**.
+1. Check the box **(1)** to accept the license terms and conditions then click on **Install (2)**.
 
    ![](./Images/ETS2109.png)
 
-1. While installing, it will prompt to sign in. Provide the below credentials:
+1. While installing, it will prompt you to **Sign in**. Provide the below credentials:
 
-   - **Username:** Paste the username  <inject key="AzureAdUserEmail"></inject> in the **Sign in** field. Click **Next** to continue.
+   - **Username:** <inject key="AzureAdUserEmail"></inject> in the **Sign in (1)** field and click **Next(2)** to continue.
 
       ![](./Images/GS6.png)   
 
-   - **Password:**  Paste the password <inject key="AzureAdUserPassword"></inject> **(1)** and click **Sign in (2)**.
+   - **Password:** <inject key="AzureAdUserPassword"></inject> **(1)** and click on **Sign in (2)**.
 
       ![](./Images/GS6-1.png)  
 
-1. Once installation is completed, click on **Close**
+1. Once installation is completed, click on **Close**.
 
    ![](./Images/ETS2113.png) 
 
-1. Navigate to **Microsoft Entra admin portal** and check the **Connectors** status as **Active**.
+1. Navigate to **Microsoft Entra admin portal** to check the **Connectors** status as **Active**.
 
    ![](./Images/E2T2S10.png) 
 
    >**Note**: If the connector is not appeared, refresh the browser and check again.
 
-1. Navigate to **Applications (1)** then select **Quick Access (2)**. Provide the Name as **Quick actions (3)** and click on **+ Add Quick Access application segment (4)**.
+1. Navigate to **Applications (1)** then select **Quick Access (2)**. Enter  **Quick actions (3)** as Name, and then click on **+ Add Quick Access application segment (4)**.
 
    ![](./Images/E2T2S11.png) 
 
-1. Provide the below details and click **Apply (5)** to add the segment.
+1. Provide the below details, and click **Apply (5)** to add the segment.
 
-   - **Destination type**: IP address **(1)**
+   - **Destination type**: `IP address` **(1)**
    - **IP address**: `10.0.0.1/24` **(2)**
    - **Ports**: `3389`  **(3)**
-   - **Protocol**: TCP **(4)**
+   - **Protocol**: `TCP` **(4)**
 
       ![](./Images/E2T2S12.png) 
 
-1. Click **Save** to create the Quick Access application segment.
+1. Click on **Save**, to create the Quick Access application segment and apply the changes for **Quick Access Configuration**.
 
    ![](./Images/E2T2S13.png)
 
-1. Navigate to **Quick Acces (1)** under Applications, select **Users and groups (2)** and click **+ Add user/group (3)**.
+1. Navigate to **Quick Access (1)** under Applications, select **Users and groups (2)** and then click on **+ Add user/group (3)**.
 
    ![](./Images/E2T2S14.png)
 
-   >**Note**: If you could not find users and groups option, click on **Quick access** again in the left pane to get the option.
+   >**Note**: If you could not find users and groups option, click on **Quick access** again in the left pane to get the option or refresh the browser window.
 
-1. Click on **None selected (1)** then select **IT-Department (2)** and click on **select (3)**.
+1. On the **Add Assignment** wizard, click on **None selected (1)**, then select **IT-Department (2)** and click on **select (3)**.
 
    ![](./Images/E2T2S15.png)
 
-1. Click on **Assign** to add the group.
+1. Once the group is selected, click on **Assign** to add the group.
 
    ![](./Images/E2T2S16.png)
 
-1. On the Client VM Desktop, double click on **Global Secure Access Client** installer file.
+1. On the **Client VM Desktop**, double click on **Global Secure Access Client** installer file.
    
    ![](./Images/ETS2125.png) 
 
-1. On the Global Secure Access Client, click on **Sign in**.
+1. On the **Global Secure Access** window, click on **Sign in**.
 
    ![](./Images/E1T2S22.png)
 
 1. If prompted sign in with the below credentials.
 
-   - **Username:** Paste the username  **<inject key="User 01 UPN"></inject>** then click on **Next**.
+   - **Username**: **<inject key="User 01 UPN"></inject> (1)** then click on **Next (2)**.
 
       ![](./Images/ETS1419.png)   
 
-   - **Password:**  Paste the password **<inject key="User's Password"></inject> (1)** and click on **Sign in (2)**.
+   - **Password**: **<inject key="User's Password"></inject> (1)** and click on **Sign in (2)**.
 
       ![](./Images/E1T2S23-2.png)
 
-1. On **Sign in to all apps and websites on this device** pop up, select **Yes**.
+1. On **Sign in to all apps and websites on this device** pop up wizard, select **Yes**.
 
    ![](./Images/E1T2S24.png)
 
-1. On **Allow your Oraganization to manage your device** pop up. Select **Yes**.
+1. On **Allow your Oraganization to manage your device** pop up wizard, select **Yes**.
 
    ![](./Images/E1T2S25.png)
 
-1. On the **Account added to this device** select **Done**.
+1. On the **Account added to this device** pop up wizard, select **Done** to finish the setup.
 
    ![](./Images/ETS2132.png)
 
-1. Wait for few seconds and check the status as **Connected**.
+1. Wait for few seconds and check the status as **Connected** on the Connections page along with the additional details.
 
    ![](./Images/E1T2S27.png)
 
-1. Navigate to Azure portal, search for **Virtual machines (1)** and select it **(2)**.   
+1. Navigate to **Azure Portal** , search for **Virtual machines (1)** and select it **(2)**.   
 
    ![](./Images/E1T2S28.png)
 
-1. Select rdpvm-<inject key="Deployment ID" enableCopy="false"></inject> from the list. Copy **Private IP address** and paste it in the notepad.
+1. Select **rdpvm-<inject key="Deployment ID" enableCopy="false"></inject>** from the list. Copy **Private IP address** from the overview page and paste it in the notepad for future use.
 
    ![](./Images/E1T2S29.png)
 
    ![](./Images/E1T2S29-1.png)
 
-1. Navigate to ClientVM, in the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
+1. Navigate to **ClientVM**. From the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
 
    ![](./Images/E3T3S3.png)
 
-1. In the **Computer** field, enter the **private IP address (1)** of the RDP server copied in Step 29. Click **Connect (2)**.
+1. In the **Computer** field, enter the **private IP address (1)** of the RDP server that is copied in Step 29. Click on**Connect (2)**.
 
    ![](./Images/ETS2122.png)
 
-1. Enter the credentials for the RDP server when prompted and click on **Ok (3)**.
+1. Enter the credentials for the RDP server when prompted and click on **OK (3)**.
 
-      - Username : <inject key="adminUsername"></inject> **(1)**
-      - Password :  <inject key="admingPassword"></inject> **(2)**
+      - **Username** :<inject key="adminUsername"></inject> **(1)**
+      - **Password** : <inject key="adminPassword"></inject> **(2)**
 
       ![](./Images/E3T3S6.png)
 
-1. Now Click on **Yes** to connect to the **RDPserver**
+1. Now, click on **Yes** to connect to the **RDPserver**
 
       ![](./Images/ETS2124.png)
 
-1. Verify that the RDP session establishes successfully — this traffic is being routed through the Global Secure Access Private Access tunnel without a traditional VPN.
+1. Verify that the RDP session is established successfully and that the traffic is routed through the Global Secure Access Private Access tunnel without using a traditional VPN.
 
    ![](./Images/E2T2S34.png)
 
    > **Note:** RDP should connect successfully using only the private IP address, even without a VPN, because the Global Secure Access client is tunneling the traffic to the Private Access connector on the corporate network.
 
-1. Once connected close the Remote desktop connection of RDP server.
+1. Once connected, close the Remote desktop connection of RDP server.
 
 ## Task 3: Apply Conditional Access Policies to Private Access
 
-In this task, you will apply Conditional Access policies specifically to Private Access traffic, requiring device compliance and MFA before users can connect to private resources.
+In this task, you will configure **Conditional Access policies for Private Access traffic**, requiring device compliance and MFA before users can connect to private resources.
 
-1. In the Lab VM, navigate back to Microsoft Entra admin center, expand **Global Secure Accesss (1)**, then **Application (2)**, under it click on **Quick Access (3)**, select **Conditional Access (4)**. Click on **+ New policy (5)**.
+1. On the **Lab VM**, return to the Microsoft Entra admin center. Expand **Global Secure Access (1)**, select **Application (2)**, then click on **Quick Access (3)**. Navigate to **Conditional Access (4)** under Security and click on **+ New policy (5)**.
 
    ![](./Images/E2T3S1.png)
 
-1. Configure the Conditional Access Policy with the following details:
+1. Configure the **Conditional Access Policy** with the following details:
 
-   - **Name:** CA02-Private access: Requires MFA and Device compliance for IT department **(1)**
+   - **Name:** `CA02-Private access: Requires MFA and Device compliance for IT department` **(1)**.
+
    - **Assignments**: Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
 
       ![](./Images/ETS2233.png)
 
-   - A new window will slide in, click on **Select users and Groups** **(1)** then select the check box saying **Users and groups** **(2)**
+   - A new window will slide in, click on **Select users and Groups** **(1)** then select the check box saying **Users and groups** **(2)**.
 
    - Select window will open, select **IT-Department (3)** and then click on **Select**  button.
    
@@ -302,7 +303,7 @@ In this task, you will apply Conditional Access policies specifically to Private
 
       ![](./Images/ETS2235.png)
 
-   - Now in the Device platforms blade, toggle the *Configure* switch to **Yes (1)** and make sure that all **Any device (2)** option is selected. Then click on **Done** **(3)**
+   - Now in the Device platforms blade, toggle the `Configure` switch to **Yes (1)** and make sure that **Any device (2)** option is selected, then click on **Done** **(3)**.
 
       ![](./Images/E2T3S2-5.png)
 
@@ -338,34 +339,34 @@ In this task, you will apply Conditional Access policies specifically to Private
 
 1. Once it is authenticated, enter the credentials for the RDP server when prompted and click on **OK (3)**.
 
-      - Username : <inject key="adminUsername"></inject> **(1)**
-      - Password :  <inject key="adminPassword"></inject> **(2)**
+      - **Username** : <inject key="adminUsername"></inject> **(1)**
+      - **Password** :  <inject key="adminPassword"></inject> **(2)**
 
          ![](./Images/E3T3S6.png)
 
-1. Now Click on **Yes** to connect to the **RDP server**.
+1. Now,  click on **Yes** to connect to the **RDP server**.
 
       ![](./Images/ETS2124.png)
 
-1. Once connected close the Remote desktop connection of RDP server.
+1. Once connected, close the Remote desktop connection of RDP server.
 
 ## Task 4: Configure Entra Internet Access
 
 In this task, you will configure Microsoft Entra Internet Access by enabling traffic forwarding profiles and applying web content filtering policies. You will create a security profile and enforce it using Conditional Access to control and restrict access to specific websites. Finally, you will validate the policy by testing internet access from a client device.
 
-1. In the Microsoft Entra admin center, navigate to **Global Secure Access** expand **Connect (1)** and click on **Traffic forwarding (2)** then toggle the **Internet access profile (3)** to **Enabled**.
+1. In the Microsoft Entra admin center, navigate to Global Secure Access, expand **Connect (1)**, and select **Traffic forwarding (2)**. Then, set the Internet access profile toggle to **Enabled (3)**.
 
    ![](./Images/E3T4S1.png)
 
-1. Click on **Enable Microsoft and Internet Access profiles**
+1. Click on **Enable Microsoft and Internet Access profiles** on the popup wizard.
 
    ![](./Images/E3T4S2.png)
 
-1. On the Internet access profile, click on **View** to add the users.
+1. On the **Internet access profile**, click on **View** to add the users.
 
    ![](./Images/E3T4S3.png)
 
-1. Enable **Assign to all users (1)**. On the pop-up click on **OK (2)**. Once enable, click on **Done (3)**.
+1. Enable **Assign to all users (1)** toggle. In the pop-up window, click **OK (2)**, and once the setting is enabled, select **Done (3)**.
 
    ![](./Images/E3T4S4-1.png)
 
@@ -377,7 +378,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
    ![](./Images/E3T4S5.png)
 
-1. Now expand **Secure (1)**, select **Web content filtering policies (2)** then click on **+ Create policy (3)**.
+1. Now expand **Secure (1)**, select **Web content filtering policies (2)**, then click on **+ Create policy (3)**.
 
    ![](./Images/E3T4S6.png)
 
@@ -388,17 +389,17 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 4. Under **Policy rules**, click **+ Add rule (1)**:
 
    - **Rule name**: `Blockcategory` **(2)**
-   - **Destination type**: Webcategory **(3)**
+   - **Destination type**: `Webcategory` **(3)**
    - **Search**: Search **Streaming Media And Downloads (4)** and select **(5)** it.
-   - Click on **Add (6)**, after added select **Next (7)** .
+   - Click on **Add (6)**, after the rule is added select **Next (7)** .
 
        ![](./Images/E3T4S8.png)
 
-1. On the **Review** tab, click on **Create policy**.
+1. On the **Review** tab, click on **Create policy** to create Web content filtering policy.
 
    ![](./Images/E3T4S9.png)
 
-1. Navigate to **Security profiles (1)** under Secure and click on **+ Create profile (2)**.
+1. Navigate to **Security profiles (1)** under Secure, and click on **+ Create profile (2)**.
 
    ![](./Images/E3T4S10.png)
 
@@ -428,7 +429,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
 1. Configure the Conditional Access Policy with the following details:
 
-      - Name: **CA03-Internet access: block Streaming websites for IT department** **(1)**
+      - **Name**: ``CA03-Internet access: block Streaming websites for IT department`` **(1)**.
       - Click on **0 users or agents (Preview) selected** **(2)** under Users or agents (Preview) option.
 
          ![](./Images/ETS2236.png)
@@ -441,15 +442,15 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
          ![](./Images/ETS2237.png)
 
-      - Click on **All internet resources with Global secure access** **(2)**
+      - Make sure to select **All internet resources with Global secure access** **(2)**.
 
          ![](./Images/E2T4S17-4.png)
 
-      - Click on **0 controls selected (1)** of `Session` Section under the Access Control option.
+      - Click on **0 controls selected (1)** of `Session` section under the Access Control option.
 
          ![](./Images/ETS2238.png)
 
-      - In the **Session** pane, select the check Box for **use Global Secure Access Security profile (1)** then, select **Webprofile (2)** and click on **Select (3)**.
+      - In the **Session** pane, select the check Box for **Use Global Secure Access security profile (1)** then, select **Webprofile (2)** and click on **Select (3)**.
 
          ![](./Images/E2T4S17-6.png)
    
@@ -457,7 +458,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
          ![](./Images/ETS2240.png)
 
-1. Open the ClientVM, verify the Global Secure Access client is connected from system tray.
+1. Open the **ClientVM**, verify the Global Secure Access client is connected from system tray.
 
    ![](./Images/ETS2328.png)
 
@@ -476,36 +477,36 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
 In this task, you will collect and analyze network traffic using the Global Secure Access client and apply filters to validate Private and Internet access behavior. You will also review traffic logs and insights in the Entra portal to confirm policy enforcement and usage patterns.
 
-1. On the Client VM, right click on Global secure access client on the systems tray and select **Advanced logs**.
+1. On the **Client VM**, right click on Global secure access client on the systems tray and select **Advanced logs**.
 
    ![](./Images/ETS2511.png)
 
-1. Select **Traffic (1)** and click on **Start collecting logs (2)**.
+1. On the **Global Secure Access Client - Advanced Diagnostics** wizard, select **Traffic (1)** tab and click on **Start collecting (2)** to start collecting the traffic logs.
 
    ![](./Images/ETS2512.png)
 
-1. Open browser and search for **Netflix** or **primevideo** and verify that the pages are not acceesiable.
+1. Open browser and search for **Netflix** or **Primevideo** in order to verify that the pages are not acceesiable.
 
    ![](./Images/ETS2513.png)
 
 1. Now open **Remote desktop connection** and login into RDP server using Private ipaddress and provising below credentials: 
 
-      - Username : <inject key="adminUsername"></inject> **(1)**
-      - Password :  <inject key="adminPassword"></inject> **(2)**
+      - **Username** : <inject key="adminUsername"></inject> **(1)**
+      - **Password** : <inject key="adminPassword"></inject> **(2)**
 
       ![](./Images/ETS2127.png)
 
 1. Once connected close the Remote desktop connection of RDP server.
 
-1. Now open **Global secure access client- advanced diagnostics** and click on **Stop collecting** and check the logs.
+1. Now open **Global Secure Access Client - Advanced Diagnostics**, click **Stop collecting**, and review the logs.
 
    ![](./Images/ETS2514.png)
 
-1. You can add filter as well. Click on **Add filter** and provide the below information and click on **Ok (4)**
+1. You can add filter as well. Click on **Add filter** and provide the below information and click on **Apply (4)**.
 
-   - **Filter**: Channel **(1)**
-   - **Operator**: == **(2)**
-   - **Vaule** : Private **(3)**
+   - **Filter**: ``Channel`` **(1)**
+   - **Operator**: `==` **(2)**
+   - **Vaule** : ``Private`` **(3)**
 
    ![](./Images/ETS2515.png)
 
@@ -513,11 +514,11 @@ In this task, you will collect and analyze network traffic using the Global Secu
 
    ![](./Images/ETS2516.png)
 
-1. Add the filter for **Internet access** and check the logs
+1. Add the filter for **Internet access** and check the logs.
 
    ![](./Images/ETS2517.png)
 
-1. Now, in the lab VM, navigate to Microsoft Entra admin center and click on **Dashboard** under Global secure access and check the insights like users and devices, uasge profiling, top used cloud applications etc.
+1. Now, on the **Lab VM**, navigate to the **Microsoft Entra admin center** and select **Dashboard** under **Global Secure Access**. Review the insights, including **Users and devices**, **Usage profiling**, and **Top used cloud applications**.
 
    ![](./Images/ETS2518.png)
 
@@ -529,14 +530,14 @@ In this task, you will collect and analyze network traffic using the Global Secu
 
    ![](./Images/ETS2520.png)
 
-1. you can also filter the logs. For example click on add filter and select the destination FQDN and provide value as **netflix.com** and apply. You can the actions as blocked.
+1. You can also filter the logs. For example, click **Add filter**, select **Destination FQDN**, enter **netflix.com** as the value, and apply the filter. You can then observe the actions marked as **Blocked**.
 
    ![](./Images/ETS2521.png)
 
 ## Summary
 
-In this exercise, you configured Microsoft Entra Global Secure Access and set up secure connectivity for both private and internet resources. You deployed the client and Private Access connector, enabled secure RDP access without a VPN, and applied Conditional Access policies for enhanced security. You also configured Internet Access with web filtering and security profiles. Finally, you validated access and reviewed logs to understand traffic flow and policy enforcement.
+In this exercise, you configured **Microsoft Entra Global Secure Access** and set up secure connectivity for both private and internet resources. You deployed the client and Private Access connector, enabled secure RDP access without a VPN, and applied Conditional Access policies for enhanced security. You also configured Internet Access with web filtering and security profiles. Finally, you validated access and reviewed logs to understand traffic flow and policy enforcement.
 
-Now, click on Next from the lower right corner to move on to the next page.
+### You have successfully completed this exercise. Kindly click **Next >>** to proceed further
 
    ![](./Images/Nextpage.png)
