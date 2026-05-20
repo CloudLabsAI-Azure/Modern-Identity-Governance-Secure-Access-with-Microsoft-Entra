@@ -110,7 +110,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S14.png)
 
-1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. Once the status is **Registered (2)**, click on **Close (3)**.
+1. Now, navigate back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. Once the status is **Registered (2)**, click on **Close (3)**.
 
    ![](./Images/E3T1S15.png)
 
@@ -134,7 +134,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S20.png)
 
-1. Now, naviagte back to **Microsoft Entra admin center**, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
+1. Now, navigate back to **Microsoft Entra admin center**, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
 
    ![](./Images/E3T1S21.png)
 
@@ -215,11 +215,11 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S9.png)
 
-1. Once it is successful, you can see discount is applied and price of the latops has been changes.
+1. Once it is successful, you can see discount is applied and price of the laptops has been changes.
 
    ![](./Images/E3T2S10.png)
 
-1. Navigate back to **Microsoft Entra Admin Centre** portal, then **Credenitals (1)** under Verified ID. Select **Verified employee(2)**. 
+1. Navigate back to **Microsoft Entra Admin Centre** portal, then **Credentials (1)** under Verified ID. Select **Verified employee(2)**. 
 
    ![](./Images/E3T2S11.png)
 
@@ -348,6 +348,14 @@ In this task, you will simulate a real-world help desk identity verification sce
 1. On the **Overview** page, click on **Default domain** to open the application page.
 
    ![](./Images/E3T3-1S21.png)
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+<validation step="25a9fcea-3720-4ae7-8710-2fb18c77e406" />
+
 
 ### Task 3.2: Configure Verification Request with Required Claims
 

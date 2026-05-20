@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this hands-on exercise, you will explore how to implement **Core Identity Governance** capabilities using Microsoft Entra ID. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
+In this hands-on exercise, you will explore how to implement **Core Identity Governance** capabilities using **Microsoft Entra ID**. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
 
 ## Prerequisites
 
@@ -150,12 +150,12 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S21-2.png)
 
-     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
-     > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
-     > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
-     > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
 
-     <validation step="8ef6e340-178f-4e34-b921-3bfae73ff76a" />
+<validation step="8ef6e340-178f-4e34-b921-3bfae73ff76a" />
 
 ## Task 2: Entra ID Lifecycle Management
 
@@ -506,7 +506,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22new.png)
 
-1. Before running the Lifecysle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
+1. Before running the Lifecycle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
 
    ![](./Images/E1T2-2S22-1.png)
 
@@ -522,7 +522,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
       ![](./Images/E1T2-2S25.png)
 
-1. Navigate to **Lifecycle workflows (1)** under ID Goverenance, select **Workflows (2)**, then click on **Onboard New Employee - IT Department (3)**.
+1. Navigate to **Lifecycle workflows (1)** under ID Governance, select **Workflows (2)**, then click on **Onboard New Employee - IT Department (3)**.
 
    ![](./Images/E1T2-2S18.png)
 
@@ -550,7 +550,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22-1.png)
 
-1. Now click on **Group** to check the user has been assigned to the group **Newjoiner** and navigate back to users and check that **license** that has been assigned to the user.
+1. Now click on **Group** to check the user has been assigned to the group **Newjoiners** and navigate back to users and check that **license** that has been assigned to the user.
 
    ![](./Images/E1T2-2S33.png)
    
@@ -567,7 +567,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-1. After login, check that the email has recieved in Inbox.
+1. After login, check that the email has received in Inbox.
 
    ![](./Images/ETS5117.png)
 
@@ -691,7 +691,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-10.png)
 
-      - Now in the Client Apps blade, toggle the *`Configure`* switch to **Yes** **(1)** and uncheck the boxes for **Legecy authentication client (2)**. Then click on **Done** **(3)**.
+      - Now in the Client Apps blade, toggle the *`Configure`* switch to **Yes** **(1)** and uncheck the boxes for **Legacy authentication client (2)**. Then click on **Done** **(3)**.
 
          ![](./Images/ETS2229.png)
 
@@ -772,6 +772,13 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
    ![](./Images/E1T4S8.png)
 
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+<validation step="966b401f-dcdc-4d81-b5ac-01bbbd0929d3" />
+
 ## Task 4: Setting Up Access Reviews
 
 In this task, you will create and configure access reviews to regularly validate user access to groups or applications. You will define reviewers, schedules, and perform approval or denial actions while reviewing audit logs.
@@ -803,11 +810,11 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS1266.png)
 
-1. Then click on **+ select reviwers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **select (3)**.
+1. Then click on **+ select reviewers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **select (3)**.
 
    ![](./Images/ETS1267.png)
 
-1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**.
+1. Now select Review recurrence as **Weekly (1)** then click on **Next settings (2)**.
 
    ![](./Images/ETS1268.png)
 
@@ -838,7 +845,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS2222.png)
 
-1. Provide a justification in the reason as **Valid access (1)** and **Sumbit (2)**.
+1. Provide a justification in the reason as **Valid access (1)** and **Submit (2)**.
 
    ![](./Images/ETS5112.png)
 
@@ -846,7 +853,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS2223.png)
 
-1. Provide a justification in the reason as **Inactive user (1)** and **Sumbit (2)**.
+1. Provide a justification in the reason as **Inactive user (1)** and **Submit (2)**.
 
    ![](./Images/ETS2224.png)
 

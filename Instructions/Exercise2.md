@@ -63,7 +63,7 @@ In this task, you will activate **Microsoft Entra Global Secure Access** in your
 
       ![](./Images/ETS2124.png)
 
-   >**Note**: A window will appeat to Choose privacy setting for your device, click on **Next** and then **Accept**.
+   >**Note**: A window will appear to Choose privacy setting for your device, click on **Next** and then **Accept**.
       ![](./Images/ETS4111.png)
 
 1. On the **Start** menu, search for **settings (1)** and click on **Settings (2)**.
@@ -88,7 +88,7 @@ In this task, you will activate **Microsoft Entra Global Secure Access** in your
 
       ![](./Images/GS6.png)   
 
-   - **Password:** <inject key="AzureAdUserPassword"></inject> **(1)** and click on**Sign in (2)**.
+   - **Password:** <inject key="AzureAdUserPassword"></inject> **(1)** and click on **Sign in (2)**.
 
       ![](./Images/GS6-1.png)  
 
@@ -269,7 +269,7 @@ In this task, you will configure **Microsoft Entra Private Access** by enabling 
 
    ![](./Images/E2T2S34.png)
 
-   > **Note:** RDP should connect successfully using only the private IP address, even without a VPN, because the Global Secure Access client is tunneling the traffic to the Private Access connector on the corporate network.
+   > **Note:** RDP should connect successfully using only the private IP address, even without a VPN, because the Global Secure Access client is tunnelling the traffic to the Private Access connector on the corporate network.
 
 1. Once connected, close the Remote desktop connection of RDP server.
 
@@ -349,6 +349,13 @@ In this task, you will configure **Conditional Access policies for Private Acces
       ![](./Images/ETS2124.png)
 
 1. Once connected, close the Remote desktop connection of RDP server.
+
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+<validation step="8c13bea1-474d-48f5-a064-b3a8161b918f" />
 
 ## Task 4: Configure Entra Internet Access
 
@@ -475,7 +482,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
 ## Task 5: Validate Access and Review Logs
 
-In this task, you will collect and analyze network traffic using the Global Secure Access client and apply filters to validate Private and Internet access behavior. You will also review traffic logs and insights in the Entra portal to confirm policy enforcement and usage patterns.
+In this task, you will collect and analyse network traffic using the Global Secure Access client and apply filters to validate Private and Internet access behavior. You will also review traffic logs and insights in the Entra portal to confirm policy enforcement and usage patterns.
 
 1. On the **Client VM**, right click on Global secure access client on the systems tray and select **Advanced logs**.
 
@@ -485,11 +492,11 @@ In this task, you will collect and analyze network traffic using the Global Secu
 
    ![](./Images/ETS2512.png)
 
-1. Open browser and search for **Netflix** or **Primevideo** in order to verify that the pages are not acceesiable.
+1. Open browser and search for **Netflix** or **Primevideo** in order to verify that the pages are not accessible.
 
    ![](./Images/ETS2513.png)
 
-1. Now open **Remote desktop connection** and login into RDP server using Private ipaddress and provising below credentials: 
+1. Now open **Remote desktop connection** and login into RDP server using Private ip address and below credentials: 
 
       - **Username** : <inject key="adminUsername"></inject> **(1)**
       - **Password** : <inject key="adminPassword"></inject> **(2)**
@@ -506,7 +513,7 @@ In this task, you will collect and analyze network traffic using the Global Secu
 
    - **Filter**: ``Channel`` **(1)**
    - **Operator**: `==` **(2)**
-   - **Vaule** : ``Private`` **(3)**
+   - **Value** : ``Private`` **(3)**
 
    ![](./Images/ETS2515.png)
 
@@ -522,11 +529,11 @@ In this task, you will collect and analyze network traffic using the Global Secu
 
    ![](./Images/ETS2518.png)
 
-1. Scroll down and check the web content filtering, top used deninations and top discovered application segment etc.
+1. Scroll down and check the web content filtering, top used destinations and top discovered application segment etc.
 
    ![](./Images/ETS2519.png)
 
-1. Now expand Monitor and click on **Traffic log** to check the all the logs (Internet access, Private access, Micorsoft 365 access logs).
+1. Now expand Monitor and click on **Traffic log** to check the all the logs (Internet access, Private access, Microsoft 365 access logs).
 
    ![](./Images/ETS2520.png)
 

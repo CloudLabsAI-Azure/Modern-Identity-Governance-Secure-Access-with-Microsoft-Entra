@@ -50,7 +50,7 @@ Built-in **Monitoring** and **Auditing** capabilities help organizations track s
 
 ## Architecture Diagram
 
-![](./Images/arch.png)	
+![](./Images/Arch1.png)	
 
 ## Explanation of Components
 The architecture for this lab involves several key components:
