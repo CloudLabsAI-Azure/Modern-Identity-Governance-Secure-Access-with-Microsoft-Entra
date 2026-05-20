@@ -1,6 +1,6 @@
 # Exercise 2: Microsoft Entra Global Secure Access (Internet & Private Access)
 
-## Estimated Duration: 60 minutes
+### Estimated Duration: 60 minutes
 
 ## Overview
 

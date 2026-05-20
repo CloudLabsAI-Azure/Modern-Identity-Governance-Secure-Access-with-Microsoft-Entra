@@ -1,6 +1,6 @@
 # Exercise 1: Microsoft Entra ID Governance (IGA)
 
-**Estimated Duration: 90 minutes**
+### Estimated Duration: 90 minutes
 
 ## Overview
 
@@ -149,6 +149,13 @@ In this task, you will create dynamic groups based on user attributes and define
 1. For **AD User2**, the job title attribute does not contain "Manager", therefore the user is not added to the group dynamically.
 
    ![](./Images/E1T1S21-2.png)
+
+     > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+     > - Hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+     > - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+     > - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+     <validation step="8ef6e340-178f-4e34-b921-3bfae73ff76a" />
 
 ## Task 2: Entra ID Lifecycle Management
 

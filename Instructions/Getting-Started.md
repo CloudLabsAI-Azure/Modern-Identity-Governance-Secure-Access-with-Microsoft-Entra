@@ -1,6 +1,6 @@
 # Modern Identity Governance & Secure Access with Microsoft Entra
 
-## Overall Estimated Duration: 4 hours
+### Overall Estimated Duration: 4 hours
 
 ## Lab Scenario
 

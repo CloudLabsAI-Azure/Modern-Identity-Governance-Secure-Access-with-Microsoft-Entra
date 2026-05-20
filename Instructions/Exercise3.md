@@ -1,6 +1,6 @@
 # Exercise 3: Microsoft Entra Verified ID
 
-## Estimated Duration: 70 minutes
+### Estimated Duration: 70 minutes
 
 ## Overview
 
