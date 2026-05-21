@@ -23,7 +23,7 @@ The following are prerequisites to complete this exercise which are already conf
 - Microsoft Entra ID P1 or P2 license (Verified ID is included).
 - Global Administrator role.
 - A custom domain configured in your Microsoft Entra tenant.
-- A smartphone with Microsoft Authenticator app installed.
+- A smartphone with the Microsoft Authenticator app installed.
 
 ## Lab Objectives
 
@@ -41,7 +41,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S1.png)
 
-1. On the **Define organization settings** wizard, Provide the below details and click on **Select keys (3)** for Key vault selection.
+1. On the **Define organization settings** wizard, provide the below details and click on **Select keys (3)** for Key vault selection.
 
    - **Organization**: `VerifiesID` **(1)**.
    - **Trusted domain**: Open the **AzureCreds** file located on Desktop then copy and paste the endpoint **(2)**.
@@ -64,7 +64,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S6.png)
 
-1. Open a new tab, paste the provided link and log in into Azure portal using below **credentials**.
+1. Open a new tab, paste the provided link and log in to the Azure portal using the below **credentials**.
 
    ```
    https://portal.azure.com
@@ -189,18 +189,17 @@ In this task, you will configure the credential issuance process and issue a ver
 
       ![](./Images/E3T2S4N.png)
 
- 1. Click on **Get my Verified ID**. 
+1. Click on **Get my Verified ID**. 
 
     ![](./Images/E3T2S4.png)
 
-      >**Note**: If you haven't get the option **Get my Verified ID**, wait for few minutes and click on refresh.
+      >**Note**: If you haven't get the option **Get my Verified ID**, wait for a few minutes and click on refresh.
 
-1. A QR code is displayed **(1)**. Scan it from the Authenticator app in your mobile and **Add** the credentials to your Verified ID. Once it is completed click on **Done (2)**.
+1. A QR code is displayed **(1)**. Scan it from the Authenticator app on your mobile and **Add** the credentials to your Verified ID. Once it is completed click on **Done (2)**.
 
    ![](./Images/E3T2S5.png)
 
-1. Now navigate back to **Microsoft Entra admin center**. On the **Overview** page of Verified ID, click on **Try it now** under 
-**Use your credentials**.
+1. Now navigate back to **Microsoft Entra admin center**. On the **Overview** page of Verified ID, click on **Try it now** under **Use your credentials**.
 
    ![](./Images/E3T2S6.png)
 
@@ -208,15 +207,15 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S7.png)
 
-1. On the sign-in page, Click on **Verify my Employee Credentials**.
+1. On the sign-in page, click on **Verify my Employee Credentials**.
 
    ![](./Images/E3T2S8.png)
 
-1. A QR will be displayed. Scan it from the Authenticator App in your mobile and click on **Share**.
+1. A QR will be displayed. Scan it from the Authenticator App on your mobile and click on **Share**.
 
    ![](./Images/E3T2S9.png)
 
-1. Once it is successful, you can see discount is applied and price of the laptops has been changes.
+1. Once it is successful, you can see discount is applied and the price of the laptops has been changed.
 
    ![](./Images/E3T2S10.png)
 
