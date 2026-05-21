@@ -4,7 +4,7 @@
 
 ## Overview
 
-In this hands-on exercise, you will set up a **Verified ID** using which we will register a **Decentralized identifier (DID)**, and verify the domain. You will create and issue a credential which would stored in the **Authenticator app**. You then verify the credential through a sample application. Finally, you will explore a **Help Desk scenario** to understand how Verified ID enables secure, passwordless identity verification.
+In this hands-on exercise, you will set up a **Verified ID** using which we will register a **Decentralized identifier (DID)**, and verify the domain. You will create and issue a credential that will be stored in the **Authenticator app**. You then verify the credentials through a sample application. Finally, you will explore a **Help Desk scenario** to understand how Verified ID enables secure, passwordless identity verification.
 
 **Key Concepts:**
 
@@ -215,7 +215,7 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S9.png)
 
-1. Once it is successful, you can see discount is applied and the price of the laptops has been changed.
+1. Once it is successful, you can see discounts are applied and the price of the laptops has been changed.
 
    ![](./Images/E3T2S10.png)
 
@@ -295,7 +295,7 @@ In this task, you will simulate a real-world help desk identity verification sce
    https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Factive-directory-verifiable-credentials-node%2Fmain%2F1-node-api-idtokenhint%2FARMTemplate%2Ftemplate.json
    ```
 
-1. If Prompted to sign in, provide the below credentials:
+1. If prompted to sign in, provide the below credentials:
 
    - Username: Paste the username  **<inject key="AzureUserEmail"></inject>** **(1)** then click on **Next (2)**.
 
@@ -321,7 +321,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
       ![](./Images/E3T3-1S15.png)
 
-1. Once the deployment is succeeded then click on **Go to resource group**.
+1. Once the deployment is successful, click on **Go to resource group**.
 
    ![](./Images/E3T3-1S16new.png)
 
@@ -366,7 +366,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
       ![](Images/E3T3-2S2-1.png)
 
-1. A QR code will be displayed, on your mobile phone, scan the QR code. It will open a Authenticator app. 
+1. A QR code will be displayed on your mobile phone. Scan the QR code. It will open an Authenticator app. 
 
    ![](Images/E3T3-2S3.png)
 
@@ -382,7 +382,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 ### Task 3.3: Present Credential from Authenticator to Verify Identity
 
-1. Navigate back to **Azure portal**, click on Default Domain to launch the sample application again.
+1. Navigate back to the **Azure portal**, click on Default Domain to launch the sample application again.
 
    ![](./Images/E3T3-1S21.png)
 
@@ -406,7 +406,7 @@ In this task, you will simulate a real-world help desk identity verification sce
    
    - Tap on the **Verified Employee** credential and then **confirm**. Select **Next**.
 
-1. After presenting the credential, return to the browser displaying the verification application.
+1. After presenting the credentials, return to the browser displaying the verification application.
 
 ### Task 3.4: Review Verification Results and Extracted Claims
 
@@ -449,7 +449,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 1. Navigate to **Microsoft Entra Admin center** portal, under the **Monitoring & health** click on **Audit logs**.
 
-1. Apply the following filers:
+1. Apply the following filters:
    - **Service**: Verified ID.
    - **Date range**: Last 24 hours.
       
@@ -547,7 +547,7 @@ In this task, you will review how Face Check can be integrated into the Help Des
 1. During a future credential verification request, Microsoft Entra Verified ID Face Check could compare:
 
    - The live selfie captured during verification.
-   - The photo stored inside the credential.
+   - The photo is stored inside the credential.
 
 1. Once the verification is completed, review the verification result page. The page should display a successful credential presentation message similar to **VerifiedEmployee Presentation received**.
 
@@ -563,9 +563,9 @@ Consider a scenario where an employee contacts the IT help desk requesting acces
 
 Traditionally, the help desk agent might verify the employee’s identity using security questions, employee IDs, or manual checks against HR records. These methods can be time-consuming and may still be vulnerable to impersonation or social engineering attacks.
 
-With Microsoft Entra Verified ID, the employee can securely present a Verified Employee credential from Microsoft Authenticator. The help desk application verifies the credential and validates claims such as the employee’s name and job title before granting access or processing the request.
+With Microsoft Entra Verified ID, the employee can securely present a Verified Employee credential from Microsoft Authenticator. The help desk application verifies the credentials and validates claims such as the employee’s name and job title before granting access or processing the request.
 
-In this exercise, the verification application simulated the help desk system, while Microsoft Authenticator was used to securely present the employee credential.
+In this exercise, the verification application simulated the help desk system, while Microsoft Authenticator was used to securely present the employee's credentials.
 
 The help desk scenario demonstrates several key benefits of Verified ID:
 
@@ -575,7 +575,7 @@ The help desk scenario demonstrates several key benefits of Verified ID:
 | Help desk manually looks up user in HR system | Claims are automatically extracted from the credential |
 | Identity verification can take 5-10 minutes | Verification happens in seconds |
 | No audit trail of how identity was verified | Full audit trail of every credential presentation |
-| Vulnerable to social engineering attacks | Resistant to social engineering — credential cannot be forged |
+| Vulnerable to social engineering attacks | Resistant to social engineering — credentials cannot be forged |
 
 Observe how:
 - The credential was verified cryptographically.
