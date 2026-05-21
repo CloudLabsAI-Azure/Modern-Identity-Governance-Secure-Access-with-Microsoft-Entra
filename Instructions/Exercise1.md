@@ -71,7 +71,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. In the **Dynamic membership rules** page, configure the following rules and click on **Save (5)**.
 
-   - **Property**: Select `department`from the drop down **(1)**.
+   - **Property**: Select `department` from the drop down **(1)**.
    - **Operator**: select `Equals` from the drop down **(2)**.
    - **Value**: `IT`**(3)**.
    - **Rule syntax**: the rule expression should like below **(4)**:
