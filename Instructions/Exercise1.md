@@ -1,10 +1,10 @@
 # Exercise 1: Microsoft Entra ID Governance (IGA)
 
-**Estimated Duration: 90 minutes**
+### Estimated Duration: 90 minutes
 
 ## Overview
 
-In this hands-on exercise, you will explore how to implement **Core Identity Governance** capabilities using Microsoft Entra ID. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
+In this hands-on exercise, you will explore how to implement **Core Identity Governance** capabilities using **Microsoft Entra ID**. You will learn how to manage users and groups dynamically, automate onboarding and offboarding processes using lifecycle workflows, and enhance security through access reviews and conditional access policies. By the end of this exercise, you will gain hands-on experience in building a modern identity governance solution.
 
 ## Prerequisites
 
@@ -59,19 +59,20 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. On the **New Group** page, configure the following:
 
-   - **Group type**: ``Security`` **(1)**
+   - **Group type**: Select `Security` from the drop down **(1)**
    - **Group name**: `IT-Department` **(2)**
    - **Group description**: `Dynamic group for IT Department members` **(3)**
-   - **Membership type**: `Dynamic User` **(4)**
+   - **Microsoft Entra roles can be assigned to the group**: `No` **(4)**
+   - **Membership type**: Select `Dynamic User` from the drop down **(5)**
 
-1. Under **Dynamic user members**, click on **Add dynamic query (5)**.
+1. Under **Dynamic user members**, click on **Add dynamic query (6)**.
 
-   ![](./Images/ETS116.png)
+   ![](./Images/IMG1.png)
 
 1. In the **Dynamic membership rules** page, configure the following rules and click on **Save (5)**.
 
-   - **Property**: `department` **(1)**.
-   - **Operator**: `Equals` **(2)**.
+   - **Property**: Select `department` from the drop down **(1)**.
+   - **Operator**: select `Equals` from the drop down **(2)**.
    - **Value**: `IT`**(3)**.
    - **Rule syntax**: the rule expression should like below **(4)**:
       ```
@@ -87,15 +88,16 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S5.png)
 
-1. On the **New Group** wizard, configure the following:
-   - **Group type**: `Security` **(1)**
+1. On the **New Group** page, configure the following:
+   - **Group type**: Select `Security` from the drop down**(1)**
    - **Group name**: `Managers` **(2)**
    - **Group description**: `Dynamic group for all managers` **(3)**
-   - **Membership type**: `Dynamic User` **(4)**
+   - **Microsoft Entra roles can be assigned to the group**: `No` **(4)**
+   - **Membership type**: Select `Dynamic User` from the drop down **(5)**
 
-1. Under **Dynamic user members**, click **Add dynamic query (5)**.
+1. Under **Dynamic user members**, click **Add dynamic query (6)**.
 
-   ![](./Images/ETS1110.png)
+   ![](./Images/IMG2.png)
 
 1. In the **Dynamic membership rules** page, click on **Edit (1)** under **Rule syntax**, put the below mentioned rule **(2)** then click on **Ok** and **Save (3)**.
    ```
@@ -111,7 +113,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S14.png)
 
-1. Over the **Overview** page of the user, click on **Edit properties**.
+1. On the **Overview** page of the user, click on **Edit properties**.
 
    ![](./Images/E1T1S15.png)
 
@@ -124,15 +126,15 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. Navigate back to **Groups (1)**, select **All groups (2)** and then click on **IT-Department (3)**.
 
-   ![](./Images/E1T1S17.png)
+   ![](./Images/IMG3.png)
 
 1. Select **Members**, verify that **AD User1** is now added to the group dynamically.
 
    ![](./Images/E1T1S18.png)
 
-   >**Note:** If user is not appeared then wait a few minutes and then click Refresh.
+   >**Note: If user is not appeared then wait a few minutes and then click Refresh**.
 
-1. From the **Groups | All groups** page, select **Managers** group. Select **Members** under Manage Section, verify that **AD User1** is added as a member in the group.
+1. Navigate back to the **Groups | All groups** page, select **Managers** group. Select **Members** under Manage Section, verify that **AD User1** is added as a member in the group.
 
    ![](./Images/E1T1S19.png)
 
@@ -150,6 +152,13 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S21-2.png)
 
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+<validation step="8ef6e340-178f-4e34-b921-3bfae73ff76a" />
+
 ## Task 2: Entra ID Lifecycle Management
 
 Microsoft Entra Lifecycle Workflows automate identity processes across the employee lifecycle from onboarding (joiner) to role changes (mover) to offboarding (leaver). This replaces manual HR-driven processes and reduces the risk of orphaned accounts.
@@ -166,23 +175,23 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S2.png)
 
-1. On the **Basics** page, provide Name as **Onboard New Employee - IT Department (1)** and then click **Next: Configure (2)**.
+1. On the **Basics** tab, provide Name as **Onboard New Employee - IT Department (1)** and then click **Next: Configure scope > (2)**.
 
    ![](./Images/E1T2-1S3.png)
 
-1. On the **Configure** page, Make the rule department value as **IT (1)** then click **Next: Review tasks (2)**.
+1. On the **Configure scope** tab, make the rule department value as **IT (1)** then click **Next: Review tasks > (2)**.
 
    ![](./Images/E1T2-1S4.png)
 
-1. On the **Review tasks** page, you will see pre-configured tasks. Click **+ Add task** to add additional tasks.
+1. On the **Review tasks** tab, you will see pre-configured tasks. Click **+ Add task** to add additional tasks.
 
    ![](./Images/E1T2-1S5.png)
 
-1. Select **Generate TAP and send email (1)** and **Add license to User (2)** then click on **Add (3)**.
+1. Select **Generate TAP and send email (1)** and **Assign license to User (2)** then click on **Add (3)**.
 
    ![](./Images/E1T2-1S6.png)
 
-1. Click on **Add license to User (1)** then click on **0 license selected (2)**.
+1. Click on **Assign license to User (1)** then click on **0 license selected (2)**.
 
    ![](./Images/E1T2-1S7.png)
 
@@ -190,15 +199,15 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S8.png)
 
-1. Click on **Save** to add the user to the group.
+1. Click on **Save** to assign license to the user.
 
    ![](./Images/E1T2-1S9.png)
 
 1. Now click on **Add user to group (1)** then click on **0 group selected (2)**.
 
-   ![](./Images/E1T2-1S10.png)
+   ![](./Images/IMG4.png)
 
-1. Select **New joiners (1)** group and the click on **Select (2)**.
+1. Select **Newjoiners (1)** group and then click on **Select (2)**.
 
    ![](./Images/E1T2-1S11.png)
 
@@ -224,22 +233,22 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
 In this task, you will create a custom task extension using a Logic App. This extension will be integrated into the lifecycle workflow to perform additional actions, such as sending notifications, and you will test its execution.
 
-1. Select **Lifecycle workflows (1)** under **ID Governance** in the left navigation pane then **Lifecycle workflows (1)**. Under **Manage** select **Custom extensions (2)**, then click on **+ Add a custom extension (3)**.
+1. Select **Lifecycle workflows (1)** under **ID Governance** in the left navigation pane. Select **Custom extensions (2)** under **Manage**, then click on **+ Add a custom extension (3)**.
 
    ![](./Images/E1T2-2S1.png)
 
-1. On the Basics tab, provide the below details then click on **Next Task behavior (3)**.
+1. On the Basics tab, provide the below details then click on **Next: Task behavior (3)**.
 
       - **Name**: Onboarding email notification **(1)**.
       - **Description**: Send the onboarding email notification to New joinee **(2)**.
 
          ![](./Images/E1T2-2S2.png)
 
-1. On the Task behavior tab, leave it as default and click on **Next Details**.
+1. On the Task behavior tab, leave it as default and click on **Next: Details**.
 
    ![](./Images/E1T2-2S3.png)
 
-1. On the Details page, Provide the below details and click on **Create logic app(4)**.
+1. On the Details tab, provide the below details and click on **Create logic app (4)**.
 
       - **Subscription**: Leave it as default **(1)**
       - **Resource group**: **ODL-Entra-<inject key="Deployment ID" enableCopy="false"></inject>-01 (2)**
@@ -247,7 +256,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
          ![](./Images/E1T2-2S4.png)
 
-1. Once the deployment is successful **(1)**, click on **Next: Review + create**. 
+1. Once the deployment is successful **(1)**, click on **Next: Review + create (2)**. 
 
    ![](./Images/E1T2-2S5.png)
 
@@ -259,7 +268,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S7.png)
 
-1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then click **Ctrl + V** to paste the code and then click on **Save (3)** to save the code.
+1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then click **Ctrl + V (2)** to paste the code and then click on **Save (3)** to save the code.
 
    ```
    {
@@ -444,20 +453,20 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Subject**: ```Welcome Onboarding``` **(2)**
 
-   - **Body** : Click on **Code view** icon then copy and paste the below content **(4)**
+   - **Body** : Click on **Code view (3)** icon then copy and paste the below content **(4)**
       ```
       <p class="editor-paragraph">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login.<br><br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href="https://Portal.azure.com" class="editor-link">Azure Portal</a></p><p class="editor-paragraph"><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222.<br><br>Welcome On-Board!</p><br>
       ```
     
       ![](./Images/ETS5116.png)
 
-1. Scroll down and click on the dropdown of the Advanced parameters **(1)** then select **CC (2)**.
+1. Scroll down and click on the drop down of the Advanced parameters **(1)** then select **CC (2)**.
 
    ![](./Images/E1T2-2S13.png)
 
    ![](./Images/E1T2-2S13-1.png)
 
-1. In the cc box provide the following text **(1)** to add Manager ID and click on **Save (2)** save it. 
+1. In the cc box provide the following text **(1)** to add Manager ID and click on **Save (2)** to save it. 
 
    ```
    @triggerBody()?['data']?['subject']?['manager']?['email']
@@ -469,9 +478,9 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S15.png)
 
-   >**Note**: The manual step is the trigger that starts the Logic App when the lifecycle workflow sends a request. The HTTP action processes the request and marks the task as completed, and the Send an email (V2) step sends a notification to the user and manager.
+   >**Note**: The manual step is the trigger that starts the Logic App when the lifecycle workflow sends a request. The HTTP action processes the request and marks the task as completed, and then Send an email (V2) step sends a notification to the user and manager.
 
-1. Navigate to the **Identity (1)** option under **Settings** and switch the toggle to **On (2)** then click on **Save(3)**.
+1. Navigate to the **Identity (1)** option under **Settings** and switch the toggle to **On (2)** then click on **Save (3)**.
 
    ![](./Images/E1T2-2S16new.png)
 
@@ -491,15 +500,15 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S20.png)
 
-1. Click on **Run a Custom Task Extension (1)**, select custom extension as **Onboarding email notification (2)** then click on **Save(3)**.
+1. Click on **Run a Custom Task Extension (1)**, select custom extension as **Onboarding email notification (2)** then click on **Save (3)**.
 
    ![](./Images/E1T2-2S21.png)
 
-1. Then, click **Save**.
+1. Then, click **Save** to save the workflow.
 
    ![](./Images/E1T2-2S22new.png)
 
-1. Before running the Lifecysle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
+1. Before running the Lifecycle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
 
    ![](./Images/E1T2-2S22-1.png)
 
@@ -513,9 +522,9 @@ In this task, you will create a custom task extension using a Logic App. This ex
    - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**.
    - **Email**: Go to Environment tab and copy **User 03 UPN (3)**.
 
-      ![](./Images/E1T2-2S25.png)
+      ![](./Images/ETS1277.png)
 
-1. Navigate to **Lifecycle workflows (1)** under ID Goverenance, select **Workflows (2)**, then click on **Onboard New Employee - IT Department (3)**.
+1. Navigate to **Lifecycle workflows (1)** under ID Governance, select **Workflows (2)**, then click on **Onboard New Employee - IT Department (3)**.
 
    ![](./Images/E1T2-2S18.png)
 
@@ -543,7 +552,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22-1.png)
 
-1. Now click on **Group** to check the user has been assigned to the group **Newjoiner** and navigate back to users and check that **license** that has been assigned to the user.
+1. In the AD User3 page, click on **Groups (1)** to check the user has been assigned to the group **Newjoiners (2)** and then click on **License (3)** check **license (4)** that has been assigned to the user.
 
    ![](./Images/E1T2-2S33.png)
    
@@ -560,7 +569,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-1. After login, check that the email has recieved in Inbox.
+1. After login, check that the email has received in Inbox.
 
    ![](./Images/ETS5117.png)
 
@@ -576,23 +585,23 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S2new.png)
 
-1. On the **Basics** page, leave it as default and click **Next: Configure scope >**.
+1. On the **Basics** tab, leave it as default and click **Next: Configure scope >**.
 
    ![](./Images/E1T2-3S3.png)
 
-1. On the **Configure** page, make the rule department value as **IT (1)** then click **Next: Review tasks > (2)**.
+1. On the **Configure scope** tab, make the rule department value as **IT (1)** then click **Next: Review tasks > (2)**.
 
    ![](./Images/E1T2-3S4.png)
 
-1. On the **Review tasks** page, you will see pre-configured tasks. Click **+ Add task (1)** to add additional tasks.
+1. On the **Review tasks** tab, you will see pre-configured tasks. Click **+ Add task (1)** to add additional tasks.
 
    ![](./Images/E1T2-3S5.png)
 
-1. Select **Remove all licenses for user  (2)**, then click on **Add (3)**.
+1. Select **Remove all licenses for user  (1)**, then click on **Add (2)**.
 
    ![](./Images/E1T2-3S6.png)   
 
-1. Review the order of tasks. Drag tasks to reorder them if needed. Recommended order is mentioned below **(1)**. Click on **Review + Create (2)**
+1. Review the order of tasks. Drag tasks to reorder them if needed. Recommended order is mentioned below **(1)**. Click on **Review + Create (2)**.
 
    1. Disable user account
    2. Remove user from all groups
@@ -605,7 +614,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S8.png)
 
-1. Now select **Offboard an employee** and click on **Run on demand**.
+1. Now select **Offboard an employee (1)** and click on **Run on demand (2)**.
 
    ![](./Images/E1T2-3S9.png)
 
@@ -613,7 +622,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S10.png)
 
-1. Now after selecting the user, click **Run workflow** to start the onboarding workflow immediately.
+1. Now after selecting the user, click **Run workflow** to start the offboarding workflow immediately.
 
    ![](./Images/E1T2-3S11.png)
 
@@ -621,7 +630,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S12.png)
 
-1. On the pop-up ntice that each task shows a status as **Completed**. Click on **Cancel**. 
+1. On the pop-up notice that each task shows a status as **Completed**.
 
    ![](./Images/E1T2-3S13.png)
 
@@ -656,11 +665,11 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
    
          ![](./Images/E1T4S2-3.png)
    
-      - Click on **No target resources selected** **(1)** under Target resources option.
+      - Click on **No target resources selected** under Target resources option.
 
          ![](./Images/ETS2228.png)
 
-      - Click on **All resources (formally All cloud apps)** **(2)**
+      - Click on **All resources (formally 'All cloud apps')**.
 
          ![](./Images/E1T4S2-5.png)
 
@@ -668,23 +677,23 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
          
          ![](./Images/E1T4S2-6.png)
 
-      - Now in the Device platforms blade, toggle the *`Configure`* switch to **Yes** **(1)** and make sure that **Any device (2)** option is selected. Then click on **Done** **(3)**
+      - Now in the Device platforms blade, toggle the `Configure` switch to **Yes** **(1)** and make sure that **Any device (2)** option is selected. Then click on **Done** **(3)**
 
          ![](./Images/E1T4S2-7.png)
 
-      - Then select **Not configured (1)** under Locations.
+      - Then select **Not configured** under Locations.
 
          ![](./Images/E1T4S2-8.png)
 
-      - Now in the Location blade, toggle the *`Configure`* switch to **Yes** **(1)** and select **Any network or location (2)**.
+      - Now in the Location blade, toggle the `Configure` switch to **Yes** **(1)** and select **Any network or location (2)**.
 
          ![](./Images/E1T4S2-9.png)
   
-      - Select **Not configured (1)** under Client apps.
+      - Select **Not configured** under Client apps.
 
          ![](./Images/E1T4S2-10.png)
 
-      - Now in the Client Apps blade, toggle the *`Configure`* switch to **Yes** **(1)** and uncheck the boxes for **Legecy authentication client (2)**. Then click on **Done** **(3)**.
+      - Now in the Client Apps blade, toggle the `Configure` switch to **Yes** **(1)** and uncheck the boxes for **Legacy authentication client (2)**. Then click on **Done** **(3)**.
 
          ![](./Images/ETS2229.png)
 
@@ -692,13 +701,13 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-12.png)
 
-      - Under **Grant** pane, click on **Grant access (1)** then, select the check Box for **Require multi-factor authentication** **(2)**. Click on **Select** **(3)**. 
+      - Under **Grant** blade, click on **Grant access (1)** then, select the check Box for **Require multi-factor authentication** **(2)**. Click on **Select** **(3)**. 
 
          ![](./Images/E1T4S2-13.png)
    
-      - Toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
+1. Now, toggle the **Enable Policy** switch to **On (1)** and click on **Create (2)**.
 
-        ![](./Images/E1T4S2-14.png)
+   ![](./Images/E1T4S2-14.png)
 
 1. Open a **New InPrivate window**, paste the provided link, and log in using below **credentials**.
 
@@ -735,9 +744,9 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
        ![](./Images/ETS1424.png)    
 
-        >Note: For iOS, open the App Store and repeat the steps.
+        > **Note**: For iOS, open the App Store and repeat the steps.
 
-        >Note: Skip if already installed.       
+        > **Note**: Skip if already installed.       
 
      - Open the app and tap on **Scan a QR code**.
 
@@ -759,17 +768,24 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
 1. Tap on **Finish** in the Mobile Device.
 
-   >NOTE: While logging in again, enter the digits displayed on the screen in the **Authenticator app** and click on Yes.
+   > **Note**: While logging in again, enter the digits displayed on the screen in the **Authenticator app** and click on Yes.
 
 1. Return to the Microsoft Entra admin center and navigate to **Entra ID** > **Monitoring & health (1)** > **Sign-in logs (2)**. Verify the recent User sign-ins **(3)**.
 
    ![](./Images/E1T4S8.png)
 
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+<validation step="966b401f-dcdc-4d81-b5ac-01bbbd0929d3" />
+
 ## Task 4: Setting Up Access Reviews
 
 In this task, you will create and configure access reviews to regularly validate user access to groups or applications. You will define reviewers, schedules, and perform approval or denial actions while reviewing audit logs.
 
-1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews** then click on **+ Access reviews**.
+1. In the Microsoft Entra admin center, navigate to **ID Governance** and select **Access reviews (1)** then click on **+ New access reviews (2)**.
 
    ![](./Images/E1T3S1.png)
 
@@ -777,10 +793,10 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/E1T3S2.png)
 
-1. On the **Review type** page, provide the below details:
-      - Select what to review :**Teams + Groups (1)**.
+1. On the **Review type** tab, provide the below details:
+      - Select what to review :select **Teams + Groups (1)** from the drop down.
       - Review scope : **Select Teams + groups (2)**.
-      - Group : click on **+ Select groups (3)**.
+      - Group : click on **+ Select group(s) (3)**.
 
          ![](./Images/E1T3S3.png)
 
@@ -788,25 +804,25 @@ In this task, you will create and configure access reviews to regularly validate
 
          ![](./Images/ETS5118.png)
 
-1. Select **All users (1)** under scope and click on **Next Reviews (2)**.
+1. Select **All users (1)** under Scope and click on **Next: Reviews (2)**.
 
    ![](./Images/ETS5119.png)
 
-1. In the select reviewers drop down, click on **Selected user(s) or group(s)**.
+1. In the Select reviewers drop down, click on **Selected user(s) or group(s)**.
 
    ![](./Images/ETS1266.png)
 
-1. Then click on **+ select reviwers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **select (3)**.
+1. Then click on **+ Select reviewers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **Select (3)**.
 
    ![](./Images/ETS1267.png)
 
-1. Now select review occurence as **Weekly (1)** then click on **Next settings (2)**.
+1. Now select Review recurrence as **Weekly (1)** then click on **Next: Settings (2)**.
 
    ![](./Images/ETS1268.png)
 
 1. Click on **Next: Review + Create**.
 
-1. On the **Review + create** page, provide Review name as **Access review (1)** and click on **Create (2)**.
+1. On the **Review + create** tab, provide Review name as **Access review (1)** and click on **Create (2)**.
 
    ![](./Images/ETS1269.png)
 
@@ -831,7 +847,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS2222.png)
 
-1. Provide a justification in the reason as **Valid access (1)** and **Sumbit (2)**.
+1. Provide a justification in the reason as **Valid access (1)** and **Submit (2)**.
 
    ![](./Images/ETS5112.png)
 
@@ -839,11 +855,11 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS2223.png)
 
-1. Provide a justification in the reason as **Inactive user (1)** and **Sumbit (2)**.
+1. Provide a justification in the reason as **Inactive user (1)** and **Submit (2)**.
 
    ![](./Images/ETS2224.png)
 
-1. Navigate back to Entra admin portal and select **Access review** under ID Governance. 
+1. Navigate back to Microsoft Entra admin portal and select **Access review** under ID Governance. 
 
    ![](./Images/ETS2225.png)
 
@@ -873,6 +889,6 @@ In this task, you will explore audit logs, sign-in logs, and reporting dashboard
 
 In this exercise, you implemented key Identity Governance capabilities in Microsoft Entra ID, including dynamic group-based access, automated onboarding and offboarding workflows, and automatic license provisioning. You also integrated a custom Logic App extension, performed access reviews, and enforced security through Conditional Access with MFA. Additionally, you monitored activity using audit and sign-in logs. Together, these features establish a strong foundation for a modern Identity Governance and Administration (IGA) solution.
 
-### You have successfully completed this exercise. Kindly click **Next >>** to proceed further
+You have successfully completed this exercise. Kindly click **Next >>** to proceed further
 
    ![](./Images/Nextpage.png)

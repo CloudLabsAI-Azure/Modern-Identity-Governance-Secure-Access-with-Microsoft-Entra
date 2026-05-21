@@ -1,34 +1,34 @@
 # Modern Identity Governance & Secure Access with Microsoft Entra
 
-## Overall Estimated Duration: 4 hours
+### Overall Estimated Duration: 4 hours
 
 ## Lab Scenario
 
-You are part of the **Cloud Identity team** at Contoso, a growing organization that is facing challenges with manual user onboarding and offboarding, excessive or outdated access permissions, reliance on traditional VPN for internal resource access, and dependence on password-based authentication. These challenges have resulted in increased security risks, limited visibility into user access, and inefficient operational processes.
+You are part of the **Cloud Identity team** at **Contoso**, a growing organization that is facing challenges with **manual user onboarding and offboarding**, **excessive or outdated access permissions**, reliance on **traditional VPN** for internal resource access, and dependence on **password-based authentication**. These challenges have resulted in increased **security risks**, limited visibility into **user access**, and inefficient operational processes.
 
-To solve this, Contoso plans to adopt Microsoft Entra to modernize its identity and access management by implementing Identity Governance for automated lifecycle management, enforcing Conditional Access policies for secure access control, and enabling centralized visibility through monitoring and access reviews.
+To solve this, Contoso plans to adopt **Microsoft Entra** to modernize its **identity and access management** by implementing **Identity Governance** for automated lifecycle management, enforcing **Conditional Access policies** for secure access control, and enabling centralized visibility through **monitoring** and **access reviews**.
 
-To achieve this, you will configure dynamic groups and lifecycle workflows, deploy Global Secure Access to provide secure connectivity to private and internet resources without VPN, apply Conditional Access policies for enhanced security, and implement Verified ID to enable passwordless identity verification using decentralized digital credentials.
+To achieve this, you will configure **dynamic groups** and **lifecycle workflows**, deploy **Global Secure Access** to provide secure connectivity to **private** and **internet resources** without VPN, apply **Conditional Access policies** for enhanced security, and implement **Verified ID** to enable **passwordless identity verification** using **decentralized digital credentials**.
 
 ## Overview
-In this hands-on lab, you will explore modern identity governance, secure access management, and decentralized identity solutions using Microsoft Entra. You will configure Identity Governance features, implement secure access to private and internet resources with Global Secure Access, and enable passwordless identity verification using Verified ID.
+In this hands-on lab, you will explore **Modern identity governance**, **secure access management**, and **decentralized identity solutions** using **Microsoft Entra**. You will configure **Identity Governance** features, implement secure access to **private** and **internet resources** with **Global Secure Access**, and enable **passwordless identity verification** using **Verified ID**.
 
-Throughout the lab, you will work with Microsoft Entra services to manage users and groups, configure Conditional Access policies, automate user lifecycle processes, review access activity, and issue and verify verifiable credentials.
+Throughout the lab, you will work with **Microsoft Entra services** to manage **users and groups**, configure **Conditional Access policies**, automate **user lifecycle processes**, review **access activity**, and issue and verify **verifiable credentials**.
 
-By the end of this lab, you will understand how Microsoft Entra helps organizations strengthen security, simplify identity management, and support Zero Trust access across cloud and hybrid environments.
+By the end of this lab, you will understand how **Microsoft Entra** helps organizations strengthen **security**, simplify **identity management**, and support **Zero Trust access** across **cloud** and **hybrid environments**.
 
 ## Objective
 
 After completing this lab, you will be able to:
-- Understand Identity Governance and Zero Trust security concepts.
-- Manage users, groups, and access policies using Microsoft Entra.
-- Automate onboarding and offboarding with Lifecycle Workflows.
-- Implement Conditional Access and MFA policies.
-- Configure Microsoft Entra Global Secure Access for private and internet resources.
-- Monitor and review identity-related activities and access events.
-- Configure Microsoft Entra Verified ID.
-- Issue and verify verifiable credentials using Microsoft Authenticator.
-- Understand how Microsoft Entra services work together to provide secure identity and access management.
+- **Configure Identity Governance:** Implement Identity Governance features to manage access lifecycle, automate approvals, and enforce least-privilege access.
+- **Manage Users and Groups:** Create and manage users, groups, and dynamic memberships using Microsoft Entra.
+- **Automate Lifecycle Workflows:** Configure Lifecycle Workflows to automate onboarding, offboarding, and user access processes.
+- **Implement Conditional Access and MFA:** Configure Conditional Access policies and Multi-Factor Authentication (MFA) to strengthen identity security.
+- **Deploy Global Secure Access:** Configure Microsoft Entra Global Secure Access to securely connect users to private and internet resources without traditional VPN dependency.
+- **Monitor and Review Access Activities:** Perform access reviews and monitor identity-related activities for improved visibility and governance.
+- **Configure Microsoft Entra Verified ID:** Set up Verified ID to enable decentralized and passwordless identity verification.
+- **Issue and Verify Verifiable Credentials:** Use Microsoft Authenticator to issue and verify verifiable credentials securely.
+- **Understand Zero Trust Security:** Explore how Microsoft Entra services work together to support Zero Trust identity and access management across cloud and hybrid environments.
 
 ### Prerequisites
 
@@ -50,7 +50,7 @@ Built-in **Monitoring** and **Auditing** capabilities help organizations track s
 
 ## Architecture Diagram
 
-![](./Images/arch.png)	
+![](./Images/Arch1.png)	
 
 ## Explanation of Components
 The architecture for this lab involves several key components:
@@ -97,7 +97,7 @@ Your virtual machine is your workhorse throughout the workshop. The guide is you
  
 To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
  
-![Explore Lab Resources](./Images/GS3.png)
+![Explore Lab Resources](./Images/envtab_newUI.png)
  
 ## Utilizing the Split Window Feature
  
@@ -110,6 +110,14 @@ For convenience, you can open the guide in a separate window by selecting the **
 Feel free to **start, stop, or restart (2)** your virtual machine as needed from the **Resources (1)** tab. Your experience is in your hands!
  
 ![Manage Your Virtual Machine](./Images/GS5.png)	
+
+## Lab Validation
+
+After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task; if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+
+   ![Inline Validation](./Images/validation.png)
+ 
+Now you're all set to explore the powerful world of technology. Feel free to reach out if you have any questions along the way. 
 
 ## Let's Get Started with Azure Portal
  

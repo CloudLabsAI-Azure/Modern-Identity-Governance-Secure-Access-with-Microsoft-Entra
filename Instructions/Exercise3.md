@@ -1,6 +1,6 @@
 # Exercise 3: Microsoft Entra Verified ID
 
-## Estimated Duration: 70 minutes
+### Estimated Duration: 70 minutes
 
 ## Overview
 
@@ -23,7 +23,7 @@ The following are prerequisites to complete this exercise which are already conf
 - Microsoft Entra ID P1 or P2 license (Verified ID is included).
 - Global Administrator role.
 - A custom domain configured in your Microsoft Entra tenant.
-- A smartphone with **Microsoft Authenticator** app installed.
+- A smartphone with Microsoft Authenticator app installed.
 
 ## Lab Objectives
 
@@ -37,13 +37,13 @@ In this lab, you will complete the following exercise:
 
 In this task, you will set up Microsoft Entra Verified ID for your organization. You will register your DID, verify your domain, and create a verified credential that can be issued to users.
 
-1. On the Microsoft Entra admin center left navigation pane, expand **Verified ID** and select **Overview (1)** then click on **Configure (2)**.
+1. On the **Microsoft Entra admin center** left navigation pane, expand **Verified ID** and select **Overview (1)** then click on **Configure (2)**.
 
    ![](./Images/E3T1S1.png)
 
 1. On the **Define organization settings** wizard, Provide the below details and click on **Select keys (3)** for Key vault selection.
 
-   - **Organization**: `VerifiedID` **(1)**.
+   - **Organization**: `VerifiesID` **(1)**.
    - **Trusted domain**: Open the **AzureCreds** file located on Desktop then copy and paste the endpoint **(2)**.
 
       ![](./Images/E3T1S2.png)
@@ -56,15 +56,15 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S4.png)
 
-1. Now on the **Overview** page, Click on **Register** under the Register decentralized ID.
+1. Now on the **Overview** page, Click on **Register** under the **Register decentralized ID**.
 
    ![](./Images/E3T1S5.png)
 
-1. Click on **Download**.
+1. Click on **Download** to download a **did.json** file.
 
    ![](./Images/E3T1S6.png)
 
-1. Open a new tab, paste the provided link, and log in into Azure portal using below **credentials**.
+1. Open a new tab, paste the provided link and log in into Azure portal using below **credentials**.
 
    ```
    https://portal.azure.com
@@ -110,15 +110,15 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S14.png)
 
-1. Now, naviagte back to Microsoft Entra admin center, and click on **Refresh registration status (1)**. Once the status is **Registered (2)**, click on **Close (3)**.
+1. Now, navigate back to **Microsoft Entra admin center**, and click on **Refresh registration status (1)**. Once the status is **Registered (2)**, click on **Close (3)**.
 
    ![](./Images/E3T1S15.png)
 
-1. Now on the overview page, Click on **Verify** under Verify domain membership.
+1. Now on the **Overview** page, Click on **Verify** under **Verify domain membership**.
 
    ![](./Images/E3T1S16.png)
 
-1. Click on **Download (1)**.
+1. Click on **Download** to download a did-configuration.json.
 
    ![](./Images/E3T1S17.png)
 
@@ -134,7 +134,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S20.png)
 
-1. Now, naviagte back to **Microsoft Entra admin center**, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
+1. Now, navigate back to **Microsoft Entra admin center**, and click on **Refresh registration status (1)**. Once the status is **Verified (2)**, click on **Close (3)**.
 
    ![](./Images/E3T1S21.png)
 
@@ -149,11 +149,11 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
    ![](./Images/E3T1S23.png)
 
-1. Click **Verified employee** and then **Next**.
+1. Select **Verified employee** in the Credentials type and then click on **Next**.
 
    ![](./Images/E3T1S24.png)
 
-1. Provide below Information and click on **Update (4)** and verify the display card styling:
+1. Provide below Information and click on **Update (4)** to verify the display card styling:
 
    - **Logo URL**: `https://avd233.blob.core.windows.net/avdtest/VerifiedID.jpg` **(1)**
    - **Text color**: #FFFFFF **(2)**
@@ -177,7 +177,7 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S2.png)
 
-1. Navigate to  **Overview (1)** blade in **Verified ID** section, then click on **Try it now (2)** under Get the new credentials.
+1. Navigate to  **Overview (1)** blade in **Verified ID** section, then click on **Try it now (2)** under **Get the new credentials**.
 
    ![](./Images/E3T2S3.png)
 
@@ -199,7 +199,8 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S5.png)
 
-1. Now navigate back to Microsoft Entra admin center. On the **Overview** page of Verified ID, click on **Try it now** under use your credentials.
+1. Now navigate back to **Microsoft Entra admin center**. On the **Overview** page of Verified ID, click on **Try it now** under 
+**Use your credentials**.
 
    ![](./Images/E3T2S6.png)
 
@@ -207,7 +208,7 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S7.png)
 
-1. On the sign-in page, Click on **Verify my employee credentials**.
+1. On the sign-in page, Click on **Verify my Employee Credentials**.
 
    ![](./Images/E3T2S8.png)
 
@@ -215,15 +216,15 @@ In this task, you will configure the credential issuance process and issue a ver
 
    ![](./Images/E3T2S9.png)
 
-1. Once it is successful, you can see discount is applied and price of the latops has been changes.
+1. Once it is successful, you can see discount is applied and price of the laptops has been changes.
 
    ![](./Images/E3T2S10.png)
 
-1. Navigate back to **Microsoft Entra Admin Centre** portal, then **Credenitals (1)** under Verified ID. Select **Verified employee(2)**. 
+1. Navigate back to **Microsoft Entra Admin Centre** portal, then select **Credentials (1)** under **Verified ID** and select **Verified employee(2)**. 
 
    ![](./Images/E3T2S11.png)
 
-1. Copy the **Manifest URL** and Paste the value into Notepad for later use.
+1. Copy the **Manifest URL** and paste the value into Notepad for later use.
 
    ![](./Images/E3T2S12.png)
 
@@ -233,18 +234,17 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 ### Task 3.1: Deploy sample verification application
 
-1. Over the Microsoft Entra admin center, in the left navigation click on **Organization settings** under **Verified ID**, then copy the **Decentralized identifier (DID)** and paste the value into Notepad for later use.
+1. On the **Microsoft Entra admin center**, in the left navigation click on **Organization settings** under **Verified ID**, then copy the **Decentralized identifier (DID)** and paste the value into Notepad for later use.
 
    ![](./Images/E3T3-1S1.png)
 
-1. Navigate back to the Azure portal and search for **Microsoft Entra ID**.
+1. Navigate back to the **Azure portal** and search for **Entra ID (1)** and select **Microsoft Entra ID (2)**.
 
    ![](./Images/E3T3-1S2.png)
 
 1. From the left navigation pane, select **App registrations (1)** and then click on **All applications (2)**. Select the application with name **odl_user_sp_<inject key="DeploymentID" enableCopy="false" /> (3)**.
 
    ![](./Images/E3T3-1S3.png)
-
 
 1. From the **Overview** page of the application, copy the following values and paste them into Notepad:
 
@@ -253,7 +253,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
       ![](./Images/E3T3-1S4.png)
 
-1. From the left navigation pane, select **Certificates & secrets** from **Manage** Section. Under **Client secrets** tab, click on **+ New client secret**.
+1. From the left navigation pane, select **Certificates & secrets (1)** from **Manage** Section. Under **Client secrets** tab, click on **+ New client secret (2)**.
 
    ![](./Images/E3T3-1S5.png)
 
@@ -317,7 +317,7 @@ In this task, you will simulate a real-world help desk identity verification sce
    - **Az Client Id:** Paste the application ID copied in Step 4 **(5)**.
    - **Az Client Secret:** Paste the value copied in Step 7 **(6)**.
    - **DID Authority**: Paste DID Authority copied in Step 1 **(7)**.
-   - **Credential Manifest:** Paste the value copied in Task 2 Step 12 **(8)**.
+   - **Credential Manifest:** Paste the value copied in Task 2 Step 13 **(8)**.
    - **Credential Type:** ``VerifiedEmployee`` **(9)**.
 
       ![](./Images/E3T3-1S15.png)
@@ -349,6 +349,14 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](./Images/E3T3-1S21.png)
 
+> **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
+> - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
+> - If not, carefully read the error message and retry the step, following the instructions in the lab guide.
+> - If you need any assistance, please contact us at cloudlabs-support@spektrasystems.com. We are available 24/7 to help
+
+<validation step="25a9fcea-3720-4ae7-8710-2fb18c77e406" />
+
+
 ### Task 3.2: Configure Verification Request with Required Claims
 
 1. Navigate to the sample verification application deployed in the previous step.
@@ -375,7 +383,9 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 ### Task 3.3: Present Credential from Authenticator to Verify Identity
 
-1. Navigate back to Azure portal, click on Default Domain to launch the sample application again.
+1. Navigate back to **Azure portal**, click on Default Domain to launch the sample application again.
+
+   ![](./Images/E3T3-1S21.png)
 
 1. On the application page, click **Verify Credential**.
 
@@ -432,13 +442,13 @@ In this task, you will simulate a real-world help desk identity verification sce
 
       ![](Images/E3T3-4S4.png)
 
-3. In the Microsoft Entra admin center, navigate to **Verified ID** > **Overview** section, scroll down to see the **Activity log**. Review the recent verification activity displayed in the activity log.
+3. In the **Microsoft Entra admin center**, navigate to **Verified ID** > **Overview** section, scroll down to see the **Activity log**. Review the recent verification activity displayed in the activity log.
 
    ![](Images/E3T3-4S5.png)
 
 ### Task 3.5: Review Verification Logs in Microsoft Entra
 
-1. Navigate to **Entra Admin center** portal, under the **Monitoring & health** click on **Audit logs**.
+1. Navigate to **Microsoft Entra Admin center** portal, under the **Monitoring & health** click on **Audit logs**.
 
 1. Apply the following filers:
    - **Service**: Verified ID.
@@ -479,7 +489,7 @@ In this task, you will review how Face Check can be integrated into the Help Des
 
 > **Note:** This is a read-only task intended for learning purposes only. Face Check is not configured in the current lab environment and cannot be fully validated in this test environment.
 
-1. In the Verified ID overview page, scroll down to the **Add-ons** section and verify whether the **Face Check** add-on is enabled.
+1. In the **Verified ID** overview page, scroll down to the **Add-ons** section and verify whether the **Face Check** add-on is enabled.
 
    ![](Images/E3T3-6S1.png)
 
