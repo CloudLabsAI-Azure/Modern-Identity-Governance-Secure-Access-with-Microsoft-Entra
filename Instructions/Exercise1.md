@@ -889,6 +889,6 @@ In this task, you will explore audit logs, sign-in logs, and reporting dashboard
 
 In this exercise, you implemented key Identity Governance capabilities in Microsoft Entra ID, including dynamic group-based access, automated onboarding and offboarding workflows, and automatic license provisioning. You also integrated a custom Logic App extension, performed access reviews, and enforced security through Conditional Access with MFA. Additionally, you monitored activity using audit and sign-in logs. Together, these features establish a strong foundation for a modern Identity Governance and Administration (IGA) solution.
 
-### You have successfully completed this exercise. Kindly click **Next >>** to proceed further
+You have successfully completed this exercise. Kindly click **Next >>** to proceed further
 
    ![](./Images/Nextpage.png)
