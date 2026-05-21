@@ -97,7 +97,7 @@ Your virtual machine is your workhorse throughout the workshop. The guide is you
  
 To get a better understanding of your lab resources and credentials, navigate to the **Environment** tab.
  
-![Explore Lab Resources](./Images/GS3.png)
+![Explore Lab Resources](./Images/envtab_newUI.png)
  
 ## Utilizing the Split Window Feature
  
@@ -110,6 +110,14 @@ For convenience, you can open the guide in a separate window by selecting the **
 Feel free to **start, stop, or restart (2)** your virtual machine as needed from the **Resources (1)** tab. Your experience is in your hands!
  
 ![Manage Your Virtual Machine](./Images/GS5.png)	
+
+## Lab Validation
+
+After completing the task, hit the **Validate** button under the Validation tab integrated within your lab guide. If you receive a success message, you can proceed to the next task; if not, carefully read the error message and retry the step, following the instructions in the lab guide.
+
+   ![Inline Validation](./Images/validation.png)
+ 
+Now you're all set to explore the powerful world of technology. Feel free to reach out if you have any questions along the way. 
 
 ## Let's Get Started with Azure Portal
  
