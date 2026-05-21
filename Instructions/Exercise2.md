@@ -63,7 +63,7 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
       ![](./Images/ETS2124.png)
 
-   >**Note**: A window will appear to Choose privacy setting for your device, click on **Next** and then **Accept**.
+   >**Note**: A window will appear to choose privacy setting for your device, click on **Next** and then **Accept**.
       ![](./Images/ETS4111.png)
 
 1. On the **Start** menu, search for **settings (1)** and click on **Settings (2)**.
@@ -169,7 +169,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
    ![](./Images/E2T2S10.png) 
 
-   >**Note**: If the connector is not appeared, refresh the browser and check again.
+   >**Note**: If the connector does not appear, refresh the browser and check again.
 
 1. Navigate to **Applications (1)** then select **Quick Access (2)**. Enter  **Quick actions (3)** as Name, and then click on **+ Add Quick Access application segment (4)**.
 
@@ -177,14 +177,14 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
 1. Provide the below details, and click **Apply (5)** to add the segment.
 
-   - **Destination type**: select `IP address` from drop down **(1)**
+   - **Destination type**: select `IP address` from dropdown **(1)**
    - **IP address**: `10.0.0.1/24` **(2)**
    - **Ports**: `3389`  **(3)**
    - **Protocol**: select `TCP` from the dropdown **(4)**
 
       ![](./Images/E2T2S12.png) 
 
-1. Click on **Save**, to create the Quick Access application segment and apply the changes for **Quick Access Configuration**.
+1. Click on **Save** to create the Quick Access application segment and apply the changes for **Quick Access Configuration**.
 
    ![](./Images/E2T2S13.png)
 
@@ -192,7 +192,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
    ![](./Images/E2T2S14.png)
 
-   >**Note**: If you could not find users and groups option, click on **Quick access** again in the left pane to get the option or refresh the browser window.
+   >**Note**: If you could not find the users and groups option, click on **Quick access** again in the left pane to get the option or refresh the browser window.
 
 1. On the **Add Assignment** page, click on **None selected (1)**, then select **IT-Department (2)** and click on **select (3)**.
 
@@ -202,7 +202,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
    ![](./Images/E2T2S16.png)
 
-1. Now open **Client VM**. On the desktop double click on **Global Secure Access Client** file.
+1. Now open **Client VM**. On the desktop, double click on **Global Secure Access Client** file.
    
    ![](./Images/ETS2125.png) 
 
@@ -247,7 +247,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
       ```
       ![](./Images/E1T2S28.png)
 
-1. Select **rdpvm-<inject key="Deployment ID" enableCopy="false"></inject>** from the list. Copy **Private IP address** from the overview page and paste it in the notepad for future use.
+1. Select **rdpvm-<inject key="Deployment ID" enableCopy="false"></inject>** from the list. Copy the **Private IP address** from the overview page and paste it into Notepad for future use.
 
    ![](./Images/E1T2S29.png)
 
@@ -334,7 +334,7 @@ In this task, you will configure Conditional Access policies for Private Access 
 
       ![](./Images/E2T3S2-8.png)
          
-      >**Note**: Applying Conditional access policy will take few minutes to reflect.
+      >**Note**: Applying the Conditional access policy will take a few minutes to reflect.
 
 1. Navigate to **ClientVM**. From the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
 
@@ -359,7 +359,7 @@ In this task, you will configure Conditional Access policies for Private Access 
 
       ![](./Images/ETS2124.png)
 
-1. Once connected, close the Remote desktop connection of RDP server.
+1. Once connected, close the Remote desktop connection of the RDP server.
 
 1. Once it is done, minimize the **Client VM**.
 
@@ -380,7 +380,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
    ![](./Images/E3T4S1.png)
 
-1. Click on **Enable Microsoft and Internet Access profiles** on the popup wizard.
+1. Click on **Enable Microsoft and Internet Access profiles** on the pop-up wizard.
 
    ![](./Images/E3T4S2.png)
 
@@ -396,7 +396,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
    ![](./Images/E3T4S4-3.png)
 
-1. Repeat the same steps for **Microsoft traffic profile** to add the users.
+1. Repeat the same steps for the **Microsoft traffic profile** to add the users.
 
    ![](./Images/E3T4S5.png)
 
@@ -411,7 +411,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 4. Under **Policy rules** tab, click **+ Add rule (1)**:
 
    - **Rule name**: `Blockcategory` **(2)**
-   - **Destination type**: select `Webcategory` from the drop down**(3)**
+   - **Destination type**: select `Webcategory` from the dropdown**(3)**
    - **Search**: Search **Streaming Media And Downloads (4)** and select **(5)** it.
    - Click on **Add (6)**, after the rule is added select **Next (7)** .
 
@@ -433,7 +433,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
    ![](./Images/E3T4S12.png)
 
-1. On the **Link a policy** tab, select **BlockAccess (1)** from the drop down and click on **Add (2)**.
+1. On the **Link a policy** tab, select **BlockAccess (1)** from the dropdown and click on **Add (2)**.
 
    ![](./Images/E2T4S13.png)
 
@@ -472,7 +472,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
          ![](./Images/ETS2238.png)
 
-      - In the **Session** pane, select the check Box for **Use Global Secure Access security profile (1)** then, select **Webprofile (2)** and click on **Select (3)**.
+      - In the **Session** pane, select the check Box for **Use Global Secure Access security profile (1)** then, select **Webprofile (2)** from the dropdown and click on **Select (3)**.
 
          ![](./Images/E2T4S17-6.png)
    
@@ -480,7 +480,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
          ![](./Images/ETS2240.png)
 
-1. Open the **ClientVM**, verify the Global Secure Access client is connected from system tray.
+1. Open the **ClientVM**, verify the Global Secure Access client is connected from the system tray.
 
    ![](./Images/ETS2328.png)
 
@@ -491,9 +491,9 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
    ```
 
    ![](./Images/ETS2329.png)
-   >**Note**: These changes may take upto 1 hour to reflect. you can check this at the end of the lab. please proceed with next exercise.
+   >**Note**: These changes may take up to 1 hour to reflect. You can check this at the end of the lab. Please proceed with next exercise.
 
-1. Now open other websites as your wish and check the status.
+1. Now open other websites as you wish and check the status.
 
 ## Task 5: Validate Access and Review Logs
 
@@ -511,24 +511,24 @@ In this task, you will collect and analyse network traffic using the Global Secu
 
    ![](./Images/ETS2513.png)
 
-1. Now open **Remote desktop connection** and login into RDP server using Private ip address and below credentials: 
+1. Now open **Remote desktop connection** and login into RDP server using the private IP address and below credentials: 
 
       - **Username** : <inject key="adminUsername"></inject> **(1)**
       - **Password** : <inject key="adminPassword"></inject> **(2)**
 
       ![](./Images/ETS2127.png)
 
-1. Once connected close the Remote desktop connection of RDP server.
+1. Once connected, close the Remote desktop connection of RDP server.
 
 1. Now open **Global Secure Access Client - Advanced Diagnostics**, click **Stop collecting**, and review the logs.
 
    ![](./Images/ETS2514.png)
 
-1. You can add filter as well. Click on **Add filter** and provide the below information and click on **Apply (4)**.
+1. You can add a filter as well. Click on **Add filter** and provide the below information and click on **Apply (4)**.
 
-   - **Filter**: ``Channel`` **(1)**
-   - **Operator**: `==` **(2)**
-   - **Value** : ``Private`` **(3)**
+   - **Filter**: Select ``Channel`` from the dropdown **(1)**
+   - **Operator**: Select `==` from the dropdown **(2)**
+   - **Value** : Select ``Private`` from the dropdown **(3)**
 
    ![](./Images/ETS2515.png)
 
@@ -548,7 +548,7 @@ In this task, you will collect and analyse network traffic using the Global Secu
 
    ![](./Images/ETS2519.png)
 
-1. Now expand Monitor and click on **Traffic log** to check the all the logs (Internet access, Private access, Microsoft 365 access logs).
+1. Now expand Monitor and click on **Traffic log** to check all the logs (Internet access, Private access, Microsoft 365 access logs).
 
    ![](./Images/ETS2520.png)
 
