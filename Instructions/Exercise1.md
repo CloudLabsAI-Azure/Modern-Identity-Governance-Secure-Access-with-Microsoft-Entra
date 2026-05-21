@@ -59,11 +59,11 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. On the **New Group** page, configure the following:
 
-   - **Group type**: Select `Security` from the drop down **(1)**
+   - **Group type**: Select `Security` from the dropdown **(1)**
    - **Group name**: `IT-Department` **(2)**
    - **Group description**: `Dynamic group for IT Department members` **(3)**
    - **Microsoft Entra roles can be assigned to the group**: `No` **(4)**
-   - **Membership type**: Select `Dynamic User` from the drop down **(5)**
+   - **Membership type**: Select `Dynamic User` from the dropdown **(5)**
 
 1. Under **Dynamic user members**, click on **Add dynamic query (6)**.
 
@@ -71,8 +71,8 @@ In this task, you will create dynamic groups based on user attributes and define
 
 1. In the **Dynamic membership rules** page, configure the following rules and click on **Save (5)**.
 
-   - **Property**: Select `department` from the drop down **(1)**.
-   - **Operator**: select `Equals` from the drop down **(2)**.
+   - **Property**: Select `department` from the dropdown **(1)**.
+   - **Operator**: select `Equals` from the dropdown **(2)**.
    - **Value**: `IT`**(3)**.
    - **Rule syntax**: the rule expression should like below **(4)**:
       ```
@@ -84,16 +84,16 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/ETS118.png)
 
-1. Let's create another dynamic group, now click again on **+ New group**.  
+1. Let's create another dynamic group. Now, click again on **+ New group**.  
 
    ![](./Images/E1T1S5.png)
 
 1. On the **New Group** page, configure the following:
-   - **Group type**: Select `Security` from the drop down**(1)**
+   - **Group type**: Select `Security` from the dropdown**(1)**
    - **Group name**: `Managers` **(2)**
    - **Group description**: `Dynamic group for all managers` **(3)**
    - **Microsoft Entra roles can be assigned to the group**: `No` **(4)**
-   - **Membership type**: Select `Dynamic User` from the drop down **(5)**
+   - **Membership type**: Select `Dynamic User` from the dropdown **(5)**
 
 1. Under **Dynamic user members**, click **Add dynamic query (6)**.
 
@@ -132,7 +132,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S18.png)
 
-   >**Note: If user is not appeared then wait a few minutes and then click Refresh**.
+   >**Note: If the user does not appear, then wait a few minutes and then click Refresh**.
 
 1. Navigate back to the **Groups | All groups** page, select **Managers** group. Select **Members** under Manage Section, verify that **AD User1** is added as a member in the group.
 
@@ -199,7 +199,7 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S8.png)
 
-1. Click on **Save** to assign license to the user.
+1. Click on **Save** to assign a license to the user.
 
    ![](./Images/E1T2-1S9.png)
 
@@ -268,7 +268,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S7.png)
 
-1. Copy the below code. Click on **Logic app code view (1)** then select all the existing code with **Ctrl + A** and then click **Ctrl + V (2)** to paste the code and then click on **Save (3)** to save the code.
+1. Copy the below code. Click on **Logic app code view (1)**, then select all the existing code with **Ctrl + A** and then click **Ctrl + V (2)** to paste the code and then click on **Save (3)** to save the code.
 
    ```
    {
@@ -460,7 +460,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
     
       ![](./Images/ETS5116.png)
 
-1. Scroll down and click on the drop down of the Advanced parameters **(1)** then select **CC (2)**.
+1. Scroll down and click on the dropdown of the Advanced parameters **(1)** then select **CC (2)**.
 
    ![](./Images/E1T2-2S13.png)
 
@@ -484,7 +484,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S16new.png)
 
-1. On the Enable system assigned managed identity pop-up, select **Yes** to enable to managed identity.
+1. On the Enable system assigned managed identity pop-up, select **Yes** to enable the managed identity.
 
    ![](./Images/E1T2-2S17.png)
 
@@ -508,7 +508,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22new.png)
 
-1. Before running the Lifecycle workflow, you need to update few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
+1. Before running the Lifecycle workflow, you need to update a few properties of the user. Navigate to **Users (1)** under Entra ID and then click on **AD User3 (2)**.
 
    ![](./Images/E1T2-2S22-1.png)
 
@@ -558,7 +558,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
    
    ![](./Images/E1T2-2S33-1.png)
 
-1. Open a new tab and navigate to outlook using below link.
+1. Open a new tab and navigate to Outlook using below link.
 
    ```
    https://outlook.office.com/
@@ -569,7 +569,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Password:** <inject key="AzureAdUserPassword"></inject>
 
-1. After login, check that the email has received in Inbox.
+1. After logging in, check that the email has been received in the inbox.
 
    ![](./Images/ETS5117.png)
 
@@ -622,7 +622,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S10.png)
 
-1. Now after selecting the user, click **Run workflow** to start the offboarding workflow immediately.
+1. Now, after selecting the user, click **Run workflow** to start the offboarding workflow immediately.
 
    ![](./Images/E1T2-3S11.png)
 
@@ -630,7 +630,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S12.png)
 
-1. On the pop-up notice that each task shows a status as **Completed**.
+1. On the pop-up notice, each task shows a status of **Completed**.
 
    ![](./Images/E1T2-3S13.png)
 
@@ -665,7 +665,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
    
          ![](./Images/E1T4S2-3.png)
    
-      - Click on **No target resources selected** under Target resources option.
+      - Click on **No target resources selected** under the Target resources option.
 
          ![](./Images/ETS2228.png)
 
@@ -729,7 +729,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
       ![](./Images/ETS1421.png)   
 
-     >**Note:** Follow the below steps, if MFA prompted:
+     >**Note:** Follow the below steps, if MFA is prompted:
 
      - Click **Next** in **Lets keep your account secure**.
      - On **Install Microsoft Authenticator**, click **Next**.
@@ -794,7 +794,7 @@ In this task, you will create and configure access reviews to regularly validate
    ![](./Images/E1T3S2.png)
 
 1. On the **Review type** tab, provide the below details:
-      - Select what to review :select **Teams + Groups (1)** from the drop down.
+      - Select what to review :select **Teams + Groups (1)** from the dropdown.
       - Review scope : **Select Teams + groups (2)**.
       - Group : click on **+ Select group(s) (3)**.
 
@@ -808,7 +808,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS5119.png)
 
-1. In the Select reviewers drop down, click on **Selected user(s) or group(s)**.
+1. In the Select reviewers dropdown, click on **Selected user(s) or group(s)**.
 
    ![](./Images/ETS1266.png)
 
@@ -828,7 +828,7 @@ In this task, you will create and configure access reviews to regularly validate
 
 1. The designated reviewer will receive an email notification to perform the review.
 
-1. Open a new tab and navigate to outlook using below link:
+1. Open a new tab and navigate to Outlook using below link:
 
    ```
    https://outlook.office.com/
@@ -843,7 +843,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS1311.png)
 
-1. It will navigate to **My Access** portal. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
+1. It will navigate to the **My Access** portal. Now select **ADUser 1 (1)** and click on **Approve (2)**. 
 
    ![](./Images/ETS2222.png)
 
@@ -859,7 +859,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS2224.png)
 
-1. Navigate back to Microsoft Entra admin portal and select **Access review** under ID Governance. 
+1. Navigate back to **Microsoft Entra admin portal** and select **Access review** under ID Governance. 
 
    ![](./Images/ETS2225.png)
 
