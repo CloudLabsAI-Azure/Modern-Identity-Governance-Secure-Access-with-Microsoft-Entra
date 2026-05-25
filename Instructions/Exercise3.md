@@ -155,7 +155,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
 1. Provide below Information and click on **Update (4)** to verify the display card styling:
 
-   - **Logo URL**: `https://avd233.blob.core.windows.net/avdtest/VerifiedID.jpg` **(1)**
+   - **Logo URL**: `https://experienceazure.blob.core.windows.net/modernidentitywithmicrosoftentra/VerifiedID.jpg` **(1)**
    - **Text color**: #FFFFFF **(2)**
    - **Background color** : #0068cd **(3)**.
 
