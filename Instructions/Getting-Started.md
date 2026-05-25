@@ -33,7 +33,7 @@ After completing this lab, you will be able to:
 ### Prerequisites
 
 Before starting this lab, you should have:
-- Basic understanding of cloud and identity concepts.
+- Basic understanding of Azure Identity fundamentals concepts.
 - Familiarity with the Azure portal and Microsoft Entra admin center.
 - Basic knowledge of authentication, authorization, and MFA concepts.
 - Understanding of users, groups, and role-based access control (RBAC).
