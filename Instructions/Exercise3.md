@@ -482,7 +482,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](Images/E3T3-5S6.png)
 
-# Task 3.6: Review Face Check Verification Flow in Help Desk Application (Read-Only Task)
+### Task 3.6: Review Face Check Verification Flow in Help Desk Application (Read-Only Task)
 
 In this task, you will review how Face Check can be integrated into the Help Desk verification application deployed in this lab. Although Face Check is not configured in the current lab environment, the following steps demonstrate how the verification flow would work in a real-world implementation.
 
