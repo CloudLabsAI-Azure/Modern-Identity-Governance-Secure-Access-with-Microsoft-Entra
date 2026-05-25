@@ -89,7 +89,7 @@ In this task, you will create dynamic groups based on user attributes and define
    ![](./Images/E1T1S5.png)
 
 1. On the **New Group** page, configure the following:
-   - **Group type**: Select `Security` from the dropdown**(1)**
+   - **Group type**: Select `Security` from the dropdown **(1)**
    - **Group name**: `Managers` **(2)**
    - **Group description**: `Dynamic group for all managers` **(3)**
    - **Microsoft Entra roles can be assigned to the group**: `No` **(4)**
