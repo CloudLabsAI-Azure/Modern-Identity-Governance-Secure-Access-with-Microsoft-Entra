@@ -13,9 +13,9 @@ To achieve this, you will configure dynamic groups and lifecycle workflows, depl
 ## Overview
 In this hands-on lab, you will explore **Modern identity governance**, **secure access management**, and **decentralized identity solutions** using Microsoft Entra. You will configure Identity Governance features, implement secure access to private and internet resources with Global Secure Access, and enable passwordless identity verification using Verified ID.
 
-Throughout the lab, you will work with **Microsoft Entra services** to manage **users and groups**, configure **Conditional Access policies**, automate **user lifecycle processes**, review **access activity**, and issue and verify **verifiable credentials**.
+Throughout the lab, you will configure Identity Governance capabilities, manage users and groups, implement Conditional Access policies, and automate identity lifecycle processes. You will also explore Global Secure Access to provide secure connectivity to private and internet resources, and work with Verified ID to enable passwordless and decentralized identity verification using verifiable credentials.
 
-By the end of this lab, you will understand how Microsoft Entra helps organizations strengthen security, simplify identity management, and support **Zero Trust access** across cloud platform and hybrid environments.
+By completing this lab, you will gain a strong understanding of how Microsoft Entra helps organizations enhance security, simplify identity administration, and deliver secure access experiences for users and applications.
 
 ## Objective
 
