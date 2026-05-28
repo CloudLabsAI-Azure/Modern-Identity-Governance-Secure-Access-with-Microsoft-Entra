@@ -297,11 +297,11 @@ In this task, you will simulate a real-world help desk identity verification sce
 
 1. If prompted to sign in, provide the below credentials:
 
-   - Username: Paste the username  **<inject key="AzureUserEmail"></inject>** **(1)** then click on **Next (2)**.
+   - **Username:** Paste the username  **<inject key="AzureAdUserEmail"></inject> (1)** then click on **Next (2)**.
 
       ![](./Images/GS6.png)
 
-   - Password:  Paste the password **<inject key="AzureUserEmail"></inject> (1)** and click on **Sign in (2)**.
+   - **Password:**  Paste the password **<inject key="AzureAdUserPassword"></inject> (1)** and click on **Sign in (2)**.
 
       ![](./Images/GS6-1.png)
 
@@ -310,8 +310,8 @@ In this task, you will simulate a real-world help desk identity verification sce
 1. Provide the below detail, click on **Review + create (10)** and then **Create**.
 
    - **Subscription**: Leave it as default **(1)**.
-   - **Resource group**: ODL-Entra-<inject key="DeploymentID"></inject>-01 **(2)**.
-   - **Web App name**: helpdesk<inject key="DeploymentID"></inject> **(3)**.
+   - **Resource group**: ODL-Entra-<inject key="DeploymentID" enableCopy="false" />-01 **(2)**.
+   - **Web App name**: helpdesk<inject key="DeploymentID" enableCopy="false" /> **(3)**.
    - **Az Tenant Id:** Paste the tenant ID copied in Step 4 **(4)**.
    - **Az Client Id:** Paste the application ID copied in Step 4 **(5)**.
    - **Az Client Secret:** Paste the value copied in Step 7 **(6)**.
@@ -325,7 +325,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](./Images/E3T3-1S16new.png)
 
-1. Click on **helpdesk<inject key="DeploymentID"></inject>** app service that is listed in the resource group.
+1. Click on **helpdesk<inject key="DeploymentID" enableCopy="false" />** app service that is listed in the resource group.
 
    ![](./Images/E3T3-1S17.png)
 

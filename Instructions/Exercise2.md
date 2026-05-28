@@ -263,8 +263,8 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
 1. Enter the credentials for the RDP server when prompted and click on **OK (3)**.
 
-      - **Username** :<inject key="adminUsername"></inject> **(1)**
-      - **Password** : <inject key="adminPassword"></inject> **(2)**
+      - **Username** : <inject key="LabVM Admin Username"></inject> **(1)**
+      - **Password** : <inject key="LabVM Admin Password"></inject> **(2)**
 
       ![](./Images/E3T3S6.png)
 
@@ -350,8 +350,8 @@ In this task, you will configure Conditional Access policies for Private Access 
 
 1. Once it is authenticated, enter the credentials for the RDP server when prompted and click on **OK (3)**.
 
-      - **Username** : <inject key="adminUsername"></inject> **(1)**
-      - **Password** :  <inject key="adminPassword"></inject> **(2)**
+      - **Username** : <inject key="LabVM Admin Username"></inject> **(1)**
+      - **Password** : <inject key="LabVM Admin Password"></inject> **(2)**
 
          ![](./Images/E3T3S6.png)
 
@@ -513,8 +513,8 @@ In this task, you will collect and analyse network traffic using the Global Secu
 
 1. Now open **Remote desktop connection** and login into RDP server using the private IP address and below credentials: 
 
-      - **Username** : <inject key="adminUsername"></inject> **(1)**
-      - **Password** : <inject key="adminPassword"></inject> **(2)**
+      - **Username** : <inject key="LabVM Admin Username"></inject> **(1)**
+      - **Password** : <inject key="LabVM Admin Password"></inject> **(2)**
 
       ![](./Images/ETS2127.png)
 
