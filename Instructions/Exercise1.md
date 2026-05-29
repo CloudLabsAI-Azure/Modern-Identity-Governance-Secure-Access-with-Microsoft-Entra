@@ -719,7 +719,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
       ![](./Images/ETS1419.png)   
 
-   - **Password**: **<inject key="User's Password"></inject> (1)** and click on **Sign in (2)**.
+   - **Password**: **<inject key="User 01 Password"></inject> (1)** and click on **Sign in (2)**.
 
       ![](./Images/ETS1420.png)   
 
