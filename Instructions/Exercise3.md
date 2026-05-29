@@ -48,7 +48,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
 
       ![](./Images/E3T1S2.png)
 
-1. On the **Select keys from Azure Key Vault** wizard, leave the Subscription as **default (1)** then from the Key vault dropdown, select **kv-<inject key="DeploymentID"></inject> (2)** and click on **Select (3)**.
+1. On the **Select keys from Azure Key Vault** wizard, leave the Subscription as **default (1)** then from the Key vault dropdown, select **kv-<inject key="DeploymentID" enableCopy="false" /> (2)** and click on **Select (3)**.
 
    ![](./Images/E3T1S3.png)
 

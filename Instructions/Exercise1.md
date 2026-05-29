@@ -812,7 +812,7 @@ In this task, you will create and configure access reviews to regularly validate
 
    ![](./Images/ETS1266.png)
 
-1. Then click on **+ Select reviewers (1)** and select **ODL_User <inject key="DeploymentID"></inject> (2)** then click on **Select (3)**.
+1. Then click on **+ Select reviewers (1)** and select **ODL_User <inject key="DeploymentID" enableCopy="false" /> (2)** then click on **Select (3)**.
 
    ![](./Images/ETS1267.png)
 

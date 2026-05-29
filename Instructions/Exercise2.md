@@ -48,7 +48,7 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
    ![](./Images/E3T3S3.png)
 
-1. Provide **Computer** name as <inject key="ClientVM DNS Name"></inject> **(1)** then click on **Connect (2)**.
+1. Provide **Computer** name as **<inject key="ClientVM DNS Name"></inject>** **(1)** then click on **Connect (2)**.
 
    ![](./Images/ETS2122.png)
 
@@ -216,7 +216,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
       ![](./Images/ETS1419.png)   
 
-   - **Password**: **<inject key="User's Password"></inject> (1)** and click on **Sign in (2)**.
+   - **Password**: **<inject key="User 01 Password"></inject> (1)** and click on **Sign in (2)**.
 
       ![](./Images/E1T2S23-2.png)
 
