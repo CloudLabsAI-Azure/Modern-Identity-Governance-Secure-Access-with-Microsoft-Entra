@@ -216,7 +216,9 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
       ![](./Images/ETS1419.png)   
 
-   - **Password**: **<inject key="User 01 Password"></inject> (1)** and click on **Sign in (2)**.
+   - **Password**: `Passw0rd!123`
+  
+     >**Note:** Ignore the password shown in Environment tab.
 
       ![](./Images/E1T2S23-2.png)
 
