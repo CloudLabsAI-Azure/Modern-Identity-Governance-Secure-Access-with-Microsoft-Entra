@@ -413,7 +413,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 4. Under **Policy rules** tab, click **+ Add rule (1)**:
 
    - **Rule name**: `Blockcategory` **(2)**
-   - **Destination type**: select `Webcategory` from the dropdown**(3)**
+   - **Destination type**: select `Webcategory` from the dropdown **(3)**
    - **Search**: Search **Streaming Media And Downloads (4)** and select **(5)** it.
    - Click on **Add (6)**, after the rule is added select **Next (7)** .
 
@@ -443,7 +443,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
    ![](./Images/E2T4S14.png)
 
-1. On the **Review** tab, click on **Create a profile**
+1. On the **Review** tab, click on **Create a profile**.
 
    ![](./Images/E2T4S15.png)
 
