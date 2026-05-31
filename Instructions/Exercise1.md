@@ -520,7 +520,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Employee Hire date**: Select today's date **(1)**.
    - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**.
-   - **Email**: Go to Environment tab and copy **User 03 UPN (3)**.
+   - **Email**: Enter **<inject key="User 03 UPN"></inject>** **(3)**.
 
       ![](./Images/ETS1277.png)
 
@@ -719,7 +719,9 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
       ![](./Images/ETS1419.png)   
 
-   - **Password**: **<inject key="User 01 Password"></inject> (1)** and click on **Sign in (2)**.
+   - **Password**: Enter `Passw0rd!123` **(1)** and click on **Sign in (2)**.
+  
+     >**Note:** Ignore the password shown in Environment tab.
 
       ![](./Images/ETS1420.png)   
 
