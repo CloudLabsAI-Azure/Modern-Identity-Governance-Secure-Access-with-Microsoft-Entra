@@ -175,9 +175,13 @@ In this task, you will set up a lifecycle workflow to automate the onboarding pr
 
    ![](./Images/E1T2-1S2.png)
 
-1. On the **Basics** tab, provide Name as **Onboard New Employee - IT Department (1)** and then click **Next: Configure scope > (2)**.
+1. On the **Basics** tab, provide details as below and then click **Next: Configure scope > (4)**.
 
-   ![](./Images/E1T2-1S3.png)
+   - **Name**: `Onboard New Employee - IT Department` **(1)**
+   - **Trigger type**: Select `Attribute changes` from the dropdown **(2)**
+   - **Trigger attribute** : Select `department` from the dropdown **(3)**
+
+   ![](./Images/ETS2111.png)
 
 1. On the **Configure scope** tab, make the rule department value as **IT (1)** then click **Next: Review tasks > (2)**.
 
