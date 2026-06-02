@@ -123,7 +123,7 @@ Now you're all set to explore the powerful world of technology. Feel free to rea
  
 1. On your virtual machine, click on the Azure Portal icon as shown below:
  
-    ![Launch Azure Portal](./Images/GS8.png)
+    ![Launch Azure Portal](./Images/Azureportal.png)
  
 2. You'll see the **Sign into Microsoft Azure** tab. Here, enter your credentials **(1)** and click **Next (2)**.
  

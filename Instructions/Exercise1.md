@@ -128,13 +128,13 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/IMG3.png)
 
-1. Select **Members**, verify that **AD User1** is now added to the group dynamically.
+1. Select **Members** under Manage section, verify that **AD User1** is now added to the group dynamically.
 
    ![](./Images/E1T1S18.png)
 
    >**Note: If the user does not appear, then wait a few minutes and then click Refresh**.
 
-1. Navigate back to the **Groups | All groups** page, select **Managers** group. Select **Members** under Manage Section, verify that **AD User1** is added as a member in the group.
+1. Navigate back to the **Groups | All groups** page, select **Managers** group. Select **Members** under Manage section, verify that **AD User1** is added as a member in the group.
 
    ![](./Images/E1T1S19.png)
 
@@ -148,7 +148,7 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S21-1.png)
 
-1. For **AD User2**, the job title attribute does not contain "Manager", therefore the user is not added to the group dynamically.
+1. For **AD User2**, the job title attribute does not contain "`Manager`", therefore the user is not added to the group dynamically.
 
    ![](./Images/E1T1S21-2.png)
 
