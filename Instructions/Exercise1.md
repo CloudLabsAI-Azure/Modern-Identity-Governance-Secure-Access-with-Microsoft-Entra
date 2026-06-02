@@ -516,17 +516,15 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22-1.png)
 
-1. On the **Overview** page of the user, click on **Edit properties**.
+1. On the **Overview** page of the user, copy the **User principle name (1)** and note it down. Then click on **Edit properties (2)**.
 
-   ![](./Images/E1T2-2S23.png)
+   ![](./Images/ETS21118.png)
 
 1. Select **All** then scroll down and set the following attributes and then click on **Save (4)**.
 
    - **Employee Hire date**: Select today's date **(1)**.
    - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**.
-   - **Email**: Enter ADUser3@azureholxxxx.onmicrosoft.com **(3)**.
-
-   >**Note**: Replace xxxx with the tenant name provided in the lab credentials
+   - **Email**: Paste the `User principle name` copied in previous step **(3)**.
 
       ![](./Images/ETS1277.png)
 
@@ -591,9 +589,13 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
    ![](./Images/E1T2-3S2new.png)
 
-1. On the **Basics** tab, leave it as default and click **Next: Configure scope >**.
+1. On the **Basics** tab, provide details as below and then click **Next: Configure scope > (4)**.
 
-   ![](./Images/E1T2-3S3.png)
+   - **Name**: `Offboard an employee` **(1)**
+   - **Trigger type**: Select `Attribute changes` from the dropdown **(2)**
+   - **Trigger attribute** : Select `department` from the dropdown **(3)**
+
+   ![](./Images/ETS21119.png)
 
 1. On the **Configure scope** tab, make the rule department value as **IT (1)** then click **Next: Review tasks > (2)**.
 
@@ -652,7 +654,7 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
 In this task, you will create a Conditional Access policy to enforce multi-factor authentication (MFA). You will configure conditions such as users, apps, and locations, and validate the policy using sign-in logs.
 
-1. In the Entra Admin portal left pane, expand **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
+1. In the Microsoft Entra admin center's left pane, expand **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
 
    ![](./Images/E1T4S1.png)
 
@@ -683,7 +685,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
          
          ![](./Images/E1T4S2-6.png)
 
-      - Now in the Device platforms blade, toggle the `Configure` switch to **Yes** **(1)** and make sure that **Any device (2)** option is selected. Then click on **Done** **(3)**
+      - Now in the **Device platforms** blade, toggle the `Configure` switch to **Yes** **(1)** and make sure that **Any device (2)** option is selected. Then click on **Done** **(3)**
 
          ![](./Images/E1T4S2-7.png)
 
@@ -691,7 +693,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-8.png)
 
-      - Now in the Location blade, toggle the `Configure` switch to **Yes** **(1)** and select **Any network or location (2)**.
+      - Now in the **Location** blade, toggle the `Configure` switch to **Yes** **(1)** and select **Any network or location (2)**.
 
          ![](./Images/E1T4S2-9.png)
   
@@ -699,7 +701,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
          ![](./Images/E1T4S2-10.png)
 
-      - Now in the Client Apps blade, toggle the `Configure` switch to **Yes** **(1)** and uncheck the boxes for **Legacy authentication client (2)**. Then click on **Done** **(3)**.
+      - Now in the **Client Apps** blade, toggle the `Configure` switch to **Yes** **(1)** and uncheck the boxes for **Legacy authentication client (2)**. Then click on **Done** **(3)**.
 
          ![](./Images/ETS2229.png)
 
@@ -781,6 +783,8 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 1. Return to the Microsoft Entra admin center and navigate to **Entra ID** > **Monitoring & health (1)** > **Sign-in logs (2)**. Verify the recent User sign-ins **(3)**.
 
    ![](./Images/E1T4S8.png)
+   
+   > **Note**: It may take some time for the logs to be reflected. Please proceed with the next task and verify the logs at the end of the exercise.
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
@@ -833,6 +837,9 @@ In this task, you will create and configure access reviews to regularly validate
 1. On the **Review + create** tab, provide Review name as **Access review (1)** and click on **Create (2)**.
 
    ![](./Images/ETS1269.png)
+   
+   >**Note**: It may take a few minutes for the access review to become active.
+    ![](./Images/ETS31111.png)
 
 1. The designated reviewer will receive an email notification to perform the review.
 
