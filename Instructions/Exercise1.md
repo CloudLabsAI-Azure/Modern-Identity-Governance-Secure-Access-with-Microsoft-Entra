@@ -241,18 +241,18 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S1.png)
 
-1. On the Basics tab, provide the below details then click on **Next: Task behavior (3)**.
+1. On the **Basics** tab, provide the below details then click on **Next: Task behavior (3)**.
 
-      - **Name**: Onboarding email notification **(1)**.
-      - **Description**: Send the onboarding email notification to New joinee **(2)**.
+      - **Name**: `Onboarding email notification` **(1)**.
+      - **Description**: `Send the onboarding email notification to New joinee` **(2)**.
 
          ![](./Images/E1T2-2S2.png)
 
-1. On the Task behavior tab, leave it as default and click on **Next: Details**.
+1. On the **Task behavior** tab, leave it as default and click on **Next: Details**.
 
    ![](./Images/E1T2-2S3.png)
 
-1. On the Details tab, provide the below details and click on **Create logic app (4)**.
+1. On the **Details** tab, provide the below details and click on **Create logic app (4)**.
 
       - **Subscription**: Leave it as default **(1)**
       - **Resource group**: **ODL-Entra-<inject key="Deployment ID" enableCopy="false"></inject>-01 (2)**
@@ -272,7 +272,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S7.png)
 
-1. Copy the below code. Click on **Logic app code view (1)**, then select all the existing code with **Ctrl + A** and then click **Ctrl + V (2)** to paste the code and then click on **Save (3)** to save the code.
+1. Copy the below code. Click on **Logic app code view (1)**, then select all the existing code with **Ctrl + A** and then click **Ctrl + V (2)** to paste the code and then click on **Publish (3)** to save the code.
 
    ```
    {
@@ -435,11 +435,11 @@ In this task, you will create a custom task extension using a Logic App. This ex
    }
    ```
 
-   ![](./Images/E1T2-2S8.png)
+   ![](./Images/ETS21112.png)
 
 1. In the left pane, go to **Logic app designer (1)** then click on **+ (2)** and select **Add an action(3)**.
 
-   ![](./Images/E1T2-2S9.png)
+   ![](./Images/ETS21113.png)
 
 1. Search for **send an email (1)** and select **Send an email (V2) (2)** under `Office 365 outlook`.
 
@@ -457,30 +457,30 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Subject**: ```Welcome Onboarding``` **(2)**
 
-   - **Body** : Click on **Code view (3)** icon then copy and paste the below content **(4)**
+   - **Body** : Click on **Code view (3)** icon then copy and replace text the below content **(4)**
       ```
       <p class="editor-paragraph">Hello Dear @{triggerBody()?['data']?['subject']?['displayName']},<br><br>Welcome to your first day at work.<br><br>Attached, you will find the information for your first login.<br><br>Use the following username to log in:<br>@{triggerBody()?['data']?['subject']?['email']}<br><br>Set it up here: <a href="https://Portal.azure.com" class="editor-link">Azure Portal</a></p><p class="editor-paragraph"><br>If you have any questions, please contact your manager:<br>@{triggerBody()?['data']?['subject']?['manager']?['displayName']}<br>@{triggerBody()?['data']?['subject']?['manager']?['email']}<br><br>You can reach our helpdesk at 00011112222.<br><br>Welcome On-Board!</p><br>
       ```
     
-      ![](./Images/ETS5116.png)
+      ![](./Images/ETS21114.png)
 
-1. Scroll down and click on the dropdown of the Advanced parameters **(1)** then select **CC (2)**.
+1. Scroll down and click on the dropdown of the **Advanced parameters (1)** then select **CC (2)**.
 
    ![](./Images/E1T2-2S13.png)
 
    ![](./Images/E1T2-2S13-1.png)
 
-1. In the cc box provide the following text **(1)** to add Manager ID and click on **Save (2)** to save it. 
+1. In the cc box provide the following text **(1)** to add Manager ID and click on **Publish (2)** to save it. 
 
    ```
    @triggerBody()?['data']?['subject']?['manager']?['email']
    ```
 
-   ![](./Images/ETS5115.png)
+   ![](./Images/ETS21115.png)
 
 1. Check the flow of the logic app.
 
-   ![](./Images/E1T2-2S15.png)
+   ![](./Images/ETS21116.png)
 
    >**Note**: The manual step is the trigger that starts the Logic App when the lifecycle workflow sends a request. The HTTP action processes the request and marks the task as completed, and then Send an email (V2) step sends a notification to the user and manager.
 
@@ -524,7 +524,9 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    - **Employee Hire date**: Select today's date **(1)**.
    - **Manager**: Click on **+Add manager** and select **<inject key="AzureAdUserEmail" enableCopy="false"></inject> (2)**.
-   - **Email**: Enter **<inject key="User 03 UPN"></inject>** **(3)**.
+   - **Email**: Enter ADUser3@azureholxxxx.onmicrosoft.com **(3)**.
+
+   >**Note**: Replace xxxx with the tenant name provided in the lab credentials
 
       ![](./Images/ETS1277.png)
 
