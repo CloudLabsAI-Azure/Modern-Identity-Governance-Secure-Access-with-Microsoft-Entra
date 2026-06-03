@@ -8,9 +8,9 @@ In this hands-on exercise, you will configure **Microsoft Entra Global Secure Ac
 
 ## Prerequisites
 
-The following are prerequisites to complete this exercise:
+The following are prerequisites to complete this exercise which are already configured in this lab environment:
 
-- Microsoft Entra ID P1 or P2 license.
+- Microsoft Entra ID P1 or P2 license and also Microsoft 365 E3 or E5 license.
 - Microsoft Entra Internet Access and Microsoft Entra Private Access licenses (included in Microsoft Entra Suite).
 - Global Administrator or Security Administrator role.
 - A Windows 10/11 device that is either Microsoft Entra joined or Microsoft Entra hybrid joined.
@@ -48,13 +48,13 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
    ![](./Images/E3T3S3.png)
 
-1. Provide **Computer** name as **<inject key="ClientVM DNS Name"></inject>** **(1)** then click on **Connect (2)**.
+1. Provide **Computer** name as **<inject key="ClientVM DNS Name"></inject>** **(ClientVM)** **(1)** then click on **Connect (2)**.
 
    ![](./Images/ETS2122.png)
 
 1. Now click on **More choices (1)** then select **Use a different account (2)**. Provide the below credentials and click on **OK (5)**.
 
-      - **Username** :  .\ <inject key="ClientVM Admin Username"></inject> **(3)**
+      - **Username** : <inject key="ClientVM Admin Username"></inject> **(3)**
       - **Password** : <inject key="ClientVM Admin Password"></inject> **(4)**
 
          ![](./Images/E2T1S19.png)
@@ -117,7 +117,7 @@ In this task, you will activate Microsoft Entra Global Secure Access in your ten
 
 In this task, you will configure Microsoft Entra Private Access by enabling traffic forwarding and deploying a Private Access connector. You will create an application segment and assign users to securely access internal resources. Finally, you will validate connectivity by accessing a private resource (RDP) through the Global Secure Access client without using a traditional VPN.
 
-1. In the **Microsoft Entra admin center** on the Lab VM, go to **Traffic forwarding (1)** under **Connect**, enable the **Private access profile (2)**, and then click **OK** in the confirmation pop-up wizard.
+1. In the **Microsoft Entra admin center** on the Lab VM, go to **Traffic forwarding (1)** under **Connect**. Enable the **Private access profile (2)**, and then click **OK** in the confirmation pop-up wizard.
 
    ![](./Images/E2T2S1.png)
 
@@ -188,7 +188,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
    ![](./Images/E2T2S13.png)
 
-1. Navigate to **Quick Access (1)** under Applications, select **Users and groups (2)** and then click on **+ Add user/group (3)**.
+1. Navigate to **Quick Access (1)** under **Applications**, select **Users and groups (2)**, and then click on **+ Add user/group (3)** to assign the required group access to the private application.
 
    ![](./Images/E2T2S14.png)
 
@@ -202,7 +202,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
    ![](./Images/E2T2S16.png)
 
-1. Now open **Client VM**. On the desktop, double click on **Global Secure Access Client** file.
+1. Now go to **Client VM** and open **Global Secure Access Client**.
    
    ![](./Images/ETS2125.png) 
 
@@ -222,11 +222,13 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
       ![](./Images/E1T2S23-2.png)
 
+      >**Note:** If it prompts for MFA. Enter the digit displayed on the screen in the **Authenticator** app on your mobile and tap on **Yes**.
+
 1. On **Sign in to all apps and websites on this device** pop up wizard, select **Yes**.
 
    ![](./Images/E1T2S24.png)
 
-1. On **Allow your Oraganization to manage your device** pop up wizard, select **Yes**.
+1. On **Allow your Organization to manage your device** pop up wizard, select **Yes**.
 
    ![](./Images/E1T2S25.png)
 
@@ -255,7 +257,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
    ![](./Images/E1T2S29-1.png)
 
-1. Navigate to **ClientVM**. From the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
+1. Navigate to **ClientVM**. From the **Start** menu, search for **RDP (1)** in the ClientVM and select **Remote Connection Desktop (2)**.
 
    ![](./Images/E3T3S3.png)
 
@@ -308,15 +310,15 @@ In this task, you will configure Conditional Access policies for Private Access 
    
       ![](./Images/E2T3S2-2.png)
    
-   - Click on **1 resources included** **(1)** under Target resources option and verify that **Quick actions** **(2)** is already selected.
+   - Click on **1 resources included** **(1)** under `Target resources` option and verify that **Quick actions** **(2)** is already selected.
 
       ![](./Images/ETS2234.png)
 
-   - Click on **0 conditions selected** **(1)** under Conditions option. Then select **Not configured (2)** under Device platforms.
+   - Click on **0 conditions selected** **(1)** under `Conditions` option. Then select **Not configured (2)** under `Device platforms`.
 
       ![](./Images/ETS2235.png)
 
-   - Now in the Device platforms blade, toggle the `Configure` switch to **Yes (1)** and make sure that **Any device (2)** option is selected, then click on **Done** **(3)**.
+   - Now in the **Device platforms** blade, toggle the `Configure` switch to **Yes (1)** and make sure that **Any device (2)** option is selected, then click on **Done** **(3)**.
 
       ![](./Images/E1T4S2-7.png)
 
@@ -338,7 +340,7 @@ In this task, you will configure Conditional Access policies for Private Access 
          
       >**Note**: Applying the Conditional access policy will take a few minutes to reflect.
 
-1. Navigate to **ClientVM**. From the **Start** menu, search for **RDP (1)** and select **Remote Connection Desktop (2)**.
+1. Navigate to **ClientVM**. From the **Start** menu, search for **RDP (1)** in the ClientVM and select **Remote Connection Desktop (2)**.
 
    ![](./Images/E3T3S3.png)
 
@@ -349,6 +351,7 @@ In this task, you will configure Conditional Access policies for Private Access 
 1. It will prompt for MFA. Enter the digit displayed on the Screen in the Authenticator app on your mobile and tap on **Yes**.
 
    ![](./Images/ETS2187.png)
+   >**Note**: Applying the Conditional access policy will take upto 1 hour to reflect.if it not prompted to MFA, proceed to next task and check again at the end of the lab
 
 1. Once it is authenticated, enter the credentials for the RDP server when prompted and click on **OK (3)**.
 
@@ -462,7 +465,7 @@ In this task, you will configure Microsoft Entra Internet Access by enabling tra
 
          ![](./Images/E2T4S17-2.png)
 
-      - Click on **No target resources selected** **(1)** under Target resources option.
+      - Click on **No target resources selected** **(1)** under `Target resources` option.
 
          ![](./Images/ETS2237.png)
 
@@ -557,6 +560,7 @@ In this task, you will collect and analyse network traffic using the Global Secu
 1. You can also filter the logs. For example, click **Add filter**, select **Destination FQDN**, enter **netflix.com** as the value, and apply the filter. You can then observe the actions marked as **Blocked**.
 
    ![](./Images/ETS2521.png)
+   > **Note**: The logs may take a few minutes to appear in the portal. Please wait for few minutes and refresh the page.
 
 ## Summary
 

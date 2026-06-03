@@ -337,6 +337,11 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](./Images/E3T3-1S19.png)
 
+1. Scroll down and click on **Apply** then click on **Confirm** to save the changes
+
+   ![](./Images/ETS211121.png)
+   ![](./Images/ETS211122.png)
+
 1. From the left navigation pane, under **Settings**, select **Configuration (1)** and then navigate to the **Stack settings (2)** tab. Under **Startup command (3)**, replace the existing value with the following command. Click on **Apply (4)** to save the configuration changes.
 
    ```
@@ -370,7 +375,7 @@ In this task, you will simulate a real-world help desk identity verification sce
 
    ![](Images/E3T3-2S3.png)
 
-1. On Authenticator, click on Sign in to your account, add an account by providing below mentioned credentials and click on **Next**.
+1. On Authenticator, click on Sign in to your account, add an account by providing below mentioned credentials and click on **Add**.
    
       - Enter **Username/Email: <inject key="AzureAdUserEmail"></inject>** in the **Sign in** field. Click **Next** to continue.
 

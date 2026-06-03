@@ -654,7 +654,13 @@ In this task, you will configure a lifecycle workflow to handle employee offboar
 
 In this task, you will create a Conditional Access policy to enforce multi-factor authentication (MFA). You will configure conditions such as users, apps, and locations, and validate the policy using sign-in logs.
 
-1. In the Microsoft Entra admin center's left pane, expand **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
+1. In the Microsoft Entra admin center's left pane, select **Overview (1)** under Entra ID and select **Properties (2)** then click on **Manage security defaults (3)** and make sure it is **Disabled (4)**.
+
+   ![](./Images/ETS211120.png)
+   > **Note**: If Security Defaults are enabled, please disable them before proceeding.
+   > **Note**: If you are unable to disable Security Defaults and see the **Manage Conditional Access** option instead, it indicates that the organization is already using Conditional Access policies. In that case, you can proceed to the next step.
+
+1. Now, expand **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
 
    ![](./Images/E1T4S1.png)
 
@@ -778,7 +784,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 
 1. Tap on **Finish** in the Mobile Device.
 
-   > **Note**: While logging in again, enter the digits displayed on the screen in the **Authenticator app** and click on Yes.
+   > **Note**: Conditional Access policy changes may take upto 1hour to reflect. Microsoft admin portals such as `entra.microsoft.com` and `portal.azure.com` may enforce built-in MFA requirements from Microsoft, independent of the Conditional Access policy configured in this lab. In this task, the Azure portal sign-in is used to trigger MFA registration/configuration, which will also be utilized in subsequent exercises. To specifically validate Conditional Access policy behavior, you may alternatively test using `https://myapps.microsoft.com`.
 
 1. Return to the Microsoft Entra admin center and navigate to **Entra ID** > **Monitoring & health (1)** > **Sign-in logs (2)**. Verify the recent User sign-ins **(3)**.
 
@@ -837,7 +843,7 @@ In this task, you will create and configure access reviews to regularly validate
 1. On the **Review + create** tab, provide Review name as **Access review (1)** and click on **Create (2)**.
 
    ![](./Images/ETS1269.png)
-   
+
    >**Note**: It may take a few minutes for the access review to become active.
     ![](./Images/ETS31111.png)
 
