@@ -657,8 +657,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
 1. In the Microsoft Entra admin center's left pane, select **Overview (1)** under Entra ID and select **Properties (2)** then click on **Manage security defaults (3)** and make sure it is **Disabled (4)**.
 
    ![](./Images/ETS211120.png)
-   > **Note**: If Security Defaults are enabled, please disable them before proceeding.
-   > **Note**: If you are unable to disable Security Defaults and see the **Manage Conditional Access** option instead, it indicates that the organization is already using Conditional Access policies. In that case, you can proceed to the next step.
+   > **Note**: If Security Defaults are enabled, please disable them before proceeding. If you are unable to disable Security Defaults and see the **Manage Conditional Access** option instead, it indicates that the organization is already using Conditional Access policies. In that case, you can proceed to the next step.
 
 1. Now, expand **ID Protection (1)** and select **Risk-based Conditional Access  (2)** then click on **+ New policy (3)**.
 
