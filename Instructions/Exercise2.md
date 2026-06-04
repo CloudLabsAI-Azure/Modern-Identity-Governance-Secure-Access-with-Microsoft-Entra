@@ -212,7 +212,7 @@ In this task, you will configure Microsoft Entra Private Access by enabling traf
 
 1. If prompted sign in with the below credentials.
 
-   - **Username**: **<inject key="User 01 UPN"></inject> (1)** then click on **Next (2)**.
+   - **Username**: Paste the user principal name that copied in exercise 1 task 1 step 15 **(1)** then click on **Next (2)**.
 
       ![](./Images/ETS1419.png)   
 

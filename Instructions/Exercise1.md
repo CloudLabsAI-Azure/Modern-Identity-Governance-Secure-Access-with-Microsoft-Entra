@@ -113,9 +113,9 @@ In this task, you will create dynamic groups based on user attributes and define
 
    ![](./Images/E1T1S14.png)
 
-1. On the **Overview** page of the user, click on **Edit properties**.
+1. On the **Overview** page of the user, copy the **User principal name (1)** and paste it in notepad for later use.Then click on **Edit properties (2)**.
 
-   ![](./Images/E1T1S15.png)
+   ![](./Images/ETS211123.png)
 
 1. Select **Job Information (1)** tab and set the following attributes and then click on **Save (4)**.
 
@@ -516,7 +516,7 @@ In this task, you will create a custom task extension using a Logic App. This ex
 
    ![](./Images/E1T2-2S22-1.png)
 
-1. On the **Overview** page of the user, copy the **User principle name (1)** and note it down. Then click on **Edit properties (2)**.
+1. On the **Overview** page of the user, copy the **User principal name (1)** and note it down. Then click on **Edit properties (2)**.
 
    ![](./Images/ETS21118.png)
 
@@ -728,7 +728,7 @@ In this task, you will create a Conditional Access policy to enforce multi-facto
       https://portal.azure.com
       ```
 
-   - **Username**: **<inject key="User 01 UPN"></inject>** **(1)** and click **Next (2)**.
+   - **Username**: Paste the user principal name that copied in task 1 step 15 **(1)** and click **Next (2)**.
 
       ![](./Images/ETS1419.png)   
 
