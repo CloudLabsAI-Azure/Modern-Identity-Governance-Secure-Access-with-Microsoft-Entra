@@ -342,16 +342,17 @@ In this task, you will simulate a real-world help desk identity verification sce
    ![](./Images/ETS211121.png)
    ![](./Images/ETS211122.png)
 
-1. From the left navigation pane, under **Settings**, select **Configuration (1)** and then navigate to the **Stack settings (2)** tab. Under **Startup command (3)**, replace the existing value with the following command. Click on **Apply (4)** to save the configuration changes.
+1. On the **Overview** page, click on **Default domain** to open the application page.
 
+   ![](./Images/E3T3-1S21.png)
+
+   >**Note:** If the application displays a **Failed to Load** error, navigate to **Settings** from the left-hand menu and select **Configuration (1)**. Open the **Stack settings (2)** tab, then under **Startup command (3)**, replace the existing command with the one provided below. Finally, click **Apply (4)** to save the changes.
+   
    ```
    node app.js
    ```
    ![](./Images/E3T3-1S20.png)
 
-1. On the **Overview** page, click on **Default domain** to open the application page.
-
-   ![](./Images/E3T3-1S21.png)
 
 > **Congratulations** on completing the task! Now, it's time to validate it. Here are the steps:
 > - Scroll down in the lab guide and hit the Validate button for the corresponding task. If you receive a success message, you can proceed to the next task. 
