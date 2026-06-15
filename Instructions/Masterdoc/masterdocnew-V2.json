@@ -1,0 +1,24 @@
+[
+  {
+    "Name": "Hands-on Lab: Modern Identity Governance & Secure Access with Microsoft Entra",
+    "Language": "English",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Modern-Identity-Governance-Secure-Access-with-Microsoft-Entra/refs/heads/main/Instructions/Getting-Started.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Modern-Identity-Governance-Secure-Access-with-Microsoft-Entra/refs/heads/main/Instructions/Exercise1.md",
+        "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Modern-Identity-Governance-Secure-Access-with-Microsoft-Entra/refs/heads/main/Instructions/Exercise2.md",
+        "Order": 3
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/Modern-Identity-Governance-Secure-Access-with-Microsoft-Entra/refs/heads/main/Instructions/Exercise3-V2.md",
+        "Order": 4
+      }
+    ]
+  }
+]
