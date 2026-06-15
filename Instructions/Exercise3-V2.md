@@ -1,6 +1,6 @@
 # Exercise 3: Microsoft Entra Verified ID
 
-### Estimated Duration: 70 minutes
+### Estimated Duration: 60 minutes
 
 ## Overview
 
@@ -31,7 +31,7 @@ In this lab, you will complete the following exercise:
 
 - Task 1: Configure Verified ID Issuer
 - Task 2: Issue Verifiable Credentials
-- Task 3: Verify Credentials in Sample Application (Help Desk Scenario)
+- Task 3: Account Recovery using Microsoft Entra
 
 ## Task 1: Configure Verified ID Issuer
 
@@ -143,6 +143,7 @@ In this task, you will set up Microsoft Entra Verified ID for your organization.
    ![](./Images/E3T1S22.png)
 
    >**Note**: if it is still showing **Domain may not be verified**, click on **Verify**, select **Refresh registration status**. If the registration is successful, click on **Close** and check again.
+
    >![](./Images/E3T1S22-1.png)
 
 1. Now, click on **+ Create credential** to create a new credential type.
