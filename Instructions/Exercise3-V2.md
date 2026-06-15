@@ -320,7 +320,7 @@ In this task, you will configure and validate the Microsoft Entra Account Recove
    https://portal.azure.com
    ```
 
-   - **Username:** Paste the user principal name copied in **Exercise 1 - Task 1 - Step 15** and click **Next**.
+   - **Username:** Paste the user principal name copied in **Exercise 1 - Task 1 - Step 15 (1)** and click **Next (2)**.
 
    ![](./Images/ETS1419.png)
 
@@ -333,6 +333,7 @@ In this task, you will configure and validate the Microsoft Entra Account Recove
 1. A new browser tab opens and displays a QR code. Scan the QR code using a mobile device to begin the recovery process.
 
    > **Note:** The recovery workflow is completed on a mobile device because identity verification requires access to device capabilities such as camera and document scanning.
+
    > **Note:** An identity document, such as a passport or driver's license, is required to complete this account recovery demonstration.
 
    ![](./Images/a22.png)
@@ -353,7 +354,7 @@ In this task, you will configure and validate the Microsoft Entra Account Recove
 
 1. Click **Looks Good** to submit the captured identity document for verification. If prompted, complete the **Face Check** process by following the on-screen instructions and then click **Submit**. The verification process may return a failed result in this lab environment because the identity information on the submitted document does not match the details associated with the test user account.
 
-   ![](./Images/mobile4.jpg)
+   ![](./Images/mobile2.jpg)
 
 1. This exercise is intended to demonstrate the Account Recovery workflow and user experience. For a successful validation scenario, create a user account with matching identity details and repeat the verification process.
 
