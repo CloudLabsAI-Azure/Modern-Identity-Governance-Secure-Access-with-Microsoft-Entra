@@ -21,6 +21,7 @@ By completing this lab, you will gain a strong understanding of how Microsoft En
 ## Objective
 
 After completing this lab, you will be able to:
+
 - **Configure Identity Governance:** Implement Identity Governance features to manage access lifecycle, automate approvals, and enforce least-privilege access.
 - **Manage Users and Groups:** Create and manage users, groups, and dynamic memberships using Microsoft Entra.
 - **Automate Lifecycle Workflows:** Configure Lifecycle Workflows to automate onboarding, offboarding, and user access processes.
