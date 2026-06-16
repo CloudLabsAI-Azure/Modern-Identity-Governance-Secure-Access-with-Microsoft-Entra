@@ -11,6 +11,7 @@ To solve this, Contoso plans to adopt **Microsoft Entra** to modernize its ident
 To achieve this, you will configure dynamic groups and lifecycle workflows, deploy Global Secure Access to provide secure connectivity to private and internet resources without VPN, apply Conditional Access policies for enhanced security, and implement Verified ID to enable passwordless identity verification using decentralized digital credentials.
 
 ## Overview
+
 In this hands-on lab, you will explore **Modern identity governance**, **secure access management**, and **decentralized identity solutions** using Microsoft Entra. You will configure Identity Governance features, implement secure access to private and internet resources with Global Secure Access, and enable passwordless identity verification using Verified ID.
 
 Throughout the lab, you will configure Identity Governance capabilities, manage users and groups, implement Conditional Access policies, and automate identity lifecycle processes. You will also explore Global Secure Access to provide secure connectivity to private and internet resources, and work with Verified ID to enable passwordless and decentralized identity verification using verifiable credentials.
@@ -30,7 +31,7 @@ After completing this lab, you will be able to:
 - **Issue and Verify Verifiable Credentials:** Use Microsoft Authenticator to issue and verify verifiable credentials securely.
 - **Understand Zero Trust Security:** Explore how Microsoft Entra services work together to support Zero Trust identity and access management across cloud and hybrid environments.
 
-### Prerequisites
+## Prerequisites
 
 Before starting this lab, you should have:
 - Basic understanding of Entra Identity fundamentals concepts.

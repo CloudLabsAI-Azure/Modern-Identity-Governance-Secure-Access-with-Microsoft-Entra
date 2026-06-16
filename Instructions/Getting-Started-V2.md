@@ -31,23 +31,25 @@ After completing this lab, you will be able to:
 - **Issue and Verify Verifiable Credentials:** Use Microsoft Authenticator to issue and verify verifiable credentials securely.
 - **Understand Zero Trust Security:** Explore how Microsoft Entra services work together to support Zero Trust identity and access management across cloud and hybrid environments.
 
-### Prerequisites
+## Prerequisites
 
 Before starting this lab, you should have:
-- Basic understanding of Microsoft Entra Identity fundamentals concepts.
+
+- Basic understanding of Microsoft Entra identity and access management concepts.
 - Familiarity with the Azure portal and Microsoft Entra admin center.
-- Basic knowledge of authentication, authorization, and MFA concepts.
+- Basic knowledge of authentication, authorization, Multi-Factor Authentication (MFA), and passwordless authentication concepts.
 - Understanding of users, groups, and role-based access control (RBAC).
-- Basic understanding of networking concepts such as private and internet access.
+- Basic understanding of identity governance concepts such as access reviews and lifecycle management.
+- Basic understanding of networking concepts, including private and internet access.
 - General awareness of Zero Trust security principles.
 
 ## Architecture
 
-The Modern Identity Governance & Secure Access architecture uses **Microsoft Entra** to provide centralized identity management, secure access control, and decentralized identity verification across cloud and hybrid environments.
+The Modern Identity Governance & Secure Access architecture uses **Microsoft Entra** to provide centralized identity management, secure access control, identity verification, and secure account recovery across cloud and hybrid environments.
 
-**Microsoft Entra ID** manages identities, governance policies, and access controls using features such as **Lifecycle Workflows, Access Reviews, and Conditional Access**. Microsoft Entra Global Secure Access enables secure access to private and internet resources without traditional VPN solutions. **Microsoft Entra Verified ID** provides passwordless identity verification using verifiable credentials and Microsoft Authenticator.
+**Microsoft Entra ID** manages identities, governance policies, and access controls using features such as **Lifecycle Workflows, Access Reviews, and Conditional Access**. Microsoft Entra **Global Secure Access** enables secure access to **private and internet resources** without traditional VPN solutions. Microsoft Entra **Verified ID** provides passwordless identity verification using verifiable credentials and Microsoft Authenticator, while Microsoft Entra **Account Recovery** enables users to securely regain access to their accounts through identity verification providers, recovery profiles, and passkey registration after recovery.
 
-Built-in **Monitoring** and **Auditing** capabilities help organizations track sign-in activity, access events, and governance operations across the environment.
+Built-in **Monitoring** and **Auditing** capabilities help organizations track sign-in activity, access events, account recovery operations, and governance activities across the environment.
 
 ## Architecture Diagram
 
