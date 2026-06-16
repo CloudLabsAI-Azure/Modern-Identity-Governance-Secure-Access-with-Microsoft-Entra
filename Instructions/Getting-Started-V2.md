@@ -20,7 +20,6 @@ By completing this lab, you will gain a strong understanding of how Microsoft En
 
 ## Objective
 
-After completing this lab, you will be able to:
 - **Configure Identity Governance:** Implement Identity Governance features to manage access lifecycle, automate approvals, and enforce least-privilege access.
 - **Manage Users and Groups:** Create and manage users, groups, and dynamic memberships using Microsoft Entra.
 - **Automate Lifecycle Workflows:** Configure Lifecycle Workflows to automate onboarding, offboarding, and user access processes.
@@ -29,6 +28,7 @@ After completing this lab, you will be able to:
 - **Monitor and Review Access Activities:** Perform access reviews and monitor identity-related activities for improved visibility and governance.
 - **Configure Microsoft Entra Verified ID:** Set up Verified ID to enable decentralized and passwordless identity verification.
 - **Issue and Verify Verifiable Credentials:** Use Microsoft Authenticator to issue and verify verifiable credentials securely.
+- **Configure Microsoft Entra Account Recovery:** Configure identity verification providers and recovery profiles to enable secure self-service account recovery.
 - **Understand Zero Trust Security:** Explore how Microsoft Entra services work together to support Zero Trust identity and access management across cloud and hybrid environments.
 
 ## Prerequisites
