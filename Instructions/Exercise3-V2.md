@@ -1,20 +1,21 @@
-# Exercise 3: Microsoft Entra Verified ID
+# Exercise 3: Microsoft Entra Verified ID and Account Recovery
 
 ### Estimated Duration: 60 minutes
 
 ## Overview
 
-In this hands-on exercise, you will set up a **Verified ID** using which we will register a **Decentralized identifier (DID)**, and verify the domain. You will create and issue a credential that will be stored in the **Authenticator app**. You then verify the credentials through a sample application. Finally, you will explore a **Help Desk scenario** to understand how Verified ID enables secure, passwordless identity verification.
+In this hands-on exercise, you will configure **Microsoft Entra Verified ID** by registering a **Decentralized Identifier (DID)**, verifying your domain, and creating a verifiable credential. You will issue the credential to a user and store it securely in the Microsoft Authenticator app. You will then configure **Microsoft Entra Account Recovery** and integrate an **Identity Verification Provider (IVP)** to enable secure account recovery through identity verification. Finally, you will explore how **Verified ID** and **Account Recovery** work together to provide a secure, passwordless, and user-friendly method for restoring account access when users lose access to their authentication methods.
 
-**Key Concepts:**
+### Key Concepts
 
 | Concept | Description |
 |---------|-------------|
 | **Issuer** | An organization that creates and issues verifiable credentials to users. |
 | **Holder** | The user who receives and stores credentials in their digital wallet (Microsoft Authenticator). |
-| **Verifier** | An organization or application that requests and verifies credentials from the holder. |
-| **DID (Decentralized Identifier)** | A globally unique identifier anchored to a blockchain or DID registry. |
+| **Verifier** | An organization or service that requests and validates credentials from the holder. |
+| **DID (Decentralized Identifier)** | A globally unique identifier used to establish a trusted digital identity. |
 | **Verifiable Credential (VC)** | A tamper-evident credential containing claims about the holder, signed by the issuer. |
+| **Identity Verification Provider (IVP)** | A trusted provider that validates a user's identity using documents and biometric verification during account recovery. |
 
 ## Prerequisites
 
@@ -216,13 +217,15 @@ In this task, you will configure the credential issuance process and issue a ver
 
 ## Task 3: Account Recovery using Microsoft Entra
 
-In this task, you will configure and validate the Microsoft Entra Account Recovery experience. This feature enables users to securely recover access to their accounts when they are unable to use their registered authentication methods.
+In this task, you configured Microsoft Entra Account Recovery by enabling passkey registration after recovery, subscribing to an Identity Verification Provider (IVP), and creating an account recovery profile. You also initiated the account recovery workflow and prepared the environment for identity verification.
+
+### Task 3.1: Configure Microsoft Entra Account Recovery
 
 1. Navigate back to the **Microsoft Entra Admin Center** portal, then select **Account Recovery** under **Microsoft Entra ID**. The **Getting started** page displays a setup checklist that guides you through the required configuration steps.
 
    ![](./Images/a1.png)
 
-1. Click on **Set up passkeys after recovery** to configure passkey registration following a successful account recovery process.
+1. As **Verified ID** and **Face check** were configured in the previous tasks, the first two setup steps are already completed. Click on **Set up passkeys after recovery** to continue configuring passkey registration following a successful account recovery process.
 
    > **Note:** This configuration allows users to register a passkey after recovering their account, helping them use a stronger and more phishing-resistant authentication method in the future.
 
@@ -315,6 +318,12 @@ In this task, you will configure and validate the Microsoft Entra Account Recove
 
    ![](./Images/a19.png)
 
+### Task 3.2: Identity Verification and Account Recovery (Read-Only)
+
+In this task, you will review the end-user account recovery experience. This section is provided for informational purposes only because successful completion requires a real user account, matching personal identity information, and a valid government-issued identity document.
+
+> **Important:** This is a read-only walkthrough. The verification process cannot be fully completed using the lab-provided accounts because the identity information does not match a real user.
+
 1. Open a **New InPrivate window**, navigate to the following URL, and sign in using the provided credentials.
 
    ```text
@@ -357,10 +366,30 @@ In this task, you will configure and validate the Microsoft Entra Account Recove
 
    ![](./Images/mobile2.jpg)
 
-1. This exercise is intended to demonstrate the Account Recovery workflow and user experience. For a successful validation scenario, create a user account with matching identity details and repeat the verification process.
+> **Note:** This task is intended to demonstrate the Microsoft Entra Account Recovery workflow and user experience. To successfully complete the identity verification process, a real user account with matching personal identity information and a valid government-issued identity document is required.
+
+## References
+
+Here are a few more resources that will help you continue your learning journey with Microsoft Entra Verified ID and Account Recovery.
+
+- Access all the information in the main [Microsoft Entra Verified ID Documentation](https://learn.microsoft.com/entra/verified-id/)
+
+- Learn how to configure and manage [Microsoft Entra Account Recovery](https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable)
+
+- Explore the concepts and architecture behind [Identity Verification Providers](https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery)
+
+- Learn how to configure [Passkey Registration After Recovery](https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-passkeys)
+
+- Explore [Microsoft Entra Learning Paths and Training Modules](https://learn.microsoft.com/training/browse/?products=entra)
+
+- Learn more about [Microsoft Authenticator and Passwordless Authentication](https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app)
+
+- Visit the [Microsoft Entra Product Website](https://www.microsoft.com/security/business/microsoft-entra)
+
+- Explore the complete [Microsoft Entra Documentation](https://learn.microsoft.com/entra/)
 
 ## Summary
 
-In this exercise, you configured Microsoft Entra Account Recovery by integrating an identity verification provider, creating an account recovery profile, and enabling users to securely recover access to their accounts. You also validated the account recovery workflow and learned how identity verification can be used to restore account access when users lose access to their authentication methods.
+In this exercise, you configured Microsoft Entra Verified ID by registering a Decentralized Identifier (DID), verifying domain ownership, and issuing a verifiable credential that was stored in Microsoft Authenticator. You then configured Microsoft Entra Account Recovery by integrating an Identity Verification Provider and creating a recovery profile to support secure self-service account recovery. Through these activities, you learned how Microsoft Entra Verified ID and Account Recovery work together to strengthen identity verification, enable passwordless experiences, and provide users with a secure method to regain access to their accounts when traditional authentication methods are unavailable.
 
 ## Congratulations! You have successfully completed the lab.
