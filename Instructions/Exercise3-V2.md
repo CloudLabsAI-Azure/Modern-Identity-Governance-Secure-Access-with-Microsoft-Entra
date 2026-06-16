@@ -217,9 +217,9 @@ In this task, you will configure the credential issuance process and issue a ver
 
 ## Task 3: Account Recovery using Microsoft Entra
 
-In this task, you configured Microsoft Entra Account Recovery by enabling passkey registration after recovery, subscribing to an Identity Verification Provider (IVP), and creating an account recovery profile. You also initiated the account recovery workflow and prepared the environment for identity verification.
-
 ### Task 3.1: Configure Microsoft Entra Account Recovery
+
+In this task, you will configure Microsoft Entra Account Recovery by enabling passkey registration after recovery, subscribing to an Identity Verification Provider (IVP), and creating an account recovery profile.
 
 1. Navigate back to the **Microsoft Entra Admin Center** portal, then select **Account Recovery** under **Microsoft Entra ID**. The **Getting started** page displays a setup checklist that guides you through the required configuration steps.
 
@@ -368,19 +368,13 @@ In this task, you will review the end-user account recovery experience. This sec
 
 > **Note:** This task is intended to demonstrate the Microsoft Entra Account Recovery workflow and user experience. To successfully complete the identity verification process, a real user account with matching personal identity information and a valid government-issued identity document is required.
 
-## References
+## Reference links
 
 Here are a few more resources that will help you continue your learning journey with Microsoft Entra Verified ID and Account Recovery.
 
 - Access all the information in the main [Microsoft Entra Verified ID Documentation](https://learn.microsoft.com/entra/verified-id/)
 
 - Learn how to configure and manage [Microsoft Entra Account Recovery](https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-enable)
-
-- Explore the concepts and architecture behind [Identity Verification Providers](https://learn.microsoft.com/entra/identity/authentication/concept-account-recovery)
-
-- Learn how to configure [Passkey Registration After Recovery](https://learn.microsoft.com/entra/identity/authentication/how-to-account-recovery-passkeys)
-
-- Explore [Microsoft Entra Learning Paths and Training Modules](https://learn.microsoft.com/training/browse/?products=entra)
 
 - Learn more about [Microsoft Authenticator and Passwordless Authentication](https://learn.microsoft.com/entra/identity/authentication/concept-authentication-authenticator-app)
 

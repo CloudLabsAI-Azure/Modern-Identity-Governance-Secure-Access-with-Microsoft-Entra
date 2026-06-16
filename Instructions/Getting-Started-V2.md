@@ -34,7 +34,7 @@ After completing this lab, you will be able to:
 ### Prerequisites
 
 Before starting this lab, you should have:
-- Basic understanding of Entra Identity fundamentals concepts.
+- Basic understanding of Microsoft Entra Identity fundamentals concepts.
 - Familiarity with the Azure portal and Microsoft Entra admin center.
 - Basic knowledge of authentication, authorization, and MFA concepts.
 - Understanding of users, groups, and role-based access control (RBAC).
@@ -51,7 +51,7 @@ Built-in **Monitoring** and **Auditing** capabilities help organizations track s
 
 ## Architecture Diagram
 
-![](./Images/newarch.png)	
+![](./Images/newarch1.png)	
 
 ## Explanation of Components
 The architecture for this lab involves several key components:
